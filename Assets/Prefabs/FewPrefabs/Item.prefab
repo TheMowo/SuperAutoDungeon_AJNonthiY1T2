@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 382192263396685371}
   - component: {fileID: 4488587334064372770}
   - component: {fileID: 9048255373683549557}
+  - component: {fileID: 6003823346386325752}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -90,3 +91,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4488587334064372770}
   parentAfterDrag: {fileID: 0}
+--- !u!114 &6003823346386325752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100813280967360941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06de87d749c493f4f87790a6a3cb4ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Green Rok
+  content: Bleuh rock... :(
+  tooltipSystem: {fileID: 0}
