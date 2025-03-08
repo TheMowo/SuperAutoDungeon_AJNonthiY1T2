@@ -10,20 +10,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         //Debug.Log("Begin Drag");
-        parentAfterDrag = transform.parent; 
-        transform.SetParent(transform.root); 
-        transform.SetAsLastSibling(); 
-        image.raycastTarget = false; 
+        parentAfterDrag = transform.parent;
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling();
+        image.raycastTarget = false;
     }
     public void OnDrag(PointerEventData eventData)
     {
         //Debug.Log("Dragging");
-        transform.position = Input.mousePosition; // Move the item with the mouse
+        transform.position = Input.mousePosition;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("End Drag");
-        transform.SetParent(parentAfterDrag); // Return the item to its original slot
-        image.raycastTarget = true; // Make the item interactable again
+        transform.SetParent(parentAfterDrag);
+        image.raycastTarget = true;
     }
 }
