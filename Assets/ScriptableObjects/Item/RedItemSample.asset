@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Red Item Sample
   Description: Sample
-  HpEffect: 1
-  AtkEffect: 1
+  HpEffect: 0
+  AtkEffect: 4
   Sprite: {fileID: -6532087710655975924, guid: 35ea95b7e3a9e654ca7716fc603157fc, type: 3}
-  GreenDebuffEffect: 1
-  RedDebuffEffect: 1
-  BlueDebuffEffect: 1
+  GreenDebuffEffect: 0
+  RedDebuffEffect: 5
+  BlueDebuffEffect: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: GreenItemSample
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  HpEffect: 0
+  Name: Green Item Sample
+  Description: Sample
+  HpEffect: 5
   AtkEffect: 0
   Sprite: {fileID: 0}
-  GreenDebuffEffect: 0
+  GreenDebuffEffect: 6
   RedDebuffEffect: 0
   BlueDebuffEffect: 0
