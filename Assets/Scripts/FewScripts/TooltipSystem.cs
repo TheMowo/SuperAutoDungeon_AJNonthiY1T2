@@ -16,9 +16,9 @@ public class TooltipSystem : MonoBehaviour
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
-    public void Show(string content, string header = " ")
+    public void Show(ConsumableItem currentItem)
     {
-        current.tooltip.SetText(content, header);
+        current.tooltip.SetText(currentItem);
         //current.tooltip.gameObject.SetActive(true);
         canvasGroup.alpha = 1f;
     }

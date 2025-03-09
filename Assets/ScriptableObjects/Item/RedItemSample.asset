@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Sample
   HpEffect: 0
   AtkEffect: 4
-  Sprite: {fileID: -6532087710655975924, guid: 35ea95b7e3a9e654ca7716fc603157fc, type: 3}
+  Sprite: {fileID: -9197134654715703934, guid: ee6aa852e038cc64e8f6de354969bbe9, type: 3}
   GreenDebuffEffect: 0
   RedDebuffEffect: 5
   BlueDebuffEffect: 0

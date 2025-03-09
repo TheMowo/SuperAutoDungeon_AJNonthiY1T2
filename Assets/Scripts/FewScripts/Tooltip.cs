@@ -16,24 +16,25 @@ public class Tooltip : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
     }
-    public void SetText(string content, string header = " ")
+    public void SetText(ConsumableItem currentItem)
     {
-        if(string.IsNullOrEmpty(header))
+        if(string.IsNullOrEmpty(currentItem.Name)) //If the header is empty, hide header
         {
             headerField.gameObject.SetActive(false);
         } 
-        else 
+        else // and else is you know what, vice versa.
         {
             headerField.gameObject.SetActive(true);
-            headerField.text = header;
+            headerField.text = currentItem.Name;
         }
 
-        contentField.text = content;
+        contentField.text = currentItem.Description; //Set the content of the tooltip
 
         int headerLength = headerField.text.Length;
         int contentLength = contentField.text.Length;
 
-        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false; 
+        // ^ ^ ^ If the text is too long, wrap it to a fixed size ^ ^ ^
     }
 
     private void Update()

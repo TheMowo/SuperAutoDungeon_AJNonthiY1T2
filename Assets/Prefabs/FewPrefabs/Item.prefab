@@ -60,16 +60,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.27069238, b: 0.27069238, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -9197134654715703934, guid: ee6aa852e038cc64e8f6de354969bbe9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 4488587334064372770}
+  CurrentItem: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &6003823346386325752
 MonoBehaviour:
@@ -103,6 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06de87d749c493f4f87790a6a3cb4ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: Green Rok
-  content: Bleuh rock... :(
+  item: {fileID: 0}
   tooltipSystem: {fileID: 0}

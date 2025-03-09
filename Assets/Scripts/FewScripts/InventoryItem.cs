@@ -27,4 +27,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
     }
+
+    public void GetItemData(ConsumableItem itemData)
+    {
+        CurrentItem = itemData;
+        image.sprite = itemData.Sprite;
+    }
 }

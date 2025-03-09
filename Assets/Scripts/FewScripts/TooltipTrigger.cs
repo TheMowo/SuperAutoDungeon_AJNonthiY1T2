@@ -6,19 +6,23 @@ using UnityEngine.UIElements;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string header;
-
-    [Multiline()]
-    public string content;
+    public ConsumableItem currentItem; // ScriptableObject item's header and content displayed in the tooltip
     public TooltipSystem tooltipSystem;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltipSystem.Show(content,header);
+        tooltipSystem.Show(currentItem);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         tooltipSystem.Hide();
+    }
+
+    [Obsolete]
+    public void GetItemData(ConsumableItem itemData)
+    {
+        currentItem = itemData;
+        tooltipSystem = FindObjectOfType<TooltipSystem>();
     }
 }
