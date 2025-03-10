@@ -29,7 +29,7 @@ public class PlayerUnit : MonoBehaviour
         ATK += consumable.AtkEffect;
         CurrentRedDebuff += consumable.RedDebuffEffect;
         CurrentGreenDebuff += consumable.GreenDebuffEffect;
-        CurrentRedDebuff += consumable.RedDebuffEffect;
+        CurrentBlueDebuff += consumable.BlueDebuffEffect;
         CheckDebuffFull();
     }
 
