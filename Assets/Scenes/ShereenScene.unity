@@ -516,7 +516,6 @@ GameObject:
   - component: {fileID: 883191572}
   - component: {fileID: 883191571}
   - component: {fileID: 883191570}
-  - component: {fileID: 883191574}
   - component: {fileID: 883191573}
   m_Layer: 0
   m_Name: Player 2
@@ -668,24 +667,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 883191568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754e72eceb4714c93c157fe5f5e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dbaf96bff35ce4489cd96368f5fa10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
-  attackCooldown: 1
---- !u!114 &883191574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883191568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f562914badc953140ac4b82db8804d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
+  playerUnitType: {fileID: 11400000, guid: c7c3f33cafa18fa43b5616514973ae76, type: 2}
+  HP: 10
+  ATK: 2
+  FullRedDebuff: 5
+  FullGreenDebuff: 6
+  FullBlueDebuff: 7
 --- !u!1 &884372272
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +688,6 @@ GameObject:
   - component: {fileID: 884372276}
   - component: {fileID: 884372275}
   - component: {fileID: 884372274}
-  - component: {fileID: 884372278}
   - component: {fileID: 884372277}
   m_Layer: 0
   m_Name: Player 1
@@ -850,24 +839,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 884372272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754e72eceb4714c93c157fe5f5e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dbaf96bff35ce4489cd96368f5fa10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
-  attackCooldown: 1
---- !u!114 &884372278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884372272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f562914badc953140ac4b82db8804d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
+  playerUnitType: {fileID: 11400000, guid: c7c3f33cafa18fa43b5616514973ae76, type: 2}
+  HP: 10
+  ATK: 2
+  FullRedDebuff: 5
+  FullGreenDebuff: 6
+  FullBlueDebuff: 7
 --- !u!1 &915694100
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +891,6 @@ GameObject:
   - component: {fileID: 1003976880}
   - component: {fileID: 1003976879}
   - component: {fileID: 1003976878}
-  - component: {fileID: 1003976882}
   - component: {fileID: 1003976881}
   m_Layer: 0
   m_Name: Enemy 1
@@ -1072,24 +1051,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003976876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754e72eceb4714c93c157fe5f5e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
-  attackCooldown: 1
---- !u!114 &1003976882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003976876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f562914badc953140ac4b82db8804d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
+  enemiesUnitType: {fileID: 11400000, guid: 8cd63eca302515542b8fbd03166e6b7a, type: 2}
+  HP: 10
+  ATK: 2
+  FullRedDebuff: 5
+  FullGreenDebuff: 6
+  FullBlueDebuff: 7
 --- !u!1 &1088207239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1371,6 @@ GameObject:
   - component: {fileID: 1342181362}
   - component: {fileID: 1342181361}
   - component: {fileID: 1342181360}
-  - component: {fileID: 1342181364}
   - component: {fileID: 1342181363}
   m_Layer: 0
   m_Name: Enemy 2
@@ -1562,24 +1531,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1342181358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754e72eceb4714c93c157fe5f5e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
-  attackCooldown: 1
---- !u!114 &1342181364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342181358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f562914badc953140ac4b82db8804d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
+  enemiesUnitType: {fileID: 11400000, guid: 8cd63eca302515542b8fbd03166e6b7a, type: 2}
+  HP: 10
+  ATK: 2
+  FullRedDebuff: 5
+  FullGreenDebuff: 6
+  FullBlueDebuff: 7
 --- !u!1 &1373000104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,14 +1703,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUnits:
-  - {fileID: 884372272}
-  - {fileID: 883191568}
-  - {fileID: 1678467840}
+  - {fileID: 884372277}
+  - {fileID: 883191573}
+  - {fileID: 1678467845}
   enemyUnits:
   - {fileID: 1003976876}
   - {fileID: 1342181358}
   - {fileID: 1991738129}
   battlePoint: {fileID: 915694101}
+  maxTurns: 5
 --- !u!4 &1575193560
 Transform:
   m_ObjectHideFlags: 0
@@ -1778,7 +1739,6 @@ GameObject:
   - component: {fileID: 1678467844}
   - component: {fileID: 1678467843}
   - component: {fileID: 1678467842}
-  - component: {fileID: 1678467846}
   - component: {fileID: 1678467845}
   m_Layer: 0
   m_Name: Player 3
@@ -1930,24 +1890,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678467840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754e72eceb4714c93c157fe5f5e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dbaf96bff35ce4489cd96368f5fa10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
-  attackCooldown: 1
---- !u!114 &1678467846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678467840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f562914badc953140ac4b82db8804d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
+  playerUnitType: {fileID: 11400000, guid: c7c3f33cafa18fa43b5616514973ae76, type: 2}
+  HP: 10
+  ATK: 2
+  FullRedDebuff: 5
+  FullGreenDebuff: 6
+  FullBlueDebuff: 7
 --- !u!1 &1991738129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +1911,6 @@ GameObject:
   - component: {fileID: 1991738133}
   - component: {fileID: 1991738132}
   - component: {fileID: 1991738131}
-  - component: {fileID: 1991738135}
   - component: {fileID: 1991738134}
   m_Layer: 0
   m_Name: Enemy 3
@@ -2121,24 +2071,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991738129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7754e72eceb4714c93c157fe5f5e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 2
-  attackCooldown: 1
---- !u!114 &1991738135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991738129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f562914badc953140ac4b82db8804d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
+  enemiesUnitType: {fileID: 11400000, guid: 8cd63eca302515542b8fbd03166e6b7a, type: 2}
+  HP: 10
+  ATK: 2
+  FullRedDebuff: 5
+  FullGreenDebuff: 6
+  FullBlueDebuff: 7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

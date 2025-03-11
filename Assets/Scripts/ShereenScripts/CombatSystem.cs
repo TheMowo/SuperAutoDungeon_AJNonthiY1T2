@@ -4,89 +4,137 @@ using System.Collections.Generic;
 
 public class CombatSystem : MonoBehaviour
 {
-    public List<GameObject> playerUnits;
-    public List<GameObject> enemyUnits;
+    public List<PlayerUnit> playerUnits;
+    public List<EnemiesUnit> enemyUnits;
     public Transform battlePoint;
+    public int maxTurns = 5;
 
-    private int playerIndex = 0;
-    private int enemyIndex = 0;
+    private int currentTurn = 0;
 
     public void StartBattle()
     {
         if (playerUnits.Count > 0 && enemyUnits.Count > 0)
         {
-            StartCoroutine(FightLoop());
+            StartCoroutine(BattleRoutine());
         }
     }
 
-    private IEnumerator FightLoop()
+    private IEnumerator BattleRoutine()
     {
-        while (playerIndex < playerUnits.Count && enemyIndex < enemyUnits.Count)
+        currentTurn = 0;
+        while (currentTurn < maxTurns)
         {
-            GameObject player = playerUnits[playerIndex];
-            GameObject enemy = enemyUnits[enemyIndex];
+            if (playerUnits.Count == 0 || enemyUnits.Count == 0)
+                break;
 
-            if (player == null)
-            {
-                playerIndex += 1;
-                continue;
-            }
-            if (enemy == null)
-            {
-                enemyIndex += 1;
-                continue;
-            }
+            Debug.Log("Turn " + (currentTurn + 1));
 
-            //เดินเข้าหากัน
-            StartCoroutine(MoveToMiddle(player, battlePoint.position));
-            yield return StartCoroutine(MoveToMiddle(enemy, battlePoint.position));
+            yield return StartCoroutine(PlayerAttackPhase());
 
-            //รอให้ตลคไปตรงกลาง
-            while (player != null && enemy != null && Vector2.Distance(player.transform.position, enemy.transform.position) > 0.5f)
+            if (enemyUnits.Count == 0)
             {
-                yield return null;
+                Debug.Log("Player Wins");
+                ResetPlayerHP();
+                yield break;
             }
 
-            if (player != null && enemy != null)
-            {
-                StartFight(player, enemy);
+            yield return StartCoroutine(EnemyAttackPhase());
 
-                while (player != null && enemy != null)
-                {
-                    yield return null;
-                }
+            if (playerUnits.Count == 0)
+            {
+                Debug.Log("Enemy Wins");
+                yield break;
             }
 
+            currentTurn++;
             yield return new WaitForSeconds(1.0f);
         }
 
-        Debug.Log("Battle End");
-    }
-
-    private IEnumerator MoveToMiddle(GameObject unit, Vector3 target)
-    {
-        float speed = 3.0f;
-        while (unit != null && Vector2.Distance(unit.transform.position, target) > 0.5f)
+        if (enemyUnits.Count == 0)
         {
-            unit.transform.position = Vector2.MoveTowards(unit.transform.position, target, speed * Time.deltaTime);
-            yield return null;
+            Debug.Log("Player Wins");
+            ResetPlayerHP();
+        }
+        else if (playerUnits.Count == 0)
+        {
+            Debug.Log("Enemy Wins");
+        }
+        else
+        {
+            Debug.Log("No one died, Player Wins");
         }
     }
 
-    private void StartFight(GameObject player, GameObject enemy)
+    private IEnumerator PlayerAttackPhase()
     {
-        if (player != null && enemy != null)
+        if (enemyUnits.Count == 0) yield break;
+
+        int totalPlayerDamage = 0;
+        foreach (var player in playerUnits)
         {
-            Health_ForTest playerHealth = player.GetComponent<Health_ForTest>();
-            Health_ForTest enemyHealth = enemy.GetComponent<Health_ForTest>();
-
-            AutoAttack playerAttack = player.GetComponent<AutoAttack>();
-            AutoAttack enemyAttack = enemy.GetComponent<AutoAttack>();
-
-            if (playerHealth != null && enemyHealth != null && playerAttack != null && enemyAttack != null)
+            if (player != null)
             {
-                playerAttack.StartCombat(enemyHealth);
-                enemyAttack.StartCombat(playerHealth);
+                totalPlayerDamage += player.ATK;
+            }
+        }
+
+        if (enemyUnits.Count > 0 && enemyUnits[0] != null)
+        {
+            EnemiesUnit enemy = enemyUnits[0];
+            enemy.HP -= totalPlayerDamage;
+            Debug.Log("Player attacks for " + totalPlayerDamage + " damage");
+
+            if (enemy.HP <= 0)
+            {
+                Debug.Log(enemy.name + " has died");
+                Destroy(enemy.gameObject);
+                enemyUnits.RemoveAt(0);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private IEnumerator EnemyAttackPhase()
+    {
+        if (playerUnits.Count == 0)
+        {
+            yield break;
+        }
+
+        int totalEnemyDamage = 0;
+        foreach (var enemy in enemyUnits)
+        {
+            if (enemy != null)
+            {
+                totalEnemyDamage += enemy.ATK;
+            }
+        }
+
+        if (playerUnits.Count > 0 && playerUnits[0] != null)
+        {
+            PlayerUnit player = playerUnits[0];
+            player.HP -= totalEnemyDamage;
+            Debug.Log("Enemy attacks for " + totalEnemyDamage + " damage");
+
+            if (player.HP <= 0)
+            {
+                Debug.Log(player.name + " has died");
+                Destroy(player.gameObject);
+                playerUnits.RemoveAt(0);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+    }
+
+
+    private void ResetPlayerHP()
+    {
+        foreach (var player in playerUnits)
+        {
+            if (player != null)
+            {
+                player.HP = player.GetComponent<PlayerUnitType>().HP;
+                Debug.Log(player.name + " HP Reset to " + player.HP);
             }
         }
     }
