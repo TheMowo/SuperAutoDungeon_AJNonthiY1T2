@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerUnit : MonoBehaviour
 {
-    [SerializeField] PlayerUnitType playerUnitType;
+    [SerializeField] public PlayerUnitType playerUnitType;
     public int HP;
     public int ATK;
     SpriteRenderer SR;

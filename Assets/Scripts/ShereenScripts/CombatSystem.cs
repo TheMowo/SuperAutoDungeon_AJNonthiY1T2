@@ -12,7 +12,6 @@ public class CombatSystem : MonoBehaviour
     public Transform battlePoint;
 
     [SerializeField] private int maxTurns = 5;
-
     private int currentTurn = 0;
     private bool isCollided = false;
 
@@ -69,6 +68,10 @@ public class CombatSystem : MonoBehaviour
                 yield break;
             }
 
+            yield return StartCoroutine(MoveBackToStartPosition());
+
+            RepositionUnits();
+
             currentTurn++;
             yield return new WaitForSeconds(1.0f);
         }
@@ -116,41 +119,51 @@ public class CombatSystem : MonoBehaviour
 
     private IEnumerator AttackPhase()
     {
-        if (playerUnits.Count == 0 || enemyUnits.Count == 0) yield break;
+        if (playerUnits.Count == 0 || enemyUnits.Count == 0)
+        {
+            yield break;
+        }
 
         if (playerUnits.Count > 0 && enemyUnits.Count > 0)
         {
-            PlayerUnit player = playerUnits[0].GetComponent<PlayerUnit>();
-            EnemiesUnit enemy = enemyUnits[0].GetComponent<EnemiesUnit>();
+            PlayerUnit player = playerUnits[0];
+            EnemiesUnit enemy = enemyUnits[0];
 
-            int playerDamage = player.ATK;
-            int enemyDamage = enemy.ATK;
+            enemy.HP -= player.ATK;
+            player.HP -= enemy.ATK;
 
-            enemy.HP -= playerDamage;
-            player.HP -= enemyDamage;
-
-            Debug.Log($"{player.name} attacks {enemy.name} for {playerDamage} damage!");
-            Debug.Log($"{enemy.name} attacks {player.name} for {enemyDamage} damage!");
+            Debug.Log($"{player.name} attacks {enemy.name} for {player.ATK} damage");
+            Debug.Log($"{enemy.name} attacks {player.name} for {enemy.ATK} damage");
 
             if (enemy.HP <= 0)
             {
-                Debug.Log($"{enemy.name} has died!");
+                Debug.Log($"{enemy.name} has died");
                 enemyUnits.RemoveAt(0);
                 Destroy(enemy.gameObject);
             }
 
             if (player.HP <= 0)
             {
-                Debug.Log($"{player.name} has died!");
+                Debug.Log($"{player.name} has died");
                 playerUnits.RemoveAt(0);
                 Destroy(player.gameObject);
-                RepositionUnits();
             }
         }
 
         yield return new WaitForSeconds(0.5f);
     }
 
+    private IEnumerator MoveBackToStartPosition()
+    {
+        if (playerUnits.Count > 0 && enemyUnits.Count > 0)
+        {
+            PlayerUnit player = playerUnits[0];
+            EnemiesUnit enemy = enemyUnits[0];
+
+            StartCoroutine(MoveToPosition(enemy.gameObject, enemyPositions[0].position));
+            yield return StartCoroutine(MoveToPosition(player.gameObject, playerPositions[0].position));
+        }
+    }
 
     private void RepositionUnits()
     {
@@ -173,7 +186,7 @@ public class CombatSystem : MonoBehaviour
         {
             if (player != null)
             {
-                player.HP = player.GetComponent<PlayerUnitType>().HP;
+                player.HP = player.playerUnitType.HP;
                 Debug.Log(player.name + " HP Reset to " + player.HP);
             }
         }
