@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc020fbbd904a44e8efdba937fc5d73, type: 3}
   m_Name: SomeShit
   m_EditorClassIdentifier: 
-  HP: 1
-  ATK: 1
-  SpriteName: 
+  HP: 10
+  ATK: 10
+  SpriteName: test1_0
   Sprite: {fileID: 0}

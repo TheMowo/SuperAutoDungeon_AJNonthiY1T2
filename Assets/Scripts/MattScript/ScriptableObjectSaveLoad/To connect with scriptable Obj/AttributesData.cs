@@ -14,7 +14,6 @@ public class AttributesData
     {
         this.HP = 1;
         this.ATK = 1;
-        this.SpriteName = "test1_0";
-        this.sprite = Resources.Load<Sprite>(SpriteName);
+        this.SpriteName = SpriteName;
     }
 }

@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 10
   Atk: 10
-  SpriteName: 
+  SpriteName: test1_0
   sprite: {fileID: -9197134654715703934, guid: ee6aa852e038cc64e8f6de354969bbe9, type: 3}
   textHP: {fileID: 2046449102}
   textAtk: {fileID: 1122282062}
