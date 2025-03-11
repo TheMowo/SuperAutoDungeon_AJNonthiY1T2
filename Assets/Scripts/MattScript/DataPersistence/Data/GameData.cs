@@ -8,8 +8,11 @@ public class GameData
     [Header("Game Variable Save")]
     public int ScoreCount;
 
+    public AttributesData playerAttributesData;
+
     public GameData()
     {
         this.ScoreCount = 0;
+        this.playerAttributesData = new AttributesData();
     }
 }
