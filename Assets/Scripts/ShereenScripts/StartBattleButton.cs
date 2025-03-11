@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class StartBattleButton : MonoBehaviour
 {
-    public CombatSystem combatSystem; // อ้างอิงถึง CombatSystem
+    public CombatSystem combatSystem;
     private Button button;
 
     void Start()
@@ -20,7 +20,6 @@ public class StartBattleButton : MonoBehaviour
 
     void UpdateButtonState()
     {
-        // ถ้าฝั่ง Player หรือ Enemy ไม่มีตัวเลย → ปุ่มจะกดไม่ได้
         if (combatSystem.playerUnits.Count == 0 || combatSystem.enemyUnits.Count == 0)
         {
             button.interactable = false;
@@ -34,6 +33,6 @@ public class StartBattleButton : MonoBehaviour
     void StartBattle()
     {
         combatSystem.StartBattle();
-        button.interactable = false; // ปิดปุ่มหลังจากกดเริ่มสู้
+        button.interactable = false;
     }
 }
