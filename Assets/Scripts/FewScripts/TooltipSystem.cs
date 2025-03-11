@@ -3,6 +3,7 @@ using UnityEngine;
 public class TooltipSystem : MonoBehaviour
 {
     private static TooltipSystem current;
+    private GameObject hoveredObject;
 
     public Tooltip tooltip;
     public CanvasGroup canvasGroup;
@@ -16,15 +17,22 @@ public class TooltipSystem : MonoBehaviour
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
-    public void Show(ConsumableItem currentItem)
+    public void Update()
     {
+        if (hoveredObject == null)
+        {
+            Hide();
+        }
+    }
+    public void Show(ConsumableItem currentItem, GameObject sourceObject)
+    {
+        hoveredObject = sourceObject; // This is the object that the tooltip is hovering over
+
         current.tooltip.SetText(currentItem);
-        //current.tooltip.gameObject.SetActive(true);
         canvasGroup.alpha = 1f;
     }
     public void Hide()
     {
-        //current.tooltip.gameObject.SetActive(false);
         canvasGroup.alpha = 0f;
     }
 }

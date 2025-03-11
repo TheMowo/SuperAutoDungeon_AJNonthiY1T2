@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4488587334064372770}
   CurrentItem: {fileID: 0}
+  isShopItem: 0
   parentAfterDrag: {fileID: 0}
 --- !u!114 &6003823346386325752
 MonoBehaviour:
@@ -104,5 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06de87d749c493f4f87790a6a3cb4ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  currentItem: {fileID: 0}
   tooltipSystem: {fileID: 0}

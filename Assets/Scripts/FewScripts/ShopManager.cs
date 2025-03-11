@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     public ShopSlot[] slots;
+    public TMPro.TextMeshProUGUI[] priceTexts;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
     private InventoryManager inventoryManager;
@@ -14,28 +15,27 @@ public class ShopManager : MonoBehaviour
 
             if (slots[i].transform.childCount == 0) 
             {
-                Debug.Log($"Giving {i+1} item");
                 GameObject newItem = Instantiate(itemPrefab, slots[i].transform);
-                InventoryItem itemSprite = newItem.GetComponent<InventoryItem>();
-                TooltipTrigger itemTooltip = newItem.GetComponent<TooltipTrigger>();
-                itemSprite.GetItemData(randomItem);
+                InventoryItem itemScript = newItem.GetComponent<InventoryItem>(); // This GetComponent get the item's stats from scriptableobject
+                TooltipTrigger itemTooltip = newItem.GetComponent<TooltipTrigger>(); // This GetComponent get the tooltip script
+                
+                itemScript.GetItemData(randomItem, true);
                 itemTooltip.GetItemData(randomItem);
-            }
 
-            Debug.Log("Shop Full!"); // If no slot is free
+                priceTexts[i].text = $"{randomItem.price} D";
+            }
+            Debug.Log($"Restocking {count} item; restocked!");
         }
     }
     public void DestroyShopItems()
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            Debug.Log($"Trashing {i+1} item");
-
             if (slots[i].transform.childCount > 0)
             {
                 Destroy(slots[i].transform.GetChild(0).gameObject);
             }
-            Debug.Log($"Clear!");
         }
+        Debug.Log($"Trashing all items; trashed!");
     }
 }

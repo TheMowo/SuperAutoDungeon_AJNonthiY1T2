@@ -20,3 +20,4 @@ MonoBehaviour:
   GreenDebuffEffect: 1
   RedDebuffEffect: 0
   BlueDebuffEffect: 0
+  price: 10

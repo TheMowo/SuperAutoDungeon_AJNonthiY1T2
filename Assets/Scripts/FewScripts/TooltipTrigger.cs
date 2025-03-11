@@ -11,7 +11,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltipSystem.Show(currentItem);
+        tooltipSystem.Show(currentItem, gameObject); // Show this hovered gameObject
     }
 
     public void OnPointerExit(PointerEventData eventData)
