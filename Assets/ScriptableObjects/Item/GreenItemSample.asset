@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: GreenItemSample
   m_EditorClassIdentifier: 
-  Name: Green Item Sample
-  Description: Sample
+  Name: Green Rock
+  Description: 'HP: 5'
   HpEffect: 5
   AtkEffect: 0
   Sprite: {fileID: -6532087710655975924, guid: 35ea95b7e3a9e654ca7716fc603157fc, type: 3}

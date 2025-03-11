@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: RedItemSample
   m_EditorClassIdentifier: 
-  Name: Red Item Sample
-  Description: Sample
+  Name: Red Rock
+  Description: 'DMG: 4'
   HpEffect: 0
   AtkEffect: 4
   Sprite: {fileID: -9197134654715703934, guid: ee6aa852e038cc64e8f6de354969bbe9, type: 3}
   GreenDebuffEffect: 0
   RedDebuffEffect: 1
   BlueDebuffEffect: 0
-  price: 10
+  price: 15
