@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemiesUnit : MonoBehaviour
@@ -5,9 +6,12 @@ public class EnemiesUnit : MonoBehaviour
     [SerializeField] EnemiesUnitType enemiesUnitType;
     public int HP;
     public int ATK;
+
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI atkText;
+    
     int DropGold;
     int MPDrop;
-    SpriteRenderer SR;
     ConsumableItem FavFood;
 
     int CurrentRedDebuff;
@@ -25,8 +29,8 @@ public class EnemiesUnit : MonoBehaviour
         FavFood = enemiesUnitType.FavFood;
         DropGold = enemiesUnitType.DropGold;
         MPDrop = enemiesUnitType.MPDrop;
-        SR = GetComponent<SpriteRenderer>();
-        SR.sprite = enemiesUnitType.Sprite;
+        //SR = GetComponent<SpriteRenderer>();
+        //SR.sprite = enemiesUnitType.Sprite;
     }
 
     public void UseConsumable(ConsumableItem consumable)
@@ -71,5 +75,16 @@ public class EnemiesUnit : MonoBehaviour
     void OnFed()
     {
         Debug.Log("Fed");
+    }
+
+    public void UpdateUI()
+    {
+        hpText.text = $"HP {HP}";
+        atkText.text = $"ATK {ATK}";
+    }
+    public void TakeDamage(int damage)
+    {
+        HP -= damage;
+        UpdateUI();
     }
 }

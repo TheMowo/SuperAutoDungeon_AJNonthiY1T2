@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74172ca95688f2a4fa75c9fd486e33be, type: 3}
   m_Name: PlayerUnitSample
   m_EditorClassIdentifier: 
-  HP: 2
+  HP: 10
   ATK: 1
-  Sprite: {fileID: 2613348730587745498, guid: f74d6c3efe188d8489d0bd50352d5eac, type: 3}
+  Sprite: {fileID: -7295105591687566277, guid: 556239c86fc607f4d88a5512f3afa1a0, type: 3}

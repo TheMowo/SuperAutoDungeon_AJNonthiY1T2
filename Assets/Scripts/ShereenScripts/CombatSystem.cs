@@ -11,10 +11,10 @@ public class CombatSystem : MonoBehaviour
     public List<Transform> enemyPositions;
     public Transform battlePoint;
 
+    public float attackSpeed = 3.0f;
+
     [SerializeField] private int maxTurns = 5;
     private int currentTurn = 0;
-    private bool isCollided = false;
-
     public void StartBattle()
     {
         if (playerUnits.Count > 0 && enemyUnits.Count > 0)
@@ -49,29 +49,27 @@ public class CombatSystem : MonoBehaviour
 
             Debug.Log("Turn " + (currentTurn + 1));
 
-            yield return StartCoroutine(MoveToBattlePoint());
-
-            yield return new WaitUntil(() => isCollided);
-
-            yield return StartCoroutine(AttackPhase());
-
+            // Players attack first
+            yield return StartCoroutine(PlayerAttackPhase());
+            // then checks if player killed off all enemies
             if (enemyUnits.Count == 0)
             {
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
+                RepositionUnits();
                 yield break;
             }
 
+            // Enemies attack second
+            yield return StartCoroutine(EnemyAttackPhase());
+            // then checks if enemy killed off all players
             if (playerUnits.Count == 0)
             {
                 Debug.Log("Enemy Wins");
                 yield break;
             }
 
-            yield return StartCoroutine(MoveBackToStartPosition());
-
             RepositionUnits();
-
             currentTurn++;
             yield return new WaitForSeconds(1.0f);
         }
@@ -79,7 +77,8 @@ public class CombatSystem : MonoBehaviour
         if (enemyUnits.Count == 0)
         {
             Debug.Log("Player Wins");
-            ResetPlayerHP();
+            ResetPlayerHP(); // Player wins, health back to same value
+            RepositionUnits();
         }
         else if (playerUnits.Count == 0)
         {
@@ -91,81 +90,112 @@ public class CombatSystem : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveToBattlePoint()
-    {
-        isCollided = false;
-
-        if (playerUnits.Count > 0 && enemyUnits.Count > 0)
-        {
-            PlayerUnit player = playerUnits[0];
-            EnemiesUnit enemy = enemyUnits[0];
-
-            StartCoroutine(MoveToPosition(player.gameObject, battlePoint.position));
-            yield return StartCoroutine(MoveToPosition(enemy.gameObject, battlePoint.position));
-        }
-    }
-
-    private IEnumerator MoveToPosition(GameObject unit, Vector3 target)
-    {
-        float speed = 3.0f;
-        while (unit != null && Vector2.Distance(unit.transform.position, target) > 0.5f)
-        {
-            unit.transform.position = Vector2.MoveTowards(unit.transform.position, target, speed * Time.deltaTime);
-            yield return null;
-        }
-
-        isCollided = true;
-    }
-
-    private IEnumerator AttackPhase()
+    private IEnumerator PlayerAttackPhase()
     {
         if (playerUnits.Count == 0 || enemyUnits.Count == 0)
-        {
             yield break;
+
+        int playerAttackers = Mathf.Min(3, playerUnits.Count); // Up to 3 players attack
+
+        // Move attacking players to battle point one by one to middle
+        for (int i = 0; i < playerAttackers; i++)
+        {
+            yield return StartCoroutine(MoveToPosition(playerUnits[i].gameObject, battlePoint.position));
         }
 
-        if (playerUnits.Count > 0 && enemyUnits.Count > 0)
+        yield return new WaitForSeconds(0.5f);
+
+        // Players attack first enemy
+        if (enemyUnits.Count > 0)
         {
-            PlayerUnit player = playerUnits[0];
-            EnemiesUnit enemy = enemyUnits[0];
+            EnemiesUnit targetEnemy = enemyUnits[0];
 
-            enemy.HP -= player.ATK;
-            player.HP -= enemy.ATK;
-
-            Debug.Log($"{player.name} attacks {enemy.name} for {player.ATK} damage");
-            Debug.Log($"{enemy.name} attacks {player.name} for {enemy.ATK} damage");
-
-            if (enemy.HP <= 0)
+            for (int i = 0; i < playerAttackers; i++)
             {
-                Debug.Log($"{enemy.name} has died");
-                enemyUnits.RemoveAt(0);
-                Destroy(enemy.gameObject);
-            }
+                PlayerUnit attacker = playerUnits[i];
+                targetEnemy.HP -= attacker.ATK;
+                targetEnemy.UpdateUI();
 
-            if (player.HP <= 0)
-            {
-                Debug.Log($"{player.name} has died");
-                playerUnits.RemoveAt(0);
-                Destroy(player.gameObject);
+                Debug.Log($"{attacker.name} attacks {targetEnemy.name} for {attacker.ATK} damage");
+
+                if (targetEnemy.HP <= 0)
+                {
+                    Debug.Log($"{targetEnemy.name} has died");
+                    enemyUnits.RemoveAt(0);
+                    Destroy(targetEnemy.gameObject);
+                    yield break;
+                }
             }
         }
 
         yield return new WaitForSeconds(0.5f);
+
+        // Move attacking players back to their original positions
+        for (int i = 0; i < playerAttackers; i++)
+        {
+            yield return StartCoroutine(MoveToPosition(playerUnits[i].gameObject, playerPositions[i].position));
+        }
+        yield return new WaitForSeconds(0.5f);
     }
 
-    private IEnumerator MoveBackToStartPosition()
-    {
-        if (playerUnits.Count > 0 && enemyUnits.Count > 0)
-        {
-            PlayerUnit player = playerUnits[0];
-            EnemiesUnit enemy = enemyUnits[0];
 
-            StartCoroutine(MoveToPosition(enemy.gameObject, enemyPositions[0].position));
-            yield return StartCoroutine(MoveToPosition(player.gameObject, playerPositions[0].position));
+    private IEnumerator EnemyAttackPhase()
+    {
+        if (enemyUnits.Count == 0 || playerUnits.Count == 0)
+        yield break;
+
+        int enemyAttackers = Mathf.Min(3, enemyUnits.Count); // Up to 3 enemies attack
+
+        // Move attacking enemies to battle point
+        for (int i = 0; i < enemyAttackers; i++)
+        {
+            yield return StartCoroutine(MoveToPosition(enemyUnits[i].gameObject, battlePoint.position));
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        // Enemies attack first player
+        if (playerUnits.Count > 0)
+        {
+            PlayerUnit targetPlayer = playerUnits[0];
+
+            for (int i = 0; i < enemyAttackers; i++)
+            {
+                EnemiesUnit attacker = enemyUnits[i];
+                targetPlayer.HP -= attacker.ATK;
+                targetPlayer.UpdateUI();
+
+                Debug.Log($"{attacker.name} attacks {targetPlayer.name} for {attacker.ATK} damage");
+
+                if (targetPlayer.HP <= 0)
+                {
+                    Debug.Log($"{targetPlayer.name} has died");
+                    playerUnits.RemoveAt(0);
+                    Destroy(targetPlayer.gameObject);
+                    yield break;
+                }
+            }
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Move attacking enemies back to their original positions
+        for (int i = 0; i < enemyAttackers; i++)
+        {
+            yield return StartCoroutine(MoveToPosition(enemyUnits[i].gameObject, enemyPositions[i].position));
+        }
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private IEnumerator MoveToPosition(GameObject unit, Vector3 target)
+    {
+        while (unit != null && Vector2.Distance(unit.transform.position, target) > 0.01f)
+        {
+            unit.transform.position = Vector2.MoveTowards(unit.transform.position, target, attackSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 
-    private void RepositionUnits()
+    private void RepositionUnits() 
     {
         for (int i = 0; i < playerUnits.Count; i++)
         {

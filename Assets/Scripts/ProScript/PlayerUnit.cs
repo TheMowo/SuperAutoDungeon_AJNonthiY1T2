@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerUnit : MonoBehaviour
@@ -5,7 +6,8 @@ public class PlayerUnit : MonoBehaviour
     [SerializeField] public PlayerUnitType playerUnitType;
     public int HP;
     public int ATK;
-    SpriteRenderer SR;
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI atkText;
 
     int CurrentRedDebuff;
     int CurrentGreenDebuff;
@@ -19,8 +21,8 @@ public class PlayerUnit : MonoBehaviour
     {
         HP = playerUnitType.HP;
         ATK = playerUnitType.ATK;
-        SR = GetComponent<SpriteRenderer>();
-        SR.sprite = playerUnitType.Sprite;
+        //SR = GetComponent<SpriteRenderer>();
+        //SR.sprite = playerUnitType.Sprite;
     }
 
     public void UseConsumable(ConsumableItem consumable)
@@ -50,5 +52,15 @@ public class PlayerUnit : MonoBehaviour
             CurrentBlueDebuff -= FullBlueDebuff;
             Debug.Log("Trigger Blue Side Effects");
         }
+    }
+    public void UpdateUI()
+    {
+        hpText.text = $"HP {HP}";
+        atkText.text = $"ATK {ATK}";
+    }
+    public void TakeDamage(int damage)
+    {
+        HP -= damage;
+        UpdateUI();
     }
 }
