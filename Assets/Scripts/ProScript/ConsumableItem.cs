@@ -11,4 +11,5 @@ public class ConsumableItem : ScriptableObject
     public int GreenDebuffEffect;
     public int RedDebuffEffect;
     public int BlueDebuffEffect;
+    public int price;
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public InventorySlot[] slots;
+    public InventorySlot trashSlot;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
     public void AddRandomItem()
@@ -24,5 +25,15 @@ public class InventoryManager : MonoBehaviour
         }
 
         Debug.Log("Inventory Full!"); // If no slot is free
+    }
+    public void DestroyTrashItem()
+    {
+        Debug.Log($"Trashing item");
+
+        if (trashSlot.transform.childCount > 0)
+        {
+            Destroy(trashSlot.transform.GetChild(0).gameObject);
+        }
+        Debug.Log($"Clear!");
     }
 }
