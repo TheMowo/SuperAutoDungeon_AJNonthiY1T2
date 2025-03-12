@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -6,14 +7,14 @@ public class TestingScripteAble : MonoBehaviour, IDataPersistence
 {
     [Header("Player value")]
     public int HP = 10;
-    public int Atk = 10;
+    public int ATK = 10;
     public string SpriteName = "test1_0";
     public Sprite sprite;
 
     [Header("Text show")]
     public Text textHP;
     public Text textAtk;
-    public SpriteRenderer PlayerOBJ;
+    public Image PlayerOBJ;
 
     [Header("Attributes SO")]
     [SerializeField] private SomeShit SOMETHING;
@@ -21,10 +22,8 @@ public class TestingScripteAble : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        textHP.text = HP.ToString();
-        textAtk.text = Atk.ToString();
-        PlayerOBJ.sprite = sprite;
-        SpriteName = sprite.name;
+         sprite = PlayerOBJ.sprite;
+        //SpriteName = sprite.name;
     }
 
     public void LoadData(GameData data)
@@ -32,17 +31,41 @@ public class TestingScripteAble : MonoBehaviour, IDataPersistence
         SOMETHING.HP = data.playerAttributesData.HP;
         SOMETHING.ATK = data.playerAttributesData.ATK;
         SOMETHING.SpriteName = data.playerAttributesData.SpriteName;
-        //SOMETHING.Sprite = Resources.Load<Sprite>(data.playerAttributesData.SpriteName);
-        Debug.Log(SpriteName);
-        Debug.Log($"Loaded Sprite Name: {SOMETHING.SpriteName}");
+
+        if (!string.IsNullOrEmpty(SOMETHING.SpriteName))
+        {
+          Sprite  loading_sprite = Resources.Load<Sprite>("Assest/Sprites/" + SpriteName);
+            if (sprite != null)
+            {
+                PlayerOBJ.sprite = loading_sprite;
+                Debug.Log($"Loaded Sprite: {SpriteName}");
+            }
+            else
+            {
+                Debug.LogWarning($"Sprite '{SpriteName}' not found in Resources!");
+            }
+        } 
+        
+        textHP.text = HP.ToString();
+        textAtk.text = ATK.ToString();
+        PlayerOBJ.sprite = sprite;
     }
     public void SaveData(ref GameData data)
     {
         data.playerAttributesData.HP = SOMETHING.HP;
         data.playerAttributesData.ATK = SOMETHING.ATK;
-        data.playerAttributesData.SpriteName = SOMETHING.SpriteName;
-        //data.playerAttributesData.sprite = Resources.Load < Sprite >(SOMETHING.SpriteName);
-        Debug.Log($"Loaded Sprite Name: {data.playerAttributesData.SpriteName}");
+
+        // Save sprite name
+        if (sprite != null)
+        {
+            data.playerAttributesData.SpriteName = sprite.name;
+            data.playerAttributesData.sprite = sprite;// Save only the name
+            Debug.Log($"Saved Sprite Name: {sprite.name}");
+        }
+        else
+        {
+            Debug.LogWarning("Sprite is null, cannot save!");
+        }
     }
     
 }

@@ -14,6 +14,6 @@ public class AttributesData
     {
         this.HP = 1;
         this.ATK = 1;
-        this.SpriteName = SpriteName;
+        this.SpriteName = "SpriteName";
     }
 }

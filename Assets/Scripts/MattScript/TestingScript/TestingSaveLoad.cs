@@ -9,11 +9,11 @@ public class TestingSaveLoad : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.ScoreCount = data.ScoreCount;
+        this.ScoreCount = data.Currency;
     }
     public void SaveData(ref GameData data)
     {
-        data.ScoreCount = this.ScoreCount;
+        data.Currency = this.ScoreCount;
     }
 
     public void Update()

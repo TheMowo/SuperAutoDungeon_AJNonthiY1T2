@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameData
 {
     [Header("Game Variable Save")]
-    public int ScoreCount;
+    public int Currency;
 
     public AttributesData playerAttributesData;
     public AttributesDataEnemy enemyAttributesData;
 
     public GameData()
     {
-        this.ScoreCount = 0;
+        this.Currency = 0;
         this.playerAttributesData = new AttributesData();
         this.enemyAttributesData = new AttributesDataEnemy();
     }

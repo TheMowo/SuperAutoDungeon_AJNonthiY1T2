@@ -49,8 +49,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
-
-        Debug.Log("Loaded score count = " + gameData.ScoreCount);
     }
 
     public void SaveGame()
@@ -63,8 +61,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-
-        Debug.Log("Saved score count = " + gameData.ScoreCount);
 
         dataHandler.Save(gameData);
     }
