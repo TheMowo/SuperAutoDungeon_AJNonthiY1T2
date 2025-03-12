@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemiesUnit : MonoBehaviour
 {
-    [SerializeField] EnemiesUnitType enemiesUnitType;
+    [SerializeField] public EnemiesUnitType enemiesUnitType;
     public int HP;
     public int ATK;
 

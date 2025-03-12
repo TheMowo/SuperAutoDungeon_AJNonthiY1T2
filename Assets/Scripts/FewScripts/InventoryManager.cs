@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
     {
         UpdateCurrencyUI();
     }
-    void UpdateCurrencyUI()
+    public void UpdateCurrencyUI()
     {
         currencyText.text = $"Doubloon: {playerCurrency}";
     }

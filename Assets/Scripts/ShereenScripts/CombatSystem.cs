@@ -4,17 +4,29 @@ using System.Collections.Generic;
 
 public class CombatSystem : MonoBehaviour
 {
+    public InventoryManager inventory;
     public List<PlayerUnit> playerUnits;
     public List<EnemiesUnit> enemyUnits;
 
     public List<Transform> playerPositions;
     public List<Transform> enemyPositions;
     public Transform battlePoint;
+    public enemySpawner enemySpawner;
+
+    public GameObject[] shopOpenState;
+    public GameObject[] shopCloseState;
+    public GameObject nextStageButton;
+    public ShopManager shopManager;
 
     public float attackSpeed = 3.0f;
 
     [SerializeField] private int maxTurns = 5;
     private int currentTurn = 0;
+
+    public void Awake()
+    {
+        inventory = FindAnyObjectByType<InventoryManager>();
+    }
     public void StartBattle()
     {
         if (playerUnits.Count > 0 && enemyUnits.Count > 0)
@@ -56,10 +68,23 @@ public class CombatSystem : MonoBehaviour
             {
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
+
                 RepositionUnits();
+
+                shopManager.AddRandomItems(8);
+                foreach (var shopO in shopOpenState)
+                {
+                    shopO.SetActive(true);
+                }
+                foreach (var shopC in shopCloseState)
+                {
+                    shopC.SetActive(false);
+                }
+                nextStageButton.SetActive(true);
+
                 yield break;
             }
-
+            yield return new WaitForSeconds(1.0f);
             // Enemies attack second
             yield return StartCoroutine(EnemyAttackPhase());
             // then checks if enemy killed off all players
@@ -78,15 +103,31 @@ public class CombatSystem : MonoBehaviour
         {
             Debug.Log("Player Wins");
             ResetPlayerHP(); // Player wins, health back to same value
+            
             RepositionUnits();
         }
         else if (playerUnits.Count == 0)
         {
             Debug.Log("Enemy Wins");
+            RepositionUnits();
         }
         else
         {
             Debug.Log("No one died, Player Wins");
+            ResetPlayerHP();
+
+            RepositionUnits();
+
+            shopManager.AddRandomItems(8);
+            foreach (var shopO in shopOpenState)
+                {
+                    shopO.SetActive(true);
+                }
+                foreach (var shopC in shopCloseState)
+                {
+                    shopC.SetActive(false);
+                }
+            nextStageButton.SetActive(true);
         }
     }
 
@@ -114,15 +155,22 @@ public class CombatSystem : MonoBehaviour
             {
                 PlayerUnit attacker = playerUnits[i];
                 targetEnemy.HP -= attacker.ATK;
-                targetEnemy.UpdateUI();
 
                 Debug.Log($"{attacker.name} attacks {targetEnemy.name} for {attacker.ATK} damage");
+
+                yield return new WaitForSeconds(0.2f);
+                targetEnemy.UpdateUI();
 
                 if (targetEnemy.HP <= 0)
                 {
                     Debug.Log($"{targetEnemy.name} has died");
                     enemyUnits.RemoveAt(0);
+                    inventory.playerCurrency += targetEnemy.enemiesUnitType.DropGold;
+                    Debug.Log($"{inventory.playerCurrency} + {targetEnemy.enemiesUnitType.DropGold}");
+                    inventory.UpdateCurrencyUI();
+                    RepositionUnits();
                     Destroy(targetEnemy.gameObject);
+                    yield return new WaitForSeconds(0.5f);
                     yield break;
                 }
             }
@@ -220,5 +268,9 @@ public class CombatSystem : MonoBehaviour
                 Debug.Log(player.name + " HP Reset to " + player.HP);
             }
         }
+    }
+    public void SpawnEnemies()
+    {
+        enemySpawner.SpawnEnemies(enemyUnits);
     }
 }
