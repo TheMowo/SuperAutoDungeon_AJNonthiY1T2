@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
+    public TMP_Text atkDisplayText;
     public InventoryManager inventory;
     public List<PlayerUnit> playerUnits;
     public List<EnemiesUnit> enemyUnits;
@@ -136,112 +138,134 @@ public class CombatSystem : MonoBehaviour
         if (playerUnits.Count == 0 || enemyUnits.Count == 0)
             yield break;
 
-        int playerAttackers = Mathf.Min(3, playerUnits.Count); // Up to 3 players attack
+        int totalATK = 0;
 
-        // Move attacking players to battle point one by one to middle
-        for (int i = 0; i < playerAttackers; i++)
+        for (int i = 0; i < playerUnits.Count; i++)
         {
-            yield return StartCoroutine(MoveToPosition(playerUnits[i].gameObject, battlePoint.position));
+            PlayerUnit attacker = playerUnits[i];
+            if (attacker == null) continue;
+
+            // Pop up
+            Vector3 originalPos = attacker.transform.position;
+            Vector3 popPos = originalPos + Vector3.up * 100f;
+            attacker.transform.position = popPos;
+
+            yield return new WaitForSeconds(0.3f);
+
+            totalATK += attacker.ATK;
+
+            if (atkDisplayText != null)
+            {
+                atkDisplayText.text = $"{totalATK}";
+            }
+            else
+            {
+                Debug.LogWarning("atkDisplayText is not assigned in the Inspector!");
+            }
+                
+
+            yield return new WaitForSeconds(0.3f);
+
+            // down
+            attacker.transform.position = originalPos;
+            yield return new WaitForSeconds(0.3f);
         }
 
-        yield return new WaitForSeconds(0.5f);
-
-        // Players attack first enemy
+        // Attack enemy front unit
         if (enemyUnits.Count > 0)
         {
             EnemiesUnit targetEnemy = enemyUnits[0];
+            targetEnemy.HP -= totalATK;
+            targetEnemy.UpdateUI();
 
-            for (int i = 0; i < playerAttackers; i++)
+            Debug.Log("Total Player ATK = " + totalATK);
+
+            if (targetEnemy.HP <= 0)
             {
-                PlayerUnit attacker = playerUnits[i];
-                targetEnemy.HP -= attacker.ATK;
-
-                Debug.Log($"{attacker.name} attacks {targetEnemy.name} for {attacker.ATK} damage");
-
-                yield return new WaitForSeconds(0.2f);
-                targetEnemy.UpdateUI();
-
-                if (targetEnemy.HP <= 0)
-                {
-                    Debug.Log($"{targetEnemy.name} has died");
-                    enemyUnits.RemoveAt(0);
-                    inventory.playerCurrency += targetEnemy.enemiesUnitType.DropGold;
-                    Debug.Log($"{inventory.playerCurrency} + {targetEnemy.enemiesUnitType.DropGold}");
-                    inventory.UpdateCurrencyUI();
-                    RepositionUnits();
-                    Destroy(targetEnemy.gameObject);
-                    yield return new WaitForSeconds(0.5f);
-                    yield break;
-                }
+                Debug.Log($"{targetEnemy.name} has died");
+                enemyUnits.RemoveAt(0);
+                inventory.playerCurrency += targetEnemy.enemiesUnitType.DropGold;
+                inventory.UpdateCurrencyUI();
+                Destroy(targetEnemy.gameObject);
             }
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        // Move attacking players back to their original positions
-        for (int i = 0; i < playerAttackers; i++)
+        if (atkDisplayText != null)
         {
-            yield return StartCoroutine(MoveToPosition(playerUnits[i].gameObject, playerPositions[i].position));
+            atkDisplayText.text = "";
         }
-        yield return new WaitForSeconds(0.5f);
     }
-
 
     private IEnumerator EnemyAttackPhase()
     {
         if (enemyUnits.Count == 0 || playerUnits.Count == 0)
-        yield break;
+            yield break;
 
-        int enemyAttackers = Mathf.Min(3, enemyUnits.Count); // Up to 3 enemies attack
+        int totalATK = 0;
 
-        // Move attacking enemies to battle point
-        for (int i = 0; i < enemyAttackers; i++)
+        for (int i = 0; i < enemyUnits.Count; i++)
         {
-            yield return StartCoroutine(MoveToPosition(enemyUnits[i].gameObject, battlePoint.position));
-        }
-        yield return new WaitForSeconds(0.5f);
+            EnemiesUnit attacker = enemyUnits[i];
+            if (attacker == null) continue;
 
-        // Enemies attack first player
+            Vector3 originalPos = attacker.transform.position;
+            Vector3 popPos = originalPos + Vector3.up * 100f;
+            attacker.transform.position = popPos;
+
+            yield return new WaitForSeconds(0.3f);
+
+            totalATK += attacker.ATK;
+
+            if (atkDisplayText != null)
+            {
+                atkDisplayText.text = $"{totalATK}";
+            }
+            else
+            {
+                Debug.LogWarning("atkDisplayText is not assigned in the Inspector!");
+            }
+               
+            yield return new WaitForSeconds(0.3f);
+
+            attacker.transform.position = originalPos;
+            yield return new WaitForSeconds(0.3f);
+        }
+
         if (playerUnits.Count > 0)
         {
             PlayerUnit targetPlayer = playerUnits[0];
+            targetPlayer.HP -= totalATK;
+            targetPlayer.UpdateUI();
 
-            for (int i = 0; i < enemyAttackers; i++)
+            Debug.Log("Total Enemy ATK = " + totalATK);
+
+            if (targetPlayer.HP <= 0)
             {
-                EnemiesUnit attacker = enemyUnits[i];
-                targetPlayer.HP -= attacker.ATK;
-                targetPlayer.UpdateUI();
-
-                Debug.Log($"{attacker.name} attacks {targetPlayer.name} for {attacker.ATK} damage");
-
-                if (targetPlayer.HP <= 0)
-                {
-                    Debug.Log($"{targetPlayer.name} has died");
-                    playerUnits.RemoveAt(0);
-                    Destroy(targetPlayer.gameObject);
-                    yield break;
-                }
+                Debug.Log($"{targetPlayer.name} has died");
+                playerUnits.RemoveAt(0);
+                Destroy(targetPlayer.gameObject);
             }
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        // Move attacking enemies back to their original positions
-        for (int i = 0; i < enemyAttackers; i++)
+        if (atkDisplayText != null)
         {
-            yield return StartCoroutine(MoveToPosition(enemyUnits[i].gameObject, enemyPositions[i].position));
+            atkDisplayText.text = "";
         }
-        yield return new WaitForSeconds(0.5f);
     }
 
-    private IEnumerator MoveToPosition(GameObject unit, Vector3 target)
-    {
-        while (unit != null && Vector2.Distance(unit.transform.position, target) > 0.01f)
-        {
-            unit.transform.position = Vector2.MoveTowards(unit.transform.position, target, attackSpeed * Time.deltaTime);
-            yield return null;
-        }
-    }
+
+    //private IEnumerator MoveToPosition(GameObject unit, Vector3 target)
+    //{
+    //    while (unit != null && Vector2.Distance(unit.transform.position, target) > 0.01f)
+    //    {
+    //        unit.transform.position = Vector2.MoveTowards(unit.transform.position, target, attackSpeed * Time.deltaTime);
+    //        yield return null;
+    //    }
+    //}
 
     private void RepositionUnits() 
     {
