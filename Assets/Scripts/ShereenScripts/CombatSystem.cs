@@ -138,65 +138,65 @@ public class CombatSystem : MonoBehaviour
         if (playerUnits.Count == 0 || enemyUnits.Count == 0)
             yield break;
 
-        int totalATK = 0;
-
         for (int i = 0; i < playerUnits.Count; i++)
         {
             PlayerUnit attacker = playerUnits[i];
             if (attacker == null) continue;
 
-            // Pop up
             Vector3 originalPos = attacker.transform.position;
             Vector3 popPos = originalPos + Vector3.up * 100f;
             attacker.transform.position = popPos;
+            yield return new WaitForSeconds(0.2f);
 
-            yield return new WaitForSeconds(0.3f);
+            EnemiesUnit target = null;
 
-            totalATK += attacker.ATK;
-
-            if (atkDisplayText != null)
+            if (attacker.playerType == PlayerType.Sword)
             {
-                atkDisplayText.text = $"{totalATK}";
+                if (enemyUnits.Count > 0)
+                    target = enemyUnits[0]; //First Enemy
+            }
+            else if (attacker.playerType == PlayerType.Bow)
+            {
+                int targetIndex = 2 - i;
+                if (targetIndex >= 0 && targetIndex < enemyUnits.Count)
+                    target = enemyUnits[targetIndex]; //Next 2 slots
+            }
+
+            if (target != null)
+            {
+                target.HP -= attacker.ATK;
+                target.UpdateUI();
+
+                if (atkDisplayText != null)
+                    atkDisplayText.text = $"{attacker.ATK}";
+
+                Debug.Log($"{attacker.name} attacked {target.name} for {attacker.ATK} damage");
+
+                if (target.HP <= 0)
+                {
+                    Debug.Log($"{target.name} has died");
+                    enemyUnits.Remove(target);
+                    inventory.playerCurrency += target.enemiesUnitType.DropGold;
+                    inventory.UpdateCurrencyUI();
+                    Destroy(target.gameObject);
+                }
             }
             else
             {
-                Debug.LogWarning("atkDisplayText is not assigned in the Inspector!");
+                Debug.Log($"{attacker.name} had no valid target");
             }
-                
 
             yield return new WaitForSeconds(0.3f);
-
-            // down
             attacker.transform.position = originalPos;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
         }
-
-        // Attack enemy front unit
-        if (enemyUnits.Count > 0)
-        {
-            EnemiesUnit targetEnemy = enemyUnits[0];
-            targetEnemy.HP -= totalATK;
-            targetEnemy.UpdateUI();
-
-            Debug.Log("Total Player ATK = " + totalATK);
-
-            if (targetEnemy.HP <= 0)
-            {
-                Debug.Log($"{targetEnemy.name} has died");
-                enemyUnits.RemoveAt(0);
-                inventory.playerCurrency += targetEnemy.enemiesUnitType.DropGold;
-                inventory.UpdateCurrencyUI();
-                Destroy(targetEnemy.gameObject);
-            }
-        }
-
-        yield return new WaitForSeconds(0.5f);
 
         if (atkDisplayText != null)
-        {
             atkDisplayText.text = "";
-        }
+
+        yield return new WaitForSeconds(0.5f);
     }
+
 
     private IEnumerator EnemyAttackPhase()
     {
@@ -224,7 +224,7 @@ public class CombatSystem : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("atkDisplayText is not assigned in the Inspector!");
+                Debug.LogWarning("atkDisplayText is not assigned in the Inspector");
             }
                
             yield return new WaitForSeconds(0.3f);

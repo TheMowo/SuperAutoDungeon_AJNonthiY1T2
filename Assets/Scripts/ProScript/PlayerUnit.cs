@@ -1,6 +1,12 @@
 using TMPro;
 using UnityEngine;
 
+public enum PlayerType
+{
+    Sword,
+    Bow
+}
+
 public class PlayerUnit : MonoBehaviour
 {
     [SerializeField] public PlayerUnitType playerUnitType;
@@ -8,6 +14,7 @@ public class PlayerUnit : MonoBehaviour
     public int ATK;
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
+    public PlayerType playerType;
 
     int CurrentRedDebuff;
     int CurrentGreenDebuff;
