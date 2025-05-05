@@ -358,7 +358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.621582, y: 614.1892}
+  m_AnchoredPosition: {x: -25.540527, y: 611.7567}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &47968217
@@ -3235,7 +3235,7 @@ MonoBehaviour:
   ATK: 0
   hpText: {fileID: 768231406}
   atkText: {fileID: 358490149}
-  playerType: 1
+  playerType: 0
   FullRedDebuff: 5
   FullGreenDebuff: 6
   FullBlueDebuff: 7
@@ -4278,7 +4278,7 @@ MonoBehaviour:
   ATK: 0
   hpText: {fileID: 1267601555}
   atkText: {fileID: 800418423}
-  playerType: 1
+  playerType: 0
   FullRedDebuff: 5
   FullGreenDebuff: 6
   FullBlueDebuff: 7
@@ -4616,7 +4616,7 @@ MonoBehaviour:
   ATK: 0
   hpText: {fileID: 63786524}
   atkText: {fileID: 120549957}
-  playerType: 0
+  playerType: 1
   FullRedDebuff: 5
   FullGreenDebuff: 6
   FullBlueDebuff: 7

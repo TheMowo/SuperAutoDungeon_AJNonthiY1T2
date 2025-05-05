@@ -157,10 +157,18 @@ public class CombatSystem : MonoBehaviour
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
-                int targetIndex = 2 - i;
-                if (targetIndex >= 0 && targetIndex < enemyUnits.Count)
-                    target = enemyUnits[targetIndex]; //Next 2 slots
+                int baseTargetIndex = 2 - i; //Next 2 slots
+
+                for (int t = baseTargetIndex; t >= 0; t--)
+                {
+                    if (t < enemyUnits.Count)
+                    {
+                        target = enemyUnits[t];
+                        break;
+                    }
+                }
             }
+
 
             if (target != null)
             {
