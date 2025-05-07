@@ -6,6 +6,14 @@ public class SaveSystem : MonoBehaviour
 {
     public List<PlayerUnit> allPlayers;
     private string SavePath => Path.Combine(Application.persistentDataPath, "game_save.json");
+    public string fileName;
+    private FileDataHandler dataHandler;
+
+    void Start()
+    {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to store in anywhere
+        LoadGame();
+    }
 
     private void Awake()
     {
