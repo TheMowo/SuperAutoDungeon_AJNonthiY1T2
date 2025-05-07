@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
-  m_Name: BlueItemSample
+  m_Name: VulnerablePotionSO
   m_EditorClassIdentifier: 
-  Name: Blue Rock
-  Description: 'DMG: 2  HP: 2'
+  Name: Vulnerable
+  Description: 'HP: +2   ATK: +2'
   HpEffect: 2
   AtkEffect: 2
   Sprite: {fileID: 3289760982041213867, guid: 322bc324010dffc4395a3e48c5b94a0a, type: 3}
   GreenDebuffEffect: 0
   RedDebuffEffect: 0
   BlueDebuffEffect: 1
-  price: 25
+  price: 15

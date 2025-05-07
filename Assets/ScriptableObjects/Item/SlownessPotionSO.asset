@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
+  m_Name: SlownessPotionSO
+  m_EditorClassIdentifier: 
+  Name: Slowness Potion
+  Description: 'ATK: +4'
+  HpEffect: 0
+  AtkEffect: 4
+  Sprite: {fileID: 3648992895637484057, guid: 1c13fd500604a864baa701fee06189d1, type: 3}
+  GreenDebuffEffect: 0
+  RedDebuffEffect: 1
+  BlueDebuffEffect: 0
+  price: 15

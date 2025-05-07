@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
-  m_Name: GreenItemSample
+  m_Name: HealingPotionSO
   m_EditorClassIdentifier: 
-  Name: Green Rock
-  Description: 'HP: 5'
-  HpEffect: 5
+  Name: Healing Potion
+  Description: 'HP: +4'
+  HpEffect: 4
   AtkEffect: 0
-  Sprite: {fileID: -1916601607385524054, guid: 33b6926e6cb32814f8823d67475341fe, type: 3}
-  GreenDebuffEffect: 1
+  Sprite: {fileID: -9063044017300439947, guid: a9195765d12e3f240b5070dbc97e1bd9, type: 3}
+  GreenDebuffEffect: 0
   RedDebuffEffect: 0
   BlueDebuffEffect: 0
   price: 10
