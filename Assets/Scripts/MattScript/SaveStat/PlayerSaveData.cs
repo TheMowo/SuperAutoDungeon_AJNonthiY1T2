@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 [System.Serializable]
 public class PlayerSaveData
 {
@@ -7,10 +8,4 @@ public class PlayerSaveData
     public int Health;
     public int Attack;
     public PlayerType playerType;
-}
-
-[System.Serializable]
-public class GameSaveData
-{
-    public List<PlayerSaveData> players = new List<PlayerSaveData>();
 }

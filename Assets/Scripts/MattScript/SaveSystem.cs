@@ -12,12 +12,12 @@ public class SaveSystem : MonoBehaviour
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to store in anywhere
-        LoadGame();
+        PlayerLoad();
     }
 
     private void Awake()
     {
-        LoadGame();
+        PlayerLoad();
     }
 
     private void OnApplicationQuit()
@@ -38,7 +38,7 @@ public class SaveSystem : MonoBehaviour
         Debug.Log("Game Saved!");
     }
 
-    public void LoadGame()
+    public void PlayerLoad()
     {
         if (!File.Exists(SavePath))
         {
