@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public enum PlayerType
@@ -10,6 +12,7 @@ public enum PlayerType
 public class PlayerUnit : MonoBehaviour
 {
     [SerializeField] public PlayerUnitType playerUnitType;
+    public string uniqueID;
     public int HP;
     public int ATK;
     public TextMeshProUGUI hpText;
@@ -69,5 +72,27 @@ public class PlayerUnit : MonoBehaviour
     {
         HP -= damage;
         UpdateUI();
+    }
+
+    public PlayerSaveData GetSaveData()
+    {
+        //Debug.Log("Data Save : it did save Huh?");
+        return new PlayerSaveData
+        {
+            uniqueID = this.uniqueID,
+            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+            Health = this.HP,
+            Attack = this.ATK,
+            playerType = this.playerType
+        };
+    }
+
+    public void LoadFromSaveData(PlayerSaveData data)
+    {
+        //Debug.Log("Data Load : it did Load Huh?");
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        this.HP = data.Health;
+        this.ATK = data.Attack;
+        this.playerType = data.playerType;
     }
 }
