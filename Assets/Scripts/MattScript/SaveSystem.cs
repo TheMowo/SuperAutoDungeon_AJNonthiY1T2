@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 public class SaveSystem : MonoBehaviour
 {
     public List<PlayerUnit> allPlayers;
+    public InventoryManager Inventory;
     private string SavePath => Path.Combine(Application.persistentDataPath, "game_save.json");
     public string fileName;
     private FileDataHandler dataHandler;
@@ -73,4 +75,17 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
+    //public void AddingNewItem()
+    //{
+    //    var saveData = new GameSaveData();
+    //    foreach (var item in Inventory.slots)
+    //    {
+    //        saveData.items.Add(Inventory.GetSaveData());
+    //    }
+    //}
+
+    public void ItemLoad()
+    {
+        
+    }
 }
