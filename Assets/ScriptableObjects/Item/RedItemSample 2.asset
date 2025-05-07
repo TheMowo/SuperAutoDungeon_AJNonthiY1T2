@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
-  m_Name: RedItemSample
+  m_Name: RedItemSample 2
   m_EditorClassIdentifier: 
   Name: Red Rock
   Description: 'DMG: 4'
   HpEffect: 0
   AtkEffect: 4
-  Sprite: {fileID: 3648992895637484057, guid: 1c13fd500604a864baa701fee06189d1, type: 3}
+  Sprite: {fileID: 7111791515449186031, guid: d12c1b7955468044cb56b2f61277965c, type: 3}
   GreenDebuffEffect: 0
   RedDebuffEffect: 1
   BlueDebuffEffect: 0

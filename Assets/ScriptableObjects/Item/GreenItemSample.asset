@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: 'HP: 5'
   HpEffect: 5
   AtkEffect: 0
-  Sprite: {fileID: -6532087710655975924, guid: 35ea95b7e3a9e654ca7716fc603157fc, type: 3}
+  Sprite: {fileID: -1916601607385524054, guid: 33b6926e6cb32814f8823d67475341fe, type: 3}
   GreenDebuffEffect: 1
   RedDebuffEffect: 0
   BlueDebuffEffect: 0
