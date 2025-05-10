@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 664209352465540859}
   - component: {fileID: 3607504949059941283}
   - component: {fileID: 8239930506130209069}
+  - component: {fileID: 8454558492125536484}
   m_Layer: 5
   m_Name: EnemiesUnit
   m_TagString: Untagged
@@ -213,7 +214,6 @@ MonoBehaviour:
   TargetUnit: {fileID: 6013072377294798448}
   playerUnit: {fileID: 0}
   enemiesUnit: {fileID: 0}
-  SelectedItem: {fileID: 0}
   isPlayerUnit: 0
 --- !u!114 &3607504949059941283
 MonoBehaviour:
@@ -265,6 +265,20 @@ MonoBehaviour:
   FullRedDebuff: 5
   FullGreenDebuff: 6
   FullBlueDebuff: 7
+--- !u!114 &8454558492125536484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013072377294798448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f14c8163b89f50488c5885dc7ea671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statUpPrefab: {fileID: 6586398139040385952, guid: bafdb5669eeae1b4c866096bb88cd186, type: 3}
+  gameCanvas: {fileID: 0}
 --- !u!1 &6205861338583491594
 GameObject:
   m_ObjectHideFlags: 0

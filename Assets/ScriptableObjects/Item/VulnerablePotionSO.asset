@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: VulnerablePotionSO
   m_EditorClassIdentifier: 
-  Name: Vulnerable
+  Name: Vulnerable Potion
   Description: 'HP: +2   ATK: +2'
   HpEffect: 2
   AtkEffect: 2
