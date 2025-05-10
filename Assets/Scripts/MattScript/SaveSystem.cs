@@ -1,43 +1,61 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System;
+using static UnityEditor.Progress;
+using System.Linq;
+using UnityEditor.Overlays;
 
 public class SaveSystem : MonoBehaviour
 {
     public List<PlayerUnit> allPlayers;
-    public InventoryManager Inventory;
+    public List<InventorySlot> Inventoryslot;
     private string SavePath => Path.Combine(Application.persistentDataPath, "game_save.json");
     public string fileName;
     private FileDataHandler dataHandler;
 
     void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to store in anywhere
-        PlayerLoad();
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
+        Debug.Log(this.dataHandler);
     }
 
     private void Awake()
     {
         PlayerLoad();
+        ItemLoad();
     }
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        SaveGamePlayer();
+        SaveGameItems();
     }
 
-    public void SaveGame()
+    public void SaveGamePlayer()
     {
-        var saveData = new GameSaveData();
+        var saveDataPlayer = new GameSaveData();
         foreach (var player in allPlayers)
         {
-            saveData.players.Add(player.GetSaveData());
+            saveDataPlayer.players.Add(player.GetSaveData());
         }
 
-        string json = JsonUtility.ToJson(saveData, true);
+        string json = JsonUtility.ToJson(saveDataPlayer, true);
         File.WriteAllText(SavePath, json);
-        Debug.Log("Game Saved!");
+        Debug.Log("Player Saved!");
+    }
+
+    public void SaveGameItems()
+    {
+        var saveDataItem = new GameSaveData();
+        foreach (var inventory in Inventoryslot)
+        {
+            saveDataItem.items.Add(inventory.GetDataSave());
+        }
+
+        string json2 = JsonUtility.ToJson(saveDataItem, true);
+        File.WriteAllText(SavePath, json2);
+        Debug.Log("Items Saved!");
     }
 
     public void PlayerLoad()
@@ -75,17 +93,72 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    //public void AddingNewItem()
-    //{
-    //    var saveData = new GameSaveData();
-    //    foreach (var item in Inventory.slots)
-    //    {
-    //        saveData.items.Add(Inventory.GetSaveData());
-    //    }
-    //}
-
     public void ItemLoad()
     {
-        
+        if (!File.Exists(SavePath))
+        {
+            Debug.LogWarning("No save file found. Clearing all inventory slots.");
+            ClearAllInventorySlots();
+            return;
+        }
+
+        string json2 = File.ReadAllText(SavePath);
+        Debug.Log("Loaded JSON:\n" + json2);
+
+        try
+        {
+            var saveData = JsonUtility.FromJson<GameSaveData>(json2);
+
+            // First, clear all slots that don't have saved data
+            HashSet<int> savedSlotIndices = new HashSet<int>(saveData.items.Select(item => item.SlotIndex));
+
+            foreach (var slot in Inventoryslot)
+            {
+                int slotIndex = slot.transform.GetSiblingIndex();
+                if (!savedSlotIndices.Contains(slotIndex))
+                {
+                    ClearSlotChildren(slot.gameObject);
+                }
+            }
+
+            // Then load data for slots that have saved data
+            foreach (var slotData in saveData.items)
+            {
+                var matchingSlot = Inventoryslot.Find(t => t.transform.GetSiblingIndex() == slotData.SlotIndex);
+                if (matchingSlot != null)
+                {
+                    Debug.Log($"Loading itemSlot {slotData.SlotIndex}...");
+                    matchingSlot.LoadFromSaveData(slotData);
+                }
+                else
+                {
+                    Debug.LogWarning($"No matching itemSlot for Index {slotData.SlotIndex}");
+                }
+            }
+            Debug.Log("Inventory Loaded!");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Item load failed: " + ex.Message);
+            // If loading fails, clear all slots
+            ClearAllInventorySlots();
+        }
+    }
+
+    private void ClearAllInventorySlots()
+    {
+        foreach (var slot in Inventoryslot)
+        {
+            ClearSlotChildren(slot.gameObject);
+        }
+    }
+
+    private void ClearSlotChildren(GameObject slot)
+    {
+        // Destroy all children of the slot
+        foreach (Transform child in slot.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }

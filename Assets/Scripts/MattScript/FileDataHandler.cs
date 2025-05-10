@@ -63,5 +63,6 @@ public class FileDataHandler
         {
             Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + e);
         }
+        Debug.Log("Saving to: " + fullPath);
     }
 }
