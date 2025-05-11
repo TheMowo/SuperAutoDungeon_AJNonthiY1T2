@@ -98,61 +98,49 @@ public class SaveSystem : MonoBehaviour
         string json = File.ReadAllText(SavePath);
         Debug.Log("Loaded JSON:\n" + json);
 
-        try
+        var saveData = JsonUtility.FromJson<GameSaveData>(json);
+
+        // Create dictionary for faster slot lookup
+        Dictionary<int, ItemSaveData> slotDataDict = saveData.items.ToDictionary(item => item.SlotIndex, item => item);
+
+        foreach (var slot in Inventoryslot)
         {
-            var saveData = JsonUtility.FromJson<GameSaveData>(json);
+            int slotIndex = slot.transform.GetSiblingIndex();
 
-            // Create dictionary for faster slot lookup
-            Dictionary<int, ItemSaveData> slotDataDict = saveData.items.ToDictionary(item => item.SlotIndex, item => item);
-            foreach (var kvp in slotDataDict.Where(x => x.Value != null))
+            if (slotDataDict.TryGetValue(slotIndex, out var slotData) && slotData.item != null)
             {
-                Debug.Log($"!string.IsNullOrEmpty{kvp.Value.GetHashCode()}");
-            }
+                // Slot has saved data
+                bool hasChild = slot.transform.childCount > 0;
 
-            foreach (var slot in Inventoryslot)
-            {
-                int slotIndex = slot.transform.GetSiblingIndex();
-
-                if (slotDataDict.TryGetValue(slotIndex, out var slotData))
+                if (hasChild)
                 {
-                    // Slot has saved data
-                    bool hasChild = slot.transform.childCount > 0;
-
-                    if (hasChild && slotDataDict.Where(x => x.Value != null) != null)
-                    {
-                        Debug.Log($"Loading data into existing item in slot {slotIndex}");
-                        slot.LoadFromSaveData(slotData);
-                    }
-                    else
-                    {
-                        // Create new child and load data
-                        Debug.Log($"Creating new item in slot {slotIndex}");
-                        GameObject newItem = Instantiate(ItemPrefab, slot.transform);
-                        newItem.transform.localPosition = Vector3.zero;
-                        slot.LoadFromSaveData(slotData);
-                    }
+                    Debug.Log($"Loading data into existing item in slot {slotIndex}");
+                    slot.LoadFromSaveData(slotData);
                 }
                 else
                 {
-                    // Slot has no saved data
-                    bool hasChild = slot.transform.childCount > 0;
-
-                    if (hasChild)
-                    {
-                        // Remove existing child
-                        Debug.Log($"Clearing slot {slotIndex} with no saved data");
-                        ClearSlotChildren(slot.gameObject);
-                    }
-                    // Else: Do nothing (no saved data and no child)
+                    // Create new child and load data
+                    Debug.Log($"Creating new item in slot {slotIndex}");
+                    GameObject newItem = Instantiate(ItemPrefab, slot.transform);
+                    newItem.transform.localPosition = Vector3.zero;
+                    slot.LoadFromSaveData(slotData);
                 }
             }
+            else
+            {
+                // Slot has no saved data
+                bool hasChild = slot.transform.childCount > 0;
 
-            Debug.Log("Inventory Loaded!");
+                if (hasChild)
+                {
+                    // Remove existing child
+                    Debug.Log($"Clearing slot {slotIndex} with no saved data");
+                    ClearSlotChildren(slot.gameObject);
+                }
+                // Else: Do nothing (no saved data and no child)
+            }
         }
-        catch (Exception ex)
-        {
-            Debug.LogError("Item load failed: " + ex.Message);
-        }
+        Debug.Log("Inventory Loaded!");
     }
 
     private void ClearAllInventorySlots()
