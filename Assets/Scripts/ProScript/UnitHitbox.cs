@@ -51,7 +51,21 @@ public class UnitHitbox : MonoBehaviour , IDropHandler
         else
         {
             enemiesUnit.UseConsumable(draggableItem.CurrentItem);
-            //receiver.ApplySOStat(SOItemStat);
+
+            if (receiver != null)
+            {
+                receiver.ApplySOStat(SOItemStat);
+                Debug.Log("Receiver Succeed");
+                Debug.Log("TargetUnit: " + TargetUnit.name);
+                Debug.Log("Has receiver: " + (TargetUnit.GetComponent<StatPopUpReceiver>() != null));
+            } 
+            else
+            {
+                Debug.Log("Receiver Error");
+                Debug.Log("TargetUnit: " + TargetUnit.name);
+                Debug.Log("Has receiver: " + (TargetUnit.GetComponent<StatPopUpReceiver>() != null));
+            }
+
             Destroy(droppedItem);
         }
     }

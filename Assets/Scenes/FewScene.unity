@@ -2302,8 +2302,14 @@ MonoBehaviour:
   - {fileID: 1072447431}
   trashSlot: {fileID: 1595298495}
   possibleItems:
-  - {fileID: 11400000, guid: f72d05d93af294e469f35d2eded1bb21, type: 2}
+  - {fileID: 11400000, guid: 58cb3bc27f810824a9f02a0d149a2d16, type: 2}
+  - {fileID: 11400000, guid: 918295ed01c651548b78f0d8d45f101e, type: 2}
+  - {fileID: 11400000, guid: de3315e7d5faf054787f13c2cd276d47, type: 2}
+  - {fileID: 11400000, guid: 1c48f280161b1a94b8fbcc3046754cb7, type: 2}
+  - {fileID: 11400000, guid: 3e91beaf6d464494fb89c849186ffb23, type: 2}
+  - {fileID: 11400000, guid: 083e73be584c8284fa46c183091507f1, type: 2}
   - {fileID: 11400000, guid: c50b08e9f96ed3040a2a068b0ce6f116, type: 2}
+  - {fileID: 11400000, guid: f72d05d93af294e469f35d2eded1bb21, type: 2}
   - {fileID: 11400000, guid: fca95bed38f59a84bb652d93200faf79, type: 2}
   itemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
   playerCurrency: 50
@@ -7560,7 +7566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.7981567, y: 648.5591}
+  m_AnchoredPosition: {x: 108.85022, y: 657.3544}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1.01, y: 1}
 --- !u!114 &1063652262
@@ -11334,7 +11340,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de3315e7d5faf054787f13c2cd276d47, type: 2}
   - {fileID: 11400000, guid: 1c48f280161b1a94b8fbcc3046754cb7, type: 2}
   - {fileID: 11400000, guid: 3e91beaf6d464494fb89c849186ffb23, type: 2}
-  - {fileID: 11400000, guid: 426a59ffd19e7254badf1d70cf516ac6, type: 2}
   - {fileID: 11400000, guid: 083e73be584c8284fa46c183091507f1, type: 2}
   - {fileID: 11400000, guid: c50b08e9f96ed3040a2a068b0ce6f116, type: 2}
   - {fileID: 11400000, guid: f72d05d93af294e469f35d2eded1bb21, type: 2}

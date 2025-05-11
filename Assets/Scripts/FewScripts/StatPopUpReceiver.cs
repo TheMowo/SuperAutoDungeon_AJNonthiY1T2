@@ -20,7 +20,6 @@ public class StatPopUpReceiver : MonoBehaviour
     }
     private void ShowStatPopUps(int value, string type)
     {
-        Vector3 basePosition = transform.position;
         Vector3 randomOffset = new Vector3(Random.Range(-80f, 80f), Random.Range(-40f, 40f), 0);
         
         Vector3 popupPosition = transform.position + randomOffset;

@@ -227,9 +227,9 @@ public class CombatSystem : MonoBehaviour
             {
                 if (target.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
                 {
-                    target.HP -= attacker.BasedATK * 2;
+                    target.HP -= (attacker.BasedATK + attacker.CurrentATK) * 2;
                 }
-                else target.HP -= attacker.BasedATK;
+                else target.HP -= attacker.BasedATK + attacker.CurrentATK;
 
                 if (target.CurrentEffects.Contains(DebuffEffectType.Lethal))
                 {
@@ -239,9 +239,9 @@ public class CombatSystem : MonoBehaviour
                 target.UpdateUI();
 
                 if (atkDisplayText != null)
-                    atkDisplayText.text = $"{attacker.BasedATK}";
+                    atkDisplayText.text = $"{attacker.BasedATK + attacker.CurrentATK}";
 
-                Debug.Log($"{attacker.name} attacked {target.name} for {attacker.BasedATK} damage");
+                Debug.Log($"{attacker.name} attacked {target.name} for {attacker.BasedATK + attacker.CurrentATK} damage");
 
                 if (target.HP <= 0)
                 {

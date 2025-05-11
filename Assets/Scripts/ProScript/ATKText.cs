@@ -15,7 +15,7 @@ public class ATKText : MonoBehaviour
     {
         if (hitbox.isPlayerUnit)
         {
-            text.text = $"ATK  {hitbox.playerUnit.BasedATK}";
+            text.text = $"ATK  {hitbox.playerUnit.BasedATK + hitbox.playerUnit.CurrentATK}";
         }
         else { text.text = $"ATK  {hitbox.enemiesUnit.ATK}"; }
     }
