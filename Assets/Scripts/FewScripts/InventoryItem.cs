@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
@@ -16,6 +17,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public float _tiltAmount = 5f;
 
     [HideInInspector] public Transform parentAfterDrag;
+    
+    void Start()
+    {
+        image = this.gameObject.GetComponent<Image>();
+    }
+
     void Update()
     {
         if(isDragging)

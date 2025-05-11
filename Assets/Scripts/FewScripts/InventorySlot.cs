@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-
     public void OnDrop(PointerEventData eventData)
     {
         //This checks if the item slot is empty
@@ -40,11 +41,28 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public ItemSaveData GetDataSave()
     {
-       
-        return new ItemSaveData
+        if (transform.childCount != 0)
         {
-            Order = transform.GetSiblingIndex(),
+            return new ItemSaveData
+            {
+                SlotIndex = this.transform.GetSiblingIndex(),
+                image = this.transform.GetChild(0).gameObject.GetComponent<Image>().sprite,
+                item = this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem
+            };
+        }
+        else
+        {
+            return new ItemSaveData
+            {
+                SlotIndex = this.transform.GetSiblingIndex()
+            };
+        }
+    }
 
-        };
+    public void LoadFromSaveData(ItemSaveData data)
+    {
+        this.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = data.image;
+        this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem = data.item;
+        this.transform.GetChild(0).gameObject.GetComponent<TooltipTrigger>().currentItem = data.item;
     }
 }
