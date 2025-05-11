@@ -52,11 +52,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
         else
         {
-            return new ItemSaveData 
+            return new ItemSaveData
             {
                 SlotIndex = this.transform.GetSiblingIndex()
             };
-
         }
     }
 
