@@ -5,6 +5,6 @@ using UnityEngine.UI;
 public class ItemSaveData
 {
     public int SlotIndex;
-    public Image ItemImage;
+    public Sprite image;
     public ConsumableItem item;
 }

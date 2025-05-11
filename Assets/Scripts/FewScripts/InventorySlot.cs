@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 
@@ -40,35 +41,29 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public ItemSaveData GetDataSave()
     {
-        if (this.transform.childCount != 0)
+        if (transform.childCount != 0)
         {
             return new ItemSaveData
             {
                 SlotIndex = this.transform.GetSiblingIndex(),
-                ItemImage = this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().image,
+                image = this.transform.GetChild(0).gameObject.GetComponent<Image>().sprite,
                 item = this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem
             };
         }
         else
         {
-            return null;
+            return new ItemSaveData 
+            {
+                SlotIndex = this.transform.GetSiblingIndex()
+            };
+
         }
     }
 
     public void LoadFromSaveData(ItemSaveData data)
     {
-        if(transform.childCount != 0)
-        {
-            this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().image = data.ItemImage;
-            this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem = data.item;
-        }
-        else
-        {
-            GameObject ItemPrefab = gameObject.GetComponent<InventoryManager>().itemPrefab;
-            GameObject newItem = Instantiate(ItemPrefab, this.transform);
-
-            this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().image = data.ItemImage;
-            this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem = data.item;
-        }
+        this.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = data.image;
+        this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem = data.item;
+        this.transform.GetChild(0).gameObject.GetComponent<TooltipTrigger>().currentItem = data.item;
     }
 }
