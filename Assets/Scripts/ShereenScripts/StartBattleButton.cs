@@ -32,6 +32,8 @@ public class StartBattleButton : MonoBehaviour
 
     void StartBattle()
     {
+        SaveSystem PlayerSaveSystem = gameObject.GetComponent<SaveSystem>();
+        PlayerSaveSystem.PlayerSaveData();
         combatSystem.StartBattle();
         button.interactable = false;
     }

@@ -11,7 +11,8 @@ public class SaveSystem : MonoBehaviour
 {
     public List<PlayerUnit> allPlayers;
     public List<InventorySlot> Inventoryslot;
-    private string SavePath => Path.Combine(Application.persistentDataPath, "game_save.json");
+    private string PlayerSavePath => Path.Combine(Application.persistentDataPath, "game_save.json");
+    private string ItemSavePath => Path.Combine(Application.persistentDataPath, "game_save.json");
     public string fileName;
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
@@ -20,20 +21,21 @@ public class SaveSystem : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-    }
-
-    private void Awake()
-    {
         PlayerLoad();
         ItemLoad();
     }
 
-    private void OnApplicationQuit()
+    public void PlayerSaveDataWhen()
     {
-        SaveGame();
+        PlayerSaveData();
     }
 
-    public void SaveGame()
+    public void ItemSaveDataWhen()
+    {
+        ItemSaveData();
+    }
+
+    public void PlayerSaveData()
     {
         var saveData = new GameSaveData();
         foreach (var player in allPlayers)
@@ -41,61 +43,55 @@ public class SaveSystem : MonoBehaviour
             saveData.players.Add(player.GetSaveData());
         }
 
+        string json = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(PlayerSavePath, json);
+        Debug.Log("Game Saved!");
+    }
+
+    public void ItemSaveData()
+    {
+        var saveData = new GameSaveData();
         foreach (var inventory in Inventoryslot)
         {
             saveData.items.Add(inventory.GetDataSave());
         }
 
-        string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(SavePath, json);
+        string json2 = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(ItemSavePath, json2);
         Debug.Log("Game Saved!");
     }
 
     public void PlayerLoad()
     {
-        if (!File.Exists(SavePath))
+        if (!File.Exists(PlayerSavePath))
         {
             Debug.LogWarning("No save file found.");
             return;
         }
 
-        string json = File.ReadAllText(SavePath);
+        string json = File.ReadAllText(PlayerSavePath);
         Debug.Log("Loaded JSON:\n" + json);
 
-        try
+        var saveData = JsonUtility.FromJson<GameSaveData>(json);
+        foreach (var data in saveData.players)
         {
-            var saveData = JsonUtility.FromJson<GameSaveData>(json);
-            foreach (var data in saveData.players)
-            {
-                var matchingPlayer = allPlayers.Find(p => p.uniqueID == data.uniqueID);
-                if (matchingPlayer != null)
-                {
-                    Debug.Log($"Loading player {data.uniqueID}...");
-                    matchingPlayer.LoadFromSaveData(data);
-                }
-                else
-                {
-                    Debug.LogWarning($"No matching player for ID {data.uniqueID}");
-                }
-            }
-            Debug.Log("Game Loaded!");
+            var matchingPlayer = allPlayers.Find(p => p.uniqueID == data.uniqueID);
+            matchingPlayer.LoadFromSaveData(data);
+            Debug.Log(matchingPlayer.uniqueID);
         }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Load failed: " + ex.Message);
-        }
+        Debug.Log("Game Loaded!");
     }
 
     public void ItemLoad()
     {
-        if (!File.Exists(SavePath))
+        if (!File.Exists(ItemSavePath))
         {
             Debug.LogWarning("No save file found. Clearing all inventory slots.");
             ClearAllInventorySlots();
             return;
         }
 
-        string json = File.ReadAllText(SavePath);
+        string json = File.ReadAllText(ItemSavePath);
         Debug.Log("Loaded JSON:\n" + json);
 
         var saveData = JsonUtility.FromJson<GameSaveData>(json);
