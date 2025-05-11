@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: CleansingPotionSO
   m_EditorClassIdentifier: 
+  myEffectType: 4
   Name: Cleansing Potion
   Description: Clear all impending debuffs on a unit
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 5506079318362539018, guid: 7a36287eaaf764f44af3f628ad50d80b, type: 3}
   GreenDebuffEffect: 0
-  RedDebuffEffect: 0
-  BlueDebuffEffect: 0
+  GreyDebuffEffect: 0
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  BlackDebuffEffect: 0
   price: 20

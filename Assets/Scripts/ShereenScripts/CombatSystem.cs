@@ -63,6 +63,46 @@ public class CombatSystem : MonoBehaviour
 
             Debug.Log("Turn " + (currentTurn + 1));
 
+            foreach (var unit in playerUnits)
+            {
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Poison))
+                {
+                    unit.CurrentHP -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.PoisonII))
+                {
+                    unit.CurrentHP /= 2;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Weakness))
+                {
+                    unit.CurrentATK -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.WeaknessII))
+                {
+                    unit.CurrentATK /= 2;
+                }
+            }
+
+            foreach (var unit in enemyUnits)
+            {
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Poison))
+                {
+                    unit.HP -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.PoisonII))
+                {
+                    unit.HP /= 2;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Weakness))
+                {
+                    unit.ATK -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.WeaknessII))
+                {
+                    unit.ATK /= 2;
+                }
+            }
+
             // Players attack first
             yield return StartCoroutine(PlayerAttackPhase());
             // then checks if player killed off all enemies
@@ -142,6 +182,19 @@ public class CombatSystem : MonoBehaviour
         {
             PlayerUnit attacker = playerUnits[i];
             if (attacker == null) continue;
+            if (attacker.CurrentEffects.Contains(DebuffEffectType.Frozen))
+            {
+                continue;
+            }
+            else if (attacker.CurrentEffects.Contains(DebuffEffectType.Slowness))
+            {
+                if (attacker.TurnSkipSlow == 0)
+                {
+                    attacker.TurnSkipSlow += 1;
+                    continue;
+                }
+                else attacker.TurnSkipSlow = 0;
+            }
 
             Vector3 originalPos = attacker.transform.position;
             Vector3 popPos = originalPos + Vector3.up * 100f;
@@ -172,13 +225,23 @@ public class CombatSystem : MonoBehaviour
 
             if (target != null)
             {
-                target.HP -= attacker.ATK;
+                if (target.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+                {
+                    target.HP -= attacker.BasedATK * 2;
+                }
+                else target.HP -= attacker.BasedATK;
+
+                if (target.CurrentEffects.Contains(DebuffEffectType.Lethal))
+                {
+                    target.HP = 0;
+                }
+
                 target.UpdateUI();
 
                 if (atkDisplayText != null)
-                    atkDisplayText.text = $"{attacker.ATK}";
+                    atkDisplayText.text = $"{attacker.BasedATK}";
 
-                Debug.Log($"{attacker.name} attacked {target.name} for {attacker.ATK} damage");
+                Debug.Log($"{attacker.name} attacked {target.name} for {attacker.BasedATK} damage");
 
                 if (target.HP <= 0)
                 {
@@ -217,6 +280,19 @@ public class CombatSystem : MonoBehaviour
         {
             EnemiesUnit attacker = enemyUnits[i];
             if (attacker == null) continue;
+            if (attacker.CurrentEffects.Contains(DebuffEffectType.Frozen))
+            {
+                continue;
+            }
+            else if (attacker.CurrentEffects.Contains(DebuffEffectType.Slowness))
+            {
+                if (attacker.TurnSkipSlow == 0)
+                {
+                    attacker.TurnSkipSlow += 1;
+                    continue;
+                }
+                else attacker.TurnSkipSlow = 0;
+            }
 
             Vector3 originalPos = attacker.transform.position;
             Vector3 popPos = originalPos + Vector3.up * 100f;
@@ -244,12 +320,22 @@ public class CombatSystem : MonoBehaviour
         if (playerUnits.Count > 0)
         {
             PlayerUnit targetPlayer = playerUnits[0];
-            targetPlayer.HP -= totalATK;
+            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+            {
+                targetPlayer.BasedHP -= totalATK * 2;
+            }
+            else targetPlayer.BasedHP -= totalATK;
+
+            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal))
+            {
+                targetPlayer.BasedHP = 0;
+            }
+
             targetPlayer.UpdateUI();
 
             Debug.Log("Total Enemy ATK = " + totalATK);
 
-            if (targetPlayer.HP <= 0)
+            if (targetPlayer.BasedHP <= 0)
             {
                 Debug.Log($"{targetPlayer.name} has died");
                 playerUnits.RemoveAt(0);
@@ -296,8 +382,8 @@ public class CombatSystem : MonoBehaviour
         {
             if (player != null)
             {
-                player.HP = player.playerUnitType.HP;
-                Debug.Log(player.name + " HP Reset to " + player.HP);
+                player.BasedHP = player.playerUnitType.HP;
+                Debug.Log(player.name + " HP Reset to " + player.BasedHP);
             }
         }
     }

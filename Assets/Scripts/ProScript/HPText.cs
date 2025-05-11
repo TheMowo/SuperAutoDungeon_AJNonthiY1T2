@@ -15,7 +15,7 @@ public class HPText : MonoBehaviour
     {
         if (hitbox.isPlayerUnit)
         {
-            text.text = $"HP  {hitbox.playerUnit.HP}";
+            text.text = $"HP  {hitbox.playerUnit.BasedHP}";
         }
         else { text.text = $"HP  {hitbox.enemiesUnit.HP}"; }
     }

@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: PermadeathPotionSO
   m_EditorClassIdentifier: 
+  myEffectType: 3
   Name: Permadeath Potion
   Description: 'ATK: +4'
   HpEffect: 0
   AtkEffect: 4
   Sprite: {fileID: 7111791515449186031, guid: d12c1b7955468044cb56b2f61277965c, type: 3}
   GreenDebuffEffect: 0
-  RedDebuffEffect: 1
-  BlueDebuffEffect: 0
+  GreyDebuffEffect: 0
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  BlackDebuffEffect: 1
   price: 15

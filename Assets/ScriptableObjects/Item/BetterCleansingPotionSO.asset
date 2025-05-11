@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: BetterCleansingPotionSO
   m_EditorClassIdentifier: 
+  myEffectType: 5
   Name: Better Cleansing Potion
   Description: Clear all active debuffs on a unit
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 4926615597230087903, guid: 8f20172870d5dea4d8fc0be22824f570, type: 3}
   GreenDebuffEffect: 0
-  RedDebuffEffect: 0
-  BlueDebuffEffect: 0
+  GreyDebuffEffect: 0
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  BlackDebuffEffect: 0
   price: 30

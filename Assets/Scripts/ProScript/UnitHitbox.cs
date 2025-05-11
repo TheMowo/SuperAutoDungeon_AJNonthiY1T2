@@ -51,7 +51,7 @@ public class UnitHitbox : MonoBehaviour , IDropHandler
         else
         {
             enemiesUnit.UseConsumable(draggableItem.CurrentItem);
-            receiver.ApplySOStat(SOItemStat);
+            //receiver.ApplySOStat(SOItemStat);
             Destroy(droppedItem);
         }
     }
