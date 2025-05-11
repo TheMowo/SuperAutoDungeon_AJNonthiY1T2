@@ -6,7 +6,6 @@ public class UnitHitbox : MonoBehaviour , IDropHandler
     [SerializeField] GameObject TargetUnit;
     public PlayerUnit playerUnit;
     public EnemiesUnit enemiesUnit;
-    public ConsumableItem SelectedItem;
     public bool isPlayerUnit;
     public void Awake()
     {
@@ -28,14 +27,31 @@ public class UnitHitbox : MonoBehaviour , IDropHandler
         InventoryItem draggableItem = droppedItem.GetComponent<InventoryItem>();
         draggableItem.parentAfterDrag = transform;
 
+        StatPopUpReceiver receiver = TargetUnit.GetComponent<StatPopUpReceiver>();
+        ConsumableItem SOItemStat = draggableItem.CurrentItem;
+
         if (isPlayerUnit)
         {
             playerUnit.UseConsumable(draggableItem.CurrentItem);
+            if (receiver != null)
+            {
+                receiver.ApplySOStat(SOItemStat);
+                //Debug.Log("Receiver Succeed");
+                //Debug.Log("TargetUnit: " + TargetUnit.name);
+                //Debug.Log("Has receiver: " + (TargetUnit.GetComponent<StatPopUpReceiver>() != null));
+            } 
+            //else
+            //{
+                //Debug.Log("Receiver Error");
+                //Debug.Log("TargetUnit: " + TargetUnit.name);
+                //Debug.Log("Has receiver: " + (TargetUnit.GetComponent<StatPopUpReceiver>() != null));
+            //}
             Destroy(droppedItem);
         }
         else
         {
             enemiesUnit.UseConsumable(draggableItem.CurrentItem);
+            receiver.ApplySOStat(SOItemStat);
             Destroy(droppedItem);
         }
     }
