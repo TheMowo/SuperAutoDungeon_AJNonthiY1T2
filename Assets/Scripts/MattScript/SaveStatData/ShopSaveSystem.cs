@@ -1,47 +1,48 @@
-using UnityEngine;
-using System.IO;
 using System.Collections.Generic;
-using System;
-using static UnityEditor.Progress;
+using System.IO;
 using System.Linq;
-using UnityEditor.Overlays;
-using Unity.VisualScripting;
+using UnityEngine;
 
-public class ItemSaveSystem : MonoBehaviour
+public class ShopSaveSystem : MonoBehaviour
 {
-    public List<InventorySlot> Inventoryslot;
-    private string ItemSavePath => Path.Combine(Application.persistentDataPath, "ItemSaveData.json");
+    public List<ShopSlot> ShopSlot;
+    private string ItemSavePath => Path.Combine(Application.persistentDataPath, "ShopSaveData.json");
     public string fileName;
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
 
     void Start()
     {
-        GetAllInventorySlotList();
+        GetAllShopSlotList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        ItemLoad();
+        ShopLoad();
     }
 
-    void GetAllInventorySlotList()
+    void GetAllShopSlotList()
     {
-        Inventoryslot = FindObjectsByType<InventorySlot>(FindObjectsSortMode.None).ToList();
+        ShopSlot = FindObjectsByType<ShopSlot>(FindObjectsSortMode.None).ToList();
     }
 
-    public void ItemSaveData()
+    private void OnApplicationQuit()
+    {
+        ShopoSaveData();
+    }
+
+    public void ShopoSaveData()
     {
         var saveData = new GameSaveData();
-        foreach (var inventory in Inventoryslot)
+        foreach (var Shopitem in ShopSlot)
         {
-            saveData.items.Add(inventory.GetDataSave());
+            saveData.Shopitems.Add(Shopitem.GetDataSave());
         }
 
-        string json2 = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(ItemSavePath, json2);
-        Debug.Log("Game Saved!");
+        string json4 = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(ItemSavePath, json4);
+        Debug.Log("Shop Saved!");
     }
 
-    public void ItemLoad()
+    public void ShopLoad()
     {
         if (!File.Exists(ItemSavePath))
         {
@@ -50,15 +51,15 @@ public class ItemSaveSystem : MonoBehaviour
             return;
         }
 
-        string json = File.ReadAllText(ItemSavePath);
-        Debug.Log("Loaded JSON:\n" + json);
+        string json4 = File.ReadAllText(ItemSavePath);
+        Debug.Log("Loaded JSON:\n" + json4);
 
-        var saveData = JsonUtility.FromJson<GameSaveData>(json);
+        var saveData = JsonUtility.FromJson<GameSaveData>(json4);
 
         // Create dictionary for faster slot lookup
-        Dictionary<int, ItemSaveData> slotDataDict = saveData.items.ToDictionary(item => item.SlotIndex, item => item);
+        Dictionary<int, ShopSaveData> slotDataDict = saveData.Shopitems.ToDictionary(item => item.SlotIndex, item => item);
 
-        foreach (var slot in Inventoryslot)
+        foreach (var slot in ShopSlot)
         {
             int slotIndex = slot.transform.GetSiblingIndex();
 
@@ -95,12 +96,12 @@ public class ItemSaveSystem : MonoBehaviour
                 // Else: Do nothing (no saved data and no child)
             }
         }
-        Debug.Log("Inventory Loaded!");
+        Debug.Log("Shop Loaded!");
     }
 
     private void ClearAllInventorySlots()
     {
-        foreach (var slot in Inventoryslot)
+        foreach (var slot in ShopSlot)
         {
             ClearSlotChildren(slot.gameObject);
         }
@@ -115,4 +116,3 @@ public class ItemSaveSystem : MonoBehaviour
         }
     }
 }
-

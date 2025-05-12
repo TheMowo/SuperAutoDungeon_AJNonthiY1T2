@@ -1,6 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.Burst.Intrinsics.X86;
 
 public class StartBattleButton : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class StartBattleButton : MonoBehaviour
     public PlayerSaveSystem PSS;
     public EnemySaveSystem ESS;
     public ItemSaveSystem TSS;
+    public ShopSaveSystem SSS;
     private Button button;
 
     void Start()

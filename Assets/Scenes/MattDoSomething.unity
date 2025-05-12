@@ -4483,6 +4483,7 @@ MonoBehaviour:
   PSS: {fileID: 990847615}
   ESS: {fileID: 990847616}
   TSS: {fileID: 990847614}
+  SSS: {fileID: 990847617}
 --- !u!114 &633497365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4628,7 +4629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &637724218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5702,7 +5703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3717.0107, y: -1086.4058}
+  m_AnchoredPosition: {x: -5527.687, y: -327.97153}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 0}
 --- !u!114 &799732249
@@ -7132,6 +7133,7 @@ GameObject:
   - component: {fileID: 990847615}
   - component: {fileID: 990847616}
   - component: {fileID: 990847614}
+  - component: {fileID: 990847617}
   m_Layer: 0
   m_Name: ===SaveLoad===
   m_TagString: Untagged
@@ -7166,17 +7168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9806b7f27913041bb8d5e02098b2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventoryslot:
-  - {fileID: 1270098086}
-  - {fileID: 1910096302}
-  - {fileID: 856551192}
-  - {fileID: 70412823}
-  - {fileID: 1207469889}
-  - {fileID: 537828376}
-  - {fileID: 836820235}
-  - {fileID: 967787718}
-  - {fileID: 2112052809}
-  - {fileID: 1862266906}
+  Inventoryslot: []
   fileName: ItemSaveData
   ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
 --- !u!114 &990847615
@@ -7191,9 +7183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504d6893417f7f54eadbf82a665df6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPlayers:
-  - {fileID: 296466303}
-  - {fileID: 1234326091}
+  allPlayers: []
   fileName: PlayerSaveData
 --- !u!114 &990847616
 MonoBehaviour:
@@ -7207,11 +7197,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2578382fe2b4cb4a8a891ebef393cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allEnemys:
-  - {fileID: 77751081}
-  - {fileID: 417999346}
-  - {fileID: 828485377}
+  allEnemys: []
   fileName: EnemySaveData
+--- !u!114 &990847617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990847611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f911d2587527594e8b79fce948f5bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopSlot: []
+  fileName: ShopSaveData
+  ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
 --- !u!1 &1039065560
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using static UnityEditor.Progress;
 using System.Linq;
 using UnityEditor.Overlays;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class PlayerSaveSystem : MonoBehaviour
 {
@@ -16,9 +17,15 @@ public class PlayerSaveSystem : MonoBehaviour
 
     void Start()
     {
+        GetAllPlayerUnitList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         PlayerLoad();
+    }
+
+    void GetAllPlayerUnitList()
+    {
+        allPlayers = FindObjectsByType<PlayerUnit>(FindObjectsSortMode.None).ToList();
     }
 
     public void PlayerSaveData()

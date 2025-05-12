@@ -16,9 +16,15 @@ public class EnemySaveSystem : MonoBehaviour
 
     void Start()
     {
+        GetAllPlayerUnitList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         EnemyLoad();
+    }
+
+    void GetAllPlayerUnitList()
+    {
+        allEnemys = FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList();
     }
 
     public void EnemySaveData()
