@@ -42,14 +42,15 @@ public class EnemySaveSystem : MonoBehaviour
             return;
         }
 
-        string json = File.ReadAllText(EnemySavePath);
-        Debug.Log("Loaded JSON:\n" + json);
+        string json3 = File.ReadAllText(EnemySavePath);
+        Debug.Log("Loaded JSON:\n" + json3);
 
-        var saveData = JsonUtility.FromJson<GameSaveData>(json);
+        var saveData = JsonUtility.FromJson<GameSaveData>(json3);
         foreach (var data in saveData.Enemys)
         {
             var matchingEnemy = allEnemys.Find(e => e.uniqueID == data.uniqueID);
             matchingEnemy.LoadFromSaveData(data);
+            matchingEnemy.UpdateVisual();
             Debug.Log(matchingEnemy.uniqueID);
         }
         Debug.Log("Enemy Loaded!");

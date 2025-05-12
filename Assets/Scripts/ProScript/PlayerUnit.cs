@@ -67,21 +67,14 @@ public class PlayerUnit : MonoBehaviour
         UpdateVisual();
     }
 
-    private void Start()
-    {
-        UpdateVisual();
-    }
-
     public void UseConsumable(ConsumableItem consumable)
     {
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.Food)
         {
             BasedHP += consumable.HpEffect;
             BasedATK += consumable.AtkEffect;
-            CurrentHP += consumable.HpEffect;
-            CurrentATK += consumable.AtkEffect;
         }
-        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion)
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
             CurrentHP += consumable.HpEffect;
             CurrentATK += consumable.AtkEffect;
@@ -192,7 +185,7 @@ public class PlayerUnit : MonoBehaviour
         }
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff/ 3;
         GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;
