@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -270,21 +271,30 @@ public class EnemiesUnit : MonoBehaviour
         Debug.Log("Fed");
     }
 
+    public EnemySaveSystem ESS;
+
     public EnemySaveData GetSaveData()
     {
         Debug.Log("Data Save : it did save Huh?");
-        return new EnemySaveData
+        if (FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList() != null)
         {
-            uniqueID = this.uniqueID,
-            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
-            BaseHP = this.HP,
-            BaseATK = this.ATK,
-            CurrentGreyDebuff = this.CurrentGreyDebuff,
-            CurrentGreenDebuff = this.CurrentGreenDebuff,
-            CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
-            CurrentGoldDebuff = this.CurrentGoldDebuff,
-            CurrentEffects = this.CurrentEffects,
-        };
+            return new EnemySaveData
+            {
+                uniqueID = this.uniqueID,
+                position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+                BaseHP = this.HP,
+                BaseATK = this.ATK,
+                CurrentGreyDebuff = this.CurrentGreyDebuff,
+                CurrentGreenDebuff = this.CurrentGreenDebuff,
+                CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
+                CurrentGoldDebuff = this.CurrentGoldDebuff,
+                CurrentEffects = this.CurrentEffects,
+            };
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void LoadFromSaveData(EnemySaveData data)

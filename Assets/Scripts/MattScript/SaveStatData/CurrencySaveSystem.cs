@@ -15,7 +15,7 @@ public class CurrencySaveSystem : MonoBehaviour
         Debug.Log(this.dataHandler);
     }
 
-    void CurrencySaveData()
+    public void CurrencySaveData()
     {
         var saveData = new GameSaveData();
         saveData.doubloonsCurrency = Currency;
