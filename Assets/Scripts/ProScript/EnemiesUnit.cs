@@ -70,10 +70,10 @@ public class EnemiesUnit : MonoBehaviour
             HP += consumable.HpEffect;
             ATK += consumable.AtkEffect;
         }
-        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion)
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
             bool reverseEffect = false;
-            if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion)
+            if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
             {
                 if (myType == EnemiesUnitType.EnemiesType.Undead)
                 {
