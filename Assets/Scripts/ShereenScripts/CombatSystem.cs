@@ -322,13 +322,13 @@ public class CombatSystem : MonoBehaviour
             PlayerUnit targetPlayer = playerUnits[0];
             if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
             {
-                targetPlayer.BasedHP -= totalATK * 2;
+                targetPlayer.CurrentHP -= totalATK * 2;
             }
-            else targetPlayer.BasedHP -= totalATK;
+            else targetPlayer.CurrentHP -= totalATK;
 
             if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal) && totalATK > 0)
             {
-                targetPlayer.BasedHP = 0;
+                targetPlayer.CurrentHP = 0;
             }
 
             targetPlayer.UpdateUI();
