@@ -73,8 +73,6 @@ public class PlayerUnit : MonoBehaviour
         {
             BasedHP += consumable.HpEffect;
             BasedATK += consumable.AtkEffect;
-            CurrentHP += consumable.HpEffect;
-            CurrentATK += consumable.AtkEffect;
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
