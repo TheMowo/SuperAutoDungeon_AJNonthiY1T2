@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class EnemiesUnit : MonoBehaviour
 {
     [SerializeField] public EnemiesUnitType enemiesUnitType;
+    public string uniqueID;
     public int HP;
     public int ATK;
 
@@ -51,6 +52,11 @@ public class EnemiesUnit : MonoBehaviour
         myType = enemiesUnitType.myType;
         //SR = GetComponent<SpriteRenderer>();
         //SR.sprite = playerUnitType.Sprite;
+    }
+
+    private void Start()
+    {
+        UpdateVisual();
     }
 
     public void UseConsumable(ConsumableItem consumable)
@@ -262,5 +268,35 @@ public class EnemiesUnit : MonoBehaviour
     void OnFed()
     {
         Debug.Log("Fed");
+    }
+
+    public EnemySaveData GetSaveData()
+    {
+        Debug.Log("Data Save : it did save Huh?");
+        return new EnemySaveData
+        {
+            uniqueID = this.uniqueID,
+            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+            BaseHP = this.HP,
+            BaseATK = this.ATK,
+            CurrentGreyDebuff = this.CurrentGreyDebuff,
+            CurrentGreenDebuff = this.CurrentGreenDebuff,
+            CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
+            CurrentGoldDebuff = this.CurrentGoldDebuff,
+            CurrentEffects = this.CurrentEffects,
+        };
+    }
+
+    public void LoadFromSaveData(EnemySaveData data)
+    {
+        //Debug.Log("Data Load : it did Load Huh?");
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        this.ATK = data.BaseHP;
+        this.HP = data.BaseATK;
+        this.CurrentGreyDebuff = data.CurrentGreyDebuff;
+        this.CurrentGreenDebuff = data.CurrentGreenDebuff;
+        this.CurrentLightBlueDebuff = data.CurrentLightBlueDebuff;
+        this.CurrentGoldDebuff = data.CurrentGoldDebuff;
+        this.CurrentEffects = data.CurrentEffects;
     }
 }
