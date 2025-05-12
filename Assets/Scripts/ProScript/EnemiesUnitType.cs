@@ -5,6 +5,7 @@ public class EnemiesUnitType : ScriptableObject
 {
     public enum EnemiesType
     {
+        None,
         Undead,
         Fire,
         Steel,

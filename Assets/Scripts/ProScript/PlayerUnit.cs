@@ -34,6 +34,7 @@ public class PlayerUnit : MonoBehaviour
     public int CurrentATK;
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
+    public Image unitSprite;
     public PlayerType playerType;
     public List<DebuffEffectType> CurrentEffects;
     public int TurnSkipSlow;
@@ -62,8 +63,13 @@ public class PlayerUnit : MonoBehaviour
     {
         BasedHP = playerUnitType.HP;
         BasedATK = playerUnitType.ATK;
-        //SR = GetComponent<SpriteRenderer>();
-        //SR.sprite = playerUnitType.Sprite;
+        
+        unitSprite.sprite = playerUnitType.UnitSprite;
+        UpdateVisual();
+    }
+
+    private void Start()
+    {
         UpdateVisual();
     }
 
@@ -73,8 +79,10 @@ public class PlayerUnit : MonoBehaviour
         {
             BasedHP += consumable.HpEffect;
             BasedATK += consumable.AtkEffect;
+            CurrentHP += consumable.HpEffect;
+            CurrentATK += consumable.AtkEffect;
         }
-        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion)
         {
             CurrentHP += consumable.HpEffect;
             CurrentATK += consumable.AtkEffect;
