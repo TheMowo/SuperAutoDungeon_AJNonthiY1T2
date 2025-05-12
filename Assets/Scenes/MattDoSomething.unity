@@ -617,6 +617,7 @@ MonoBehaviour:
   LightBlueDebuffText: {fileID: 1039065563}
   GoldDebuffText: {fileID: 164215048}
   MaxDebuff: 3
+  ESS: {fileID: 0}
 --- !u!224 &77751082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3539,6 +3540,7 @@ MonoBehaviour:
   LightBlueDebuffText: {fileID: 2098462436}
   GoldDebuffText: {fileID: 1343913110}
   MaxDebuff: 3
+  ESS: {fileID: 0}
 --- !u!224 &417999347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5842,7 +5844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2452.9536, y: 1721.8506}
+  m_AnchoredPosition: {x: -2432.4556, y: 1738.9324}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &799732249
@@ -5992,6 +5994,7 @@ MonoBehaviour:
   LightBlueDebuffText: {fileID: 348886965}
   GoldDebuffText: {fileID: 90503402}
   MaxDebuff: 3
+  ESS: {fileID: 0}
 --- !u!224 &828485378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7308,6 +7311,7 @@ GameObject:
   - component: {fileID: 990847616}
   - component: {fileID: 990847614}
   - component: {fileID: 990847617}
+  - component: {fileID: 990847618}
   m_Layer: 0
   m_Name: ===SaveLoad===
   m_TagString: Untagged
@@ -7388,6 +7392,20 @@ MonoBehaviour:
   ShopSlot: []
   fileName: ShopSaveData
   ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
+--- !u!114 &990847618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990847611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03226edc44e111d42a94f539eb1b9bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Currency: {fileID: 76740767}
+  fileName: CurrencySaveData
 --- !u!1 &1039065560
 GameObject:
   m_ObjectHideFlags: 0
@@ -13867,9 +13885,9 @@ MonoBehaviour:
   nextStageButton: {fileID: 637724217}
   shopManager: {fileID: 1418081413}
   PSS: {fileID: 990847615}
-  ESS: {fileID: 990847616}
   TSS: {fileID: 990847614}
   SSS: {fileID: 990847617}
+  CSS: {fileID: 990847618}
   attackSpeed: 2000
   maxTurns: 6
 --- !u!4 &1900882686

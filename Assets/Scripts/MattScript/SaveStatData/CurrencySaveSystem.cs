@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CurrencySaveSystem : MonoBehaviour
 {
-    public int Currency;
+    public InventoryManager Currency;
     private string CurrencySavePath => Path.Combine(Application.persistentDataPath, "CurrencySaveData.json");
     public string fileName;
     private FileDataHandler dataHandler;
@@ -13,30 +13,30 @@ public class CurrencySaveSystem : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
+        CurrencyLoad();
     }
 
     public void CurrencySaveData()
     {
-        var saveData = new GameSaveData();
-        saveData.doubloonsCurrency = Currency;
-
-        string json5 = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(CurrencySavePath, json5);
-        Debug.Log("Enemy Saved!");
+        CurrencySaveData saveData = Currency.GetDataSave(); // Get currency data
+        string json = JsonUtility.ToJson(saveData, true); // Serialize data
+        File.WriteAllText(CurrencySavePath, json); // Save to file
+        Debug.Log("Currency saved to: " + CurrencySavePath);
     }
 
     public void CurrencyLoad()
     {
         if (!File.Exists(CurrencySavePath))
         {
-            Debug.LogWarning("No save file found.");
+            Debug.LogWarning("No currency save file found at: " + CurrencySavePath);
             return;
         }
 
-        string json5 = File.ReadAllText(CurrencySavePath);
-        Debug.Log("Loaded JSON:\n" + json5);
+        string json = File.ReadAllText(CurrencySavePath);
+        Debug.Log("Loaded JSON:\n" + json);
 
-        var saveData = JsonUtility.FromJson<GameSaveData>(json5);
-
+        CurrencySaveData loadedData = JsonUtility.FromJson<CurrencySaveData>(json);
+        Currency.LoadFromSaveData(loadedData); // Apply loaded data
+        Debug.Log("Currency loaded!");
     }
 }

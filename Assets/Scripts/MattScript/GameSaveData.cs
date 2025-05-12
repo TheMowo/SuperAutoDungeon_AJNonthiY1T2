@@ -8,5 +8,5 @@ public class GameSaveData
     public List<ItemSaveData> items = new List<ItemSaveData>();
     public List<EnemySaveData> Enemys = new List<EnemySaveData>();
     public List<ShopSaveData> Shopitems = new List<ShopSaveData>();
-    public int doubloonsCurrency = new int();
+    public int doubloonsCurrency;
 }
