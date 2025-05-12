@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: InstantDamagePotionSO
   m_EditorClassIdentifier: 
+  myEffectType: 2
   Name: Instant Damage Potion
   Description: 'HP: -4'
   HpEffect: -4
   AtkEffect: 0
   Sprite: {fileID: 3380004158612640549, guid: a30823e9fba4a6f4c9ca8474dad53e89, type: 3}
   GreenDebuffEffect: 0
-  RedDebuffEffect: 0
-  BlueDebuffEffect: 0
+  GreyDebuffEffect: 0
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  BlackDebuffEffect: 0
   price: 10

@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
   m_Name: WeakenPotionSO
   m_EditorClassIdentifier: 
+  myEffectType: 3
   Name: Weaken Potion
   Description: 'HP: +5'
   HpEffect: 5
   AtkEffect: 0
   Sprite: {fileID: -1916601607385524054, guid: 33b6926e6cb32814f8823d67475341fe, type: 3}
-  GreenDebuffEffect: 1
-  RedDebuffEffect: 0
-  BlueDebuffEffect: 0
+  GreenDebuffEffect: 0
+  GreyDebuffEffect: 1
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  BlackDebuffEffect: 0
   price: 15
