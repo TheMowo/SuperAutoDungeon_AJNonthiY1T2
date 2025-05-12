@@ -20,6 +20,11 @@ public class CombatSystem : MonoBehaviour
     public GameObject nextStageButton;
     public ShopManager shopManager;
 
+    public PlayerSaveSystem PSS;
+    public EnemySaveSystem ESS;
+    public ItemSaveSystem TSS;
+    public ShopSaveSystem SSS;
+
     public float attackSpeed = 3.0f;
 
     [SerializeField] private int maxTurns = 5;
@@ -108,6 +113,9 @@ public class CombatSystem : MonoBehaviour
             // then checks if player killed off all enemies
             if (enemyUnits.Count == 0)
             {
+                PSS.PlayerSaveData();
+                TSS.ItemSaveData();
+                ESS.EnemySaveData();
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
 
@@ -124,6 +132,7 @@ public class CombatSystem : MonoBehaviour
                 }
                 nextStageButton.SetActive(true);
 
+                SSS.ShopoSaveData();
                 yield break;
             }
             yield return new WaitForSeconds(1.0f);

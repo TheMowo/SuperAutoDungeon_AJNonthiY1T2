@@ -24,7 +24,14 @@ public class EnemySaveSystem : MonoBehaviour
 
     void GetAllPlayerUnitList()
     {
-        allEnemys = FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList();
+        if(FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList() != null)
+        {
+            allEnemys = FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList();
+        }
+        else
+        {
+            allEnemys.Clear();
+        }
     }
 
     public void EnemySaveData()

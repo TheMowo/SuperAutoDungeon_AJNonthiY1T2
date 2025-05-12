@@ -7,12 +7,6 @@ using System.Linq;
 public class ShopSlot : MonoBehaviour
 {
     private TMPro.TextMeshProUGUI priceText;
-    public ShopManager SM;
-
-    //private void Start()
-    //{
-    //    SM = FindObjectOfType();
-    //}
 
     public ShopSaveData GetDataSave()
     {
@@ -41,9 +35,5 @@ public class ShopSlot : MonoBehaviour
         this.transform.GetChild(0).gameObject.GetComponent<TooltipTrigger>().currentItem = data.item;
         this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().isShopItem = true;
         this.transform.GetChild(0).gameObject.GetComponent<TooltipTrigger>().tooltipSystem = FindAnyObjectByType<TooltipSystem>();
-        //for (int i; i < ShopManager.priceTexts.Count();)
-        //{
-        //    priceText.text = (data.item.price).ToString();
-        //}
     }
 }
