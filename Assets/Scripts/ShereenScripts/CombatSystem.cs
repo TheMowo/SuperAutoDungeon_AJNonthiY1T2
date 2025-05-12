@@ -231,7 +231,7 @@ public class CombatSystem : MonoBehaviour
                 }
                 else target.HP -= attacker.BasedATK + attacker.CurrentATK;
 
-                if (target.CurrentEffects.Contains(DebuffEffectType.Lethal))
+                if (target.CurrentEffects.Contains(DebuffEffectType.Lethal) && attacker.BasedATK > 0)
                 {
                     target.HP = 0;
                 }
@@ -326,7 +326,7 @@ public class CombatSystem : MonoBehaviour
             }
             else targetPlayer.BasedHP -= totalATK;
 
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal))
+            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal) && totalATK > 0)
             {
                 targetPlayer.BasedHP = 0;
             }

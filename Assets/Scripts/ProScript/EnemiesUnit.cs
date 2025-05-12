@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class EnemiesUnit : MonoBehaviour
 {
     [SerializeField] public EnemiesUnitType enemiesUnitType;
+    public string uniqueID;
     public int HP;
     public int ATK;
 
@@ -64,10 +65,10 @@ public class EnemiesUnit : MonoBehaviour
             HP += consumable.HpEffect;
             ATK += consumable.AtkEffect;
         }
-        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion)
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
             bool reverseEffect = false;
-            if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion)
+            if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
             {
                 if (myType == EnemiesUnitType.EnemiesType.Undead)
                 {
@@ -212,7 +213,7 @@ public class EnemiesUnit : MonoBehaviour
         }
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff / 3;
         GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;
@@ -262,5 +263,35 @@ public class EnemiesUnit : MonoBehaviour
     void OnFed()
     {
         Debug.Log("Fed");
+    }
+
+    public EnemySaveData GetSaveData()
+    {
+        Debug.Log("Data Save : it did save Huh?");
+        return new EnemySaveData
+        {
+            uniqueID = this.uniqueID,
+            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+            BaseHP = this.HP,
+            BaseATK = this.ATK,
+            CurrentGreyDebuff = this.CurrentGreyDebuff,
+            CurrentGreenDebuff = this.CurrentGreenDebuff,
+            CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
+            CurrentGoldDebuff = this.CurrentGoldDebuff,
+            CurrentEffects = this.CurrentEffects,
+        };
+    }
+
+    public void LoadFromSaveData(EnemySaveData data)
+    {
+        //Debug.Log("Data Load : it did Load Huh?");
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        this.ATK = data.BaseHP;
+        this.HP = data.BaseATK;
+        this.CurrentGreyDebuff = data.CurrentGreyDebuff;
+        this.CurrentGreenDebuff = data.CurrentGreenDebuff;
+        this.CurrentLightBlueDebuff = data.CurrentLightBlueDebuff;
+        this.CurrentGoldDebuff = data.CurrentGoldDebuff;
+        this.CurrentEffects = data.CurrentEffects;
     }
 }

@@ -62,9 +62,9 @@ public class PlayerUnit : MonoBehaviour
     {
         BasedHP = playerUnitType.HP;
         BasedATK = playerUnitType.ATK;
-        UpdateVisual();
         //SR = GetComponent<SpriteRenderer>();
         //SR.sprite = playerUnitType.Sprite;
+        UpdateVisual();
     }
 
     public void UseConsumable(ConsumableItem consumable)
@@ -76,7 +76,7 @@ public class PlayerUnit : MonoBehaviour
             CurrentHP += consumable.HpEffect;
             CurrentATK += consumable.AtkEffect;
         }
-        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion)
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
             CurrentHP += consumable.HpEffect;
             CurrentATK += consumable.AtkEffect;
@@ -187,7 +187,7 @@ public class PlayerUnit : MonoBehaviour
         }
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff/ 3;
         GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;
@@ -242,9 +242,16 @@ public class PlayerUnit : MonoBehaviour
         {
             uniqueID = this.uniqueID,
             position = new float[] { transform.position.x, transform.position.y, transform.position.z },
-            Health = this.BasedHP,
-            Attack = this.BasedATK,
-            playerType = this.playerType
+            BaseHP = this.BasedHP,
+            CurrentHP = this.CurrentHP,
+            BaseATK = this.BasedATK,
+            CurrentATK = this.BasedATK,
+            playerType = this.playerType,
+            CurrentGreyDebuff = this.CurrentGreyDebuff,
+            CurrentGreenDebuff = this.CurrentGreenDebuff,
+            CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
+            CurrentGoldDebuff = this.CurrentGoldDebuff,
+            CurrentEffects = this.CurrentEffects,
         };
     }
 
@@ -252,8 +259,15 @@ public class PlayerUnit : MonoBehaviour
     {
         //Debug.Log("Data Load : it did Load Huh?");
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
-        this.BasedHP = data.Health;
-        this.BasedATK = data.Attack;
+        this.BasedHP = data.BaseHP;
+        this.CurrentHP = data.CurrentHP;
+        this.BasedATK = data.BaseATK;
+        this.CurrentATK = data.CurrentATK;
         this.playerType = data.playerType;
+        this.CurrentGreyDebuff = data.CurrentGreyDebuff;
+        this.CurrentGreenDebuff = data.CurrentGreenDebuff;
+        this.CurrentLightBlueDebuff = data.CurrentLightBlueDebuff;
+        this.CurrentGoldDebuff = data.CurrentGoldDebuff;
+        this.CurrentEffects = data.CurrentEffects;
     }
 }

@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class StartBattleButton : MonoBehaviour
 {
     public CombatSystem combatSystem;
+    public PlayerSaveSystem PSS;
+    public EnemySaveSystem ESS;
+    public ItemSaveSystem TSS;
     private Button button;
 
     void Start()
@@ -32,8 +36,9 @@ public class StartBattleButton : MonoBehaviour
 
     void StartBattle()
     {
-        SaveSystem PlayerSaveSystem = gameObject.GetComponent<SaveSystem>();
-        PlayerSaveSystem.PlayerSaveData();
+        ESS.EnemySaveData();
+        PSS.PlayerSaveData();
+        TSS.ItemSaveData();
         combatSystem.StartBattle();
         button.interactable = false;
     }
