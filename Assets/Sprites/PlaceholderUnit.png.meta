@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 68b9aac96100b6f468bfa32781e8f6f3
+guid: a148a1c4d62e3ac46994682c7ee5ed37
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9045318565351701647
-    second: PlayerUnitBowman_0
+      213: 1055921042916893844
+    second: PlaceholderUnit_0
+  - first:
+      213: 8838818986866993401
+    second: PlaceholderUnit_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerUnitBowman_0
+      name: PlaceholderUnit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17347ff50b2987280800000000000000
-      internalID: -9045318565351701647
+      spriteID: 494ebe1189267ae00800000000000000
+      internalID: 1055921042916893844
       vertices: []
       indices: 
       edges: []
@@ -125,7 +128,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d9e4984e6a27cd64ca0d2fe04983c745
+    spriteID: 53430029dadb48c49aea94ad31b261b8
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +138,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerUnitBowman_0: -9045318565351701647
+      PlaceholderUnit_0: 1055921042916893844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,7 +6,11 @@ public class ShopManager : MonoBehaviour
     public TMPro.TextMeshProUGUI[] priceTexts;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
-    private InventoryManager inventoryManager;
+
+    private void Awake()
+    {
+        AddRandomItems(8);
+    }
     public void AddRandomItems(int count)
     {
         for (int i = 0; i < count; i++)
@@ -37,5 +41,11 @@ public class ShopManager : MonoBehaviour
             }
         }
         Debug.Log($"Trashing all items; trashed!");
+    }
+
+    public void GenerateShopItem()
+    {
+        DestroyShopItems();
+        AddRandomItems(8);
     }
 }
