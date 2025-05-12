@@ -50,6 +50,7 @@ public class PlayerSaveSystem : MonoBehaviour
         {
             var matchingPlayer = allPlayers.Find(p => p.uniqueID == data.uniqueID);
             matchingPlayer.LoadFromSaveData(data);
+            matchingPlayer.UpdateVisual();
             Debug.Log(matchingPlayer.uniqueID);
         }
         Debug.Log("Player Loaded!");

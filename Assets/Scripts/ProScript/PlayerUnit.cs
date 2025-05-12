@@ -67,11 +67,6 @@ public class PlayerUnit : MonoBehaviour
         UpdateVisual();
     }
 
-    private void Start()
-    {
-        UpdateVisual();
-    }
-
     public void UseConsumable(ConsumableItem consumable)
     {
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.Food)
@@ -192,7 +187,7 @@ public class PlayerUnit : MonoBehaviour
         }
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff/ 3;
         GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;
