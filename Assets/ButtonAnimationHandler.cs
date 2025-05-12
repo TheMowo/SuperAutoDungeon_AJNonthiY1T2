@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ButtonAnimationHandler : MonoBehaviour
+public class ButtonAnimationHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     [SerializeField] private float _verticalMoveAmount = 30f;
     [SerializeField] private float _moveTime = 0.1f;
@@ -58,7 +59,10 @@ public class ButtonAnimationHandler : MonoBehaviour
 
     public void OnSelect(BaseEventData eventData)
     {
-        StartCoroutine(MoveButton(true));
+        if (eventData.selectedObject.GetComponent<Button>().interactable)
+        {
+            StartCoroutine(MoveButton(true));
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)
