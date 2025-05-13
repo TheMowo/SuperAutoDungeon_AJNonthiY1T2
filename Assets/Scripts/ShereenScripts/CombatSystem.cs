@@ -111,6 +111,7 @@ public class CombatSystem : MonoBehaviour
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
 
+<<<<<<< Updated upstream
                 RepositionUnits();
 
                 shopManager.AddRandomItems(8);
@@ -124,6 +125,13 @@ public class CombatSystem : MonoBehaviour
                 }
                 nextStageButton.SetActive(true);
 
+=======
+                SSS.GetAllShopSlotList();
+                SSS.ShopoSaveData();
+
+                RepositionUnits();
+                shopManager.OpenShopOnWin();
+>>>>>>> Stashed changes
                 yield break;
             }
             yield return new WaitForSeconds(1.0f);
