@@ -34,6 +34,7 @@ public class PlayerUnit : MonoBehaviour
     public int CurrentATK;
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
+    public Image playerUnitSprite;
     public PlayerType playerType;
     public List<DebuffEffectType> CurrentEffects;
     public int TurnSkipSlow;
@@ -62,8 +63,8 @@ public class PlayerUnit : MonoBehaviour
     {
         BasedHP = playerUnitType.HP;
         BasedATK = playerUnitType.ATK;
-        //SR = GetComponent<SpriteRenderer>();
-        //SR.sprite = playerUnitType.Sprite;
+        
+        playerUnitSprite.sprite = playerUnitType.UnitSprite;
         UpdateVisual();
     }
 
@@ -78,8 +79,8 @@ public class PlayerUnit : MonoBehaviour
         {
             BasedHP += consumable.HpEffect;
             BasedATK += consumable.AtkEffect;
-            CurrentHP += consumable.HpEffect;
-            CurrentATK += consumable.AtkEffect;
+            //CurrentHP += consumable.HpEffect;
+            //CurrentATK += consumable.AtkEffect;
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion)
         {
@@ -94,7 +95,6 @@ public class PlayerUnit : MonoBehaviour
 
             CurrentGoldDebuff += consumable.GoldDebuffEffect;
 
-
             if (CurrentGreyDebuff < 0)
                 CurrentGreyDebuff = 0;
             if (CurrentGreenDebuff < 0)
@@ -106,6 +106,10 @@ public class PlayerUnit : MonoBehaviour
 
             CheckDebuffFull();
             CheckDebuffFull();
+        }
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
+        {
+            CurrentHP += consumable.HpEffect;
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.CleansingPotion)
         {
@@ -192,7 +196,7 @@ public class PlayerUnit : MonoBehaviour
         }
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff/ 3;
         GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;

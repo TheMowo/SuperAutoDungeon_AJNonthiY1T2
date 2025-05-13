@@ -17,14 +17,15 @@ public class ItemSaveSystem : MonoBehaviour
 
     void Start()
     {
+        GetAllInventorySlotList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         ItemLoad();
     }
 
-    public void ItemSaveDataWhen()
+    void GetAllInventorySlotList()
     {
-        ItemSaveData();
+        Inventoryslot = FindObjectsByType<InventorySlot>(FindObjectsSortMode.None).ToList();
     }
 
     public void ItemSaveData()
@@ -111,6 +112,20 @@ public class ItemSaveSystem : MonoBehaviour
         foreach (Transform child in slot.transform)
         {
             Destroy(child.gameObject);
+        }
+    }
+
+    public void DeleteSaveFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, "ItemSaveData.json");
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted: " + fullPath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete at: " + fullPath);
         }
     }
 }

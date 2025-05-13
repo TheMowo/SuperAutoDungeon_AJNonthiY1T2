@@ -6,6 +6,7 @@ using static UnityEditor.Progress;
 using System.Linq;
 using UnityEditor.Overlays;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class PlayerSaveSystem : MonoBehaviour
 {
@@ -16,9 +17,15 @@ public class PlayerSaveSystem : MonoBehaviour
 
     void Start()
     {
+        GetAllPlayerUnitList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         PlayerLoad();
+    }
+
+    void GetAllPlayerUnitList()
+    {
+        allPlayers = FindObjectsByType<PlayerUnit>(FindObjectsSortMode.None).ToList();
     }
 
     public void PlayerSaveData()
@@ -50,8 +57,23 @@ public class PlayerSaveSystem : MonoBehaviour
         {
             var matchingPlayer = allPlayers.Find(p => p.uniqueID == data.uniqueID);
             matchingPlayer.LoadFromSaveData(data);
+            matchingPlayer.UpdateVisual();
             Debug.Log(matchingPlayer.uniqueID);
         }
         Debug.Log("Player Loaded!");
+    }
+
+    public void DeleteSaveFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, "PlayerSaveData.json");
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted: " + fullPath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete at: " + fullPath);
+        }
     }
 }

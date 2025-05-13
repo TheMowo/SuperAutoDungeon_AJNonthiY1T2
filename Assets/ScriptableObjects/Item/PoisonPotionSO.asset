@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 3
   Name: Poison Potion
-  Description: 'HP: +2   ATK: +2'
+  Description: '[Temporary Gained Stats]\nHP: +2   ATK: +2'
   HpEffect: 2
   AtkEffect: 2
   Sprite: {fileID: -5005990984189769374, guid: 0eb122341ed4f614a92fa198ecdf3f27, type: 3}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -64,5 +65,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         this.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = data.image;
         this.transform.GetChild(0).gameObject.GetComponent<InventoryItem>().CurrentItem = data.item;
         this.transform.GetChild(0).gameObject.GetComponent<TooltipTrigger>().currentItem = data.item;
+        this.transform.GetChild(0).gameObject.GetComponent<TooltipTrigger>().tooltipSystem = FindAnyObjectByType<TooltipSystem>();
     }
 }

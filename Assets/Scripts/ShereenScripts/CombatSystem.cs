@@ -17,13 +17,18 @@ public class CombatSystem : MonoBehaviour
 
     public GameObject[] shopOpenState;
     public GameObject[] shopCloseState;
-    public GameObject nextStageButton;
+    //public GameObject nextStageButton;
     public ShopManager shopManager;
+
+    public PlayerSaveSystem PSS;
+    public ItemSaveSystem TSS;
+    public ShopSaveSystem SSS;
+    public CurrencySaveSystem CSS;
 
     public float attackSpeed = 3.0f;
 
     [SerializeField] private int maxTurns = 5;
-    private int currentTurn = 0;
+    public int currentTurn = 1;
 
     public void Awake()
     {
@@ -55,7 +60,6 @@ public class CombatSystem : MonoBehaviour
 
     private IEnumerator BattleRoutine()
     {
-        currentTurn = 0;
         while (currentTurn < maxTurns)
         {
             if (playerUnits.Count == 0 || enemyUnits.Count == 0)
@@ -108,21 +112,17 @@ public class CombatSystem : MonoBehaviour
             // then checks if player killed off all enemies
             if (enemyUnits.Count == 0)
             {
+                PSS.PlayerSaveData();
+                TSS.ItemSaveData();
+                CSS.CurrencySaveData();
+                
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
-
                 RepositionUnits();
 
-                shopManager.AddRandomItems(8);
-                foreach (var shopO in shopOpenState)
-                {
-                    shopO.SetActive(true);
-                }
-                foreach (var shopC in shopCloseState)
-                {
-                    shopC.SetActive(false);
-                }
-                nextStageButton.SetActive(true);
+                shopManager.OpenShopOnWin();
+                SSS.GetAllShopSlotList();
+                SSS.ShopoSaveData();
 
                 yield break;
             }
@@ -155,21 +155,17 @@ public class CombatSystem : MonoBehaviour
         }
         else
         {
+            PSS.PlayerSaveData();
+            TSS.ItemSaveData();
+            CSS.CurrencySaveData();
+
             Debug.Log("No one died, Player Wins");
             ResetPlayerHP();
-
             RepositionUnits();
 
-            shopManager.AddRandomItems(8);
-            foreach (var shopO in shopOpenState)
-                {
-                    shopO.SetActive(true);
-                }
-                foreach (var shopC in shopCloseState)
-                {
-                    shopC.SetActive(false);
-                }
-            nextStageButton.SetActive(true);
+            shopManager.OpenShopOnWin();
+            SSS.GetAllShopSlotList();
+            SSS.ShopoSaveData();
         }
     }
 
@@ -231,7 +227,7 @@ public class CombatSystem : MonoBehaviour
                 }
                 else target.HP -= attacker.BasedATK + attacker.CurrentATK;
 
-                if (target.CurrentEffects.Contains(DebuffEffectType.Lethal))
+                if (target.CurrentEffects.Contains(DebuffEffectType.Lethal) && attacker.BasedATK > 0)
                 {
                     target.HP = 0;
                 }
@@ -322,13 +318,13 @@ public class CombatSystem : MonoBehaviour
             PlayerUnit targetPlayer = playerUnits[0];
             if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
             {
-                targetPlayer.BasedHP -= totalATK * 2;
+                targetPlayer.CurrentHP -= totalATK * 2;
             }
-            else targetPlayer.BasedHP -= totalATK;
+            else targetPlayer.CurrentHP -= totalATK;
 
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal))
+            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal) && totalATK > 0)
             {
-                targetPlayer.BasedHP = 0;
+                targetPlayer.CurrentHP = 0;
             }
 
             targetPlayer.UpdateUI();
@@ -382,7 +378,10 @@ public class CombatSystem : MonoBehaviour
         {
             if (player != null)
             {
-                player.BasedHP = player.playerUnitType.HP;
+                //player.BasedHP = player.playerUnitType.HP;
+                //player.BasedATK = player.playerUnitType.ATK;
+                player.CurrentATK = 0;
+                player.CurrentHP = 0;
                 Debug.Log(player.name + " HP Reset to " + player.BasedHP);
             }
         }
