@@ -9619,6 +9619,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426938015}
   m_CullTransparentMesh: 1
+--- !u!1 &1461068805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9040746186497786462, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
+  m_PrefabInstance: {fileID: 318133055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470396144
 GameObject:
   m_ObjectHideFlags: 0
@@ -13244,7 +13249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EscapeMenuObject: {fileID: 1369446958}
-  EscapeMenuButtons: []
+  EscapeMenuButtons:
+  - {fileID: 1461068805}
   MainPanel: {fileID: 0}
   SettingsPanel: {fileID: 1071449544}
   resolutionDropdown: {fileID: 0}

@@ -39,7 +39,6 @@ public class MenuController : MonoBehaviour
     {
         //Find Screen Resolutions
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
 
         List<string> optionsList = new List<string>();

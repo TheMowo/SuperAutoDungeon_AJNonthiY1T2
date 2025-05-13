@@ -20,7 +20,10 @@ public class ItemSaveSystem : MonoBehaviour
         GetAllInventorySlotList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        ItemLoad();
+        if (GameObject.Find("Player Unit 1") == true)
+        {
+            ItemLoad();
+        }
     }
 
     void GetAllInventorySlotList()
