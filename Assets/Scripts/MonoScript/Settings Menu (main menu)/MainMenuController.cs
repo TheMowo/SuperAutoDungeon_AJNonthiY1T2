@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -160,5 +161,22 @@ public class MainMenuController : MonoBehaviour
     private void OnEnable() //For using keyboard controls in UI
     {
         EventSystem.current.SetSelectedGameObject(EscapeMenuButtons[0]);
+    }
+
+    public SettingSaveData GetSaveData()
+    {
+        return new SettingSaveData()
+        {
+            resolutionIndex = resolutionDropdown.value,
+            fullscrene = Screen.fullScreen,
+            qualityIndex = QualitySettings.GetQualityLevel(),
+        };
+    }
+
+    public void LoadSaveData(SettingSaveData Data)
+    {
+        resolutionDropdown.value = Data.resolutionIndex;
+        Screen.fullScreen = Data.fullscrene;
+        QualitySettings.SetQualityLevel(Data.qualityIndex);
     }
 }

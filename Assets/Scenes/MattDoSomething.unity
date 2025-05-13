@@ -606,6 +606,7 @@ MonoBehaviour:
   ATK: 0
   hpText: {fileID: 748268840}
   atkText: {fileID: 237493873}
+  enemiesUnitSprite: {fileID: 0}
   CurrentEffects: 
   TurnSkipSlow: 0
   GreyDebuffBar: {fileID: 1946352395}
@@ -2430,7 +2431,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 1215797370}
   atkText: {fileID: 466581826}
-  unitSprite: {fileID: 0}
+  playerUnitSprite: {fileID: 0}
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -3530,6 +3531,7 @@ MonoBehaviour:
   ATK: 0
   hpText: {fileID: 1585874504}
   atkText: {fileID: 1454960975}
+  enemiesUnitSprite: {fileID: 0}
   CurrentEffects: 
   TurnSkipSlow: 0
   GreyDebuffBar: {fileID: 1094078571}
@@ -4858,7 +4860,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 433521274}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -4870,7 +4872,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1900882685}
         m_TargetAssemblyTypeName: CombatSystem, Assembly-CSharp
@@ -5845,7 +5847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2425.6228, y: 1715.0178}
+  m_AnchoredPosition: {x: -2425.6228, y: 1711.6016}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &799732249
@@ -5984,6 +5986,7 @@ MonoBehaviour:
   ATK: 0
   hpText: {fileID: 746494290}
   atkText: {fileID: 1315307514}
+  enemiesUnitSprite: {fileID: 0}
   CurrentEffects: 
   TurnSkipSlow: 0
   GreyDebuffBar: {fileID: 1995389003}
@@ -9812,7 +9815,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 1235217168}
   atkText: {fileID: 751576425}
-  unitSprite: {fileID: 0}
+  playerUnitSprite: {fileID: 0}
   playerType: 1
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -10990,6 +10993,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f72d05d93af294e469f35d2eded1bb21, type: 2}
   - {fileID: 11400000, guid: fca95bed38f59a84bb652d93200faf79, type: 2}
   itemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
+  shopOpenState:
+  - {fileID: 433521274}
+  shopCloseState:
+  - {fileID: 1132914045}
+  nextStageButton: {fileID: 637724217}
 --- !u!4 &1418081414
 Transform:
   m_ObjectHideFlags: 0
@@ -11682,7 +11690,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 129314639}
   atkText: {fileID: 1094184801}
-  unitSprite: {fileID: 0}
+  playerUnitSprite: {fileID: 0}
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -13886,7 +13894,6 @@ MonoBehaviour:
   - {fileID: 433521274}
   shopCloseState:
   - {fileID: 1132914045}
-  nextStageButton: {fileID: 637724217}
   shopManager: {fileID: 1418081413}
   PSS: {fileID: 990847615}
   TSS: {fileID: 990847614}
@@ -13894,6 +13901,7 @@ MonoBehaviour:
   CSS: {fileID: 990847618}
   attackSpeed: 2000
   maxTurns: 6
+  currentTurn: 0
 --- !u!4 &1900882686
 Transform:
   m_ObjectHideFlags: 0

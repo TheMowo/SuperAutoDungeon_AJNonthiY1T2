@@ -21,7 +21,7 @@ public class ShopSaveSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Shop.active == true)
+        if (Shop.active == true && GameObject.Find("SHOP") == null)
         {
             GetAllShopSlotList();
             ShopLoad();
