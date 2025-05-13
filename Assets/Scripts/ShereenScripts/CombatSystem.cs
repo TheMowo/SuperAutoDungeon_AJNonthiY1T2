@@ -5,6 +5,7 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
+    public SpawnAnimatedUI spawnAnimatedUI;
     public TMP_Text atkDisplayText;
     public InventoryManager inventory;
     public List<PlayerUnit> playerUnits;
@@ -203,6 +204,7 @@ public class CombatSystem : MonoBehaviour
             {
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
+                    spawnAnimatedUI.PlayAnimationAt(0, 0);
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
@@ -213,6 +215,7 @@ public class CombatSystem : MonoBehaviour
                     if (t < enemyUnits.Count)
                     {
                         target = enemyUnits[t];
+                        spawnAnimatedUI.PlayAnimationAt(t, 1);
                         break;
                     }
                 }

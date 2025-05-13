@@ -304,8 +304,8 @@ public class EnemiesUnit : MonoBehaviour
     {
         //Debug.Log("Data Load : it did Load Huh?");
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
-        this.ATK = data.BaseHP;
-        this.HP = data.BaseATK;
+        this.ATK = data.BaseATK;
+        this.HP = data.BaseHP;
         this.CurrentGreyDebuff = data.CurrentGreyDebuff;
         this.CurrentGreenDebuff = data.CurrentGreenDebuff;
         this.CurrentLightBlueDebuff = data.CurrentLightBlueDebuff;
