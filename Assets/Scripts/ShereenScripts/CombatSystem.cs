@@ -15,8 +15,8 @@ public class CombatSystem : MonoBehaviour
     public Transform battlePoint;
     public enemySpawner enemySpawner;
 
-    //public GameObject[] shopOpenState;
-    //public GameObject[] shopCloseState;
+    public GameObject[] shopOpenState;
+    public GameObject[] shopCloseState;
     //public GameObject nextStageButton;
     public ShopManager shopManager;
 
@@ -120,6 +120,14 @@ public class CombatSystem : MonoBehaviour
                 ResetPlayerHP();
 
                 RepositionUnits();
+                //foreach (var shopO in shopOpenState)
+                //{
+                //    shopO.SetActive(true);
+                //}
+                //foreach (var shopC in shopCloseState)
+                //{
+                //    shopC.SetActive(false);
+                //}
                 shopManager.OpenShopOnWin();
 
                 SSS.GetAllShopSlotList();
