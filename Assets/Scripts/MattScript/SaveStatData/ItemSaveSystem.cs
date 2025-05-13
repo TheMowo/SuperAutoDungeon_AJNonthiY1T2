@@ -46,7 +46,6 @@ public class ItemSaveSystem : MonoBehaviour
         if (!File.Exists(ItemSavePath))
         {
             Debug.LogWarning("No save file found. Clearing all inventory slots.");
-            ClearAllInventorySlots();
             return;
         }
 
