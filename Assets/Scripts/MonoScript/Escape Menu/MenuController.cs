@@ -28,8 +28,8 @@ public class MenuController : MonoBehaviour
 
     bool isPaused;
 
-    [Header("Settings Screen: Video")]
-    public Dropdown resolutionDropdown;
+    //[Header("Settings Screen: Video")]
+    [HideInInspector] public Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
     public static MenuController Instance; private void Awake() { if (Instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); Instance = this; }
