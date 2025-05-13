@@ -46,6 +46,8 @@ public class ShopManager : MonoBehaviour
     public void GenerateShopItem()
     {
         DestroyShopItems();
-        AddRandomItems(8);
+        Debug.Log("Shop Items Cleared");
+        Delay.Run(0.1f, () => Debug.Log("Shop Items Created"));
+        Delay.Run(0.1f, () => AddRandomItems(8));
     }
 }

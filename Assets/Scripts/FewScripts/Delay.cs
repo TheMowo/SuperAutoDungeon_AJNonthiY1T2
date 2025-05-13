@@ -1,27 +1,39 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Delay : MonoBehaviour
 {
-    public delegate void delayDelegate(float delayTime);
-    delayDelegate delayTimeDelegate;
+    private static Delay _instance;
 
-    void Start()
+    void Awake()
     {
-        delayTimeDelegate += TheYo;
-        
-        StartCoroutine(DelayTime(1, delayTimeDelegate));
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public IEnumerator DelayTime(float delayTime, delayDelegate delayTimeDelegate)
+    public static void Run(float delaySeconds, Action callback)
     {
-        yield return new WaitForSeconds(delayTime);
-        delayTimeDelegate.Invoke(1);
+        if (_instance != null)
+        {
+            _instance.StartCoroutine(_instance.DelayCoroutine(delaySeconds, callback));
+        }
+        else
+        {
+            Debug.LogError("Delay instance not found in the scene.");
+        }
     }
 
-    void TheYo(float num)
+    private IEnumerator DelayCoroutine(float delaySeconds, Action callback)
     {
-        Debug.Log("test");
+        yield return new WaitForSeconds(delaySeconds);
+        callback?.Invoke();
     }
     
 }
