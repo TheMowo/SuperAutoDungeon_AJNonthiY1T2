@@ -6,7 +6,15 @@ public class ShopManager : MonoBehaviour
     public TMPro.TextMeshProUGUI[] priceTexts;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
-    private InventoryManager inventoryManager;
+    
+    public GameObject[] shopOpenState;
+    public GameObject[] shopCloseState;
+    public GameObject nextStageButton;
+
+    private void Awake()
+    {
+        AddRandomItems(8);
+    }
     public void AddRandomItems(int count)
     {
         for (int i = 0; i < count; i++)
@@ -24,8 +32,8 @@ public class ShopManager : MonoBehaviour
 
                 priceTexts[i].text = $"{randomItem.price} D";
             }
-            Debug.Log($"Restocking {count} item; restocked!");
         }
+        Debug.Log($"Restocking {count} item; restocked!");
     }
     public void DestroyShopItems()
     {
@@ -37,5 +45,28 @@ public class ShopManager : MonoBehaviour
             }
         }
         Debug.Log($"Trashing all items; trashed!");
+    }
+
+    public void GenerateShopItem()
+    {
+        DestroyShopItems();
+        Debug.Log("Shop Items Cleared");
+        Delay.Run(0.1f, () => Debug.Log("Shop Items Created"));
+        Delay.Run(0.1f, () => AddRandomItems(8));
+    }
+
+    public void OpenShopOnWin()
+    {
+        Debug.Log("OpenShopOnWin");
+        AddRandomItems(8);
+        foreach (var shopO in shopOpenState)
+        {
+            shopO.SetActive(true);
+        }
+        foreach (var shopC in shopCloseState)
+        {
+            shopC.SetActive(false);
+        }
+        nextStageButton.SetActive(true);
     }
 }

@@ -19,6 +19,15 @@ public class ShopSaveSystem : MonoBehaviour
         ShopLoad();
     }
 
+    private void Update()
+    {
+        if (Shop.active = false)
+        {
+            GetAllShopSlotList();
+            ShopLoad();
+        }
+    }
+
     public void GetAllShopSlotList()
     {
         ShopSlot = FindObjectsByType<ShopSlot>(FindObjectsSortMode.None).ToList();

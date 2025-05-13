@@ -16,9 +16,22 @@ public class EnemySaveSystem : MonoBehaviour
 
     void Start()
     {
+        GetAllPlayerUnitList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         EnemyLoad();
+    }
+
+    void GetAllPlayerUnitList()
+    {
+        if(FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList() != null)
+        {
+            allEnemys = FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList();
+        }
+        else
+        {
+            allEnemys.Clear();
+        }
     }
 
     public void EnemySaveData()
@@ -54,5 +67,19 @@ public class EnemySaveSystem : MonoBehaviour
             Debug.Log(matchingEnemy.uniqueID);
         }
         Debug.Log("Enemy Loaded!");
+    }
+
+    public void DeleteSaveFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, "EnemySaveData.json");
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted: " + fullPath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete at: " + fullPath);
+        }
     }
 }

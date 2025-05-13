@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class EnemiesUnit : MonoBehaviour
 
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
+    public Image enemiesUnitSprite;
     
     int DropGold;
     int MPDrop;
@@ -46,12 +48,19 @@ public class EnemiesUnit : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("test awake enemy unit 1");
         HP = enemiesUnitType.HP;
         ATK = enemiesUnitType.ATK;
+        Debug.Log("test awake enemy unit 2");
+        enemiesUnitSprite.sprite = enemiesUnitType.UnitSprite;
+        Debug.Log("test awake enemy unit 3");
         UpdateVisual();
         myType = enemiesUnitType.myType;
-        //SR = GetComponent<SpriteRenderer>();
-        //SR.sprite = playerUnitType.Sprite;
+    }
+
+    private void Start()
+    {
+        UpdateVisual();
     }
 
     public void UseConsumable(ConsumableItem consumable)
@@ -265,21 +274,30 @@ public class EnemiesUnit : MonoBehaviour
         Debug.Log("Fed");
     }
 
+    public EnemySaveSystem ESS;
+
     public EnemySaveData GetSaveData()
     {
         Debug.Log("Data Save : it did save Huh?");
-        return new EnemySaveData
+        if (FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList() != null)
         {
-            uniqueID = this.uniqueID,
-            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
-            BaseHP = this.HP,
-            BaseATK = this.ATK,
-            CurrentGreyDebuff = this.CurrentGreyDebuff,
-            CurrentGreenDebuff = this.CurrentGreenDebuff,
-            CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
-            CurrentGoldDebuff = this.CurrentGoldDebuff,
-            CurrentEffects = this.CurrentEffects,
-        };
+            return new EnemySaveData
+            {
+                uniqueID = this.uniqueID,
+                position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+                BaseHP = this.HP,
+                BaseATK = this.ATK,
+                CurrentGreyDebuff = this.CurrentGreyDebuff,
+                CurrentGreenDebuff = this.CurrentGreenDebuff,
+                CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
+                CurrentGoldDebuff = this.CurrentGoldDebuff,
+                CurrentEffects = this.CurrentEffects,
+            };
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void LoadFromSaveData(EnemySaveData data)

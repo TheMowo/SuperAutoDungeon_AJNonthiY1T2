@@ -76,4 +76,17 @@ public class InventoryManager : MonoBehaviour
 
         Debug.Log("Inventory Full!"); // If no slot is free
     }
+
+    public CurrencySaveData GetDataSave()
+    {
+        return new CurrencySaveData
+        {
+            doubloons = this.playerCurrency,
+        };
+    }
+
+    public void LoadFromSaveData(CurrencySaveData data)
+    {
+        this.playerCurrency = data.doubloons;
+    }
 }
