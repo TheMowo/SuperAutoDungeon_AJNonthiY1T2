@@ -17,7 +17,7 @@ public class MainMenuButton_NewGame : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 }
