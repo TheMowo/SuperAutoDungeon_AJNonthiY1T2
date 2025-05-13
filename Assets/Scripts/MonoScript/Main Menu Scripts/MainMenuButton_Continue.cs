@@ -30,4 +30,9 @@ public class MainMenuButton_Continue : MonoBehaviour
             this.GetComponent<Button>().interactable = false;
         }
     }
+
+    public void LoadSaveData()
+    {
+
+    }
 }
