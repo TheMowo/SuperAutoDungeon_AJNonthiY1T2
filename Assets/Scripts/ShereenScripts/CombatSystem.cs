@@ -28,7 +28,7 @@ public class CombatSystem : MonoBehaviour
     public float attackSpeed = 3.0f;
 
     [SerializeField] private int maxTurns = 5;
-    private int currentTurn = 0;
+    public int currentTurn = 1;
 
     public void Awake()
     {
@@ -60,7 +60,6 @@ public class CombatSystem : MonoBehaviour
 
     private IEnumerator BattleRoutine()
     {
-        currentTurn = 0;
         while (currentTurn < maxTurns)
         {
             if (playerUnits.Count == 0 || enemyUnits.Count == 0)
