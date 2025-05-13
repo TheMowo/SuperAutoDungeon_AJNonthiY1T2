@@ -115,22 +115,15 @@ public class CombatSystem : MonoBehaviour
                 PSS.PlayerSaveData();
                 TSS.ItemSaveData();
                 CSS.CurrencySaveData();
+                
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
-
                 RepositionUnits();
-                //foreach (var shopO in shopOpenState)
-                //{
-                //    shopO.SetActive(true);
-                //}
-                //foreach (var shopC in shopCloseState)
-                //{
-                //    shopC.SetActive(false);
-                //}
-                shopManager.OpenShopOnWin();
 
+                shopManager.OpenShopOnWin();
                 SSS.GetAllShopSlotList();
                 SSS.ShopoSaveData();
+
                 yield break;
             }
             yield return new WaitForSeconds(1.0f);
@@ -162,11 +155,17 @@ public class CombatSystem : MonoBehaviour
         }
         else
         {
+            PSS.PlayerSaveData();
+            TSS.ItemSaveData();
+            CSS.CurrencySaveData();
+
             Debug.Log("No one died, Player Wins");
             ResetPlayerHP();
-
             RepositionUnits();
+
             shopManager.OpenShopOnWin();
+            SSS.GetAllShopSlotList();
+            SSS.ShopoSaveData();
         }
     }
 

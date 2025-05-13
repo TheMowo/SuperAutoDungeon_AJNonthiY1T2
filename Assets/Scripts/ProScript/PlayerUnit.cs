@@ -95,7 +95,6 @@ public class PlayerUnit : MonoBehaviour
 
             CurrentGoldDebuff += consumable.GoldDebuffEffect;
 
-
             if (CurrentGreyDebuff < 0)
                 CurrentGreyDebuff = 0;
             if (CurrentGreenDebuff < 0)
@@ -107,6 +106,10 @@ public class PlayerUnit : MonoBehaviour
 
             CheckDebuffFull();
             CheckDebuffFull();
+        }
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
+        {
+            CurrentHP += consumable.HpEffect;
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.CleansingPotion)
         {
