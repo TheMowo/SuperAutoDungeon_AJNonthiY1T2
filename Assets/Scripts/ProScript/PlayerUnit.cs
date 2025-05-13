@@ -34,7 +34,7 @@ public class PlayerUnit : MonoBehaviour
     public int CurrentATK;
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
-    public Image unitSprite;
+    public Image playerUnitSprite;
     public PlayerType playerType;
     public List<DebuffEffectType> CurrentEffects;
     public int TurnSkipSlow;
@@ -64,7 +64,7 @@ public class PlayerUnit : MonoBehaviour
         BasedHP = playerUnitType.HP;
         BasedATK = playerUnitType.ATK;
         
-        unitSprite.sprite = playerUnitType.UnitSprite;
+        playerUnitSprite.sprite = playerUnitType.UnitSprite;
         UpdateVisual();
     }
 

@@ -16,7 +16,7 @@ public class EnemiesUnitType : ScriptableObject
     public int ATK;
     public int DropGold;
     public int MPDrop;
-    public Sprite Sprite;
+    public Sprite UnitSprite;
     public ConsumableItem FavFood;
     public bool isUndead;
 }

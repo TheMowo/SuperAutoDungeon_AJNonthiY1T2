@@ -849,7 +849,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 450228253}
   atkText: {fileID: 1510431506}
-  unitSprite: {fileID: 0}
+  playerUnitSprite: {fileID: 0}
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -2262,8 +2262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 0}
-  m_SizeDelta: {x: 125, y: 125}
+  m_AnchoredPosition: {x: -80, y: 112}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392277740
 MonoBehaviour:
@@ -2401,8 +2401,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1360257903115770962, guid: 564deed30ffe67f4eb59eec36b86dd3b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3675,6 +3675,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4429534323859875788, guid: 14d2fa778d474b843b62282973d43427, type: 3}
   m_PrefabInstance: {fileID: 4853378785025476547}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &521655830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 572115064174767079, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &532262007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4737135304828878252, guid: 14d2fa778d474b843b62282973d43427, type: 3}
@@ -3691,6 +3702,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2562996564818354951, guid: c4f769a0646cbf34d97b031b7e20eed9, type: 3}
   m_PrefabInstance: {fileID: 1542372411}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &566700657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 285408849437936974, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &569599896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,7 +3867,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 297243172}
   atkText: {fileID: 1896374319}
-  unitSprite: {fileID: 609740079}
+  playerUnitSprite: {fileID: 609740079}
   playerType: 1
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -3872,6 +3894,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statUpPrefab: {fileID: 6586398139040385952, guid: bafdb5669eeae1b4c866096bb88cd186, type: 3}
   gameCanvas: {fileID: 74164745}
+--- !u!114 &616367284 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4737135304828878252, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &628777159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5393,6 +5426,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894740010}
   m_CullTransparentMesh: 1
+--- !u!114 &909242178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3711039160562966611, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &968235487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &984206090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5811,7 +5855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Scene
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6331,7 +6375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1063637901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6374,7 +6418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
+  m_Sprite: {fileID: 1055921042916893844, guid: a148a1c4d62e3ac46994682c7ee5ed37, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6420,22 +6464,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesUnitType: {fileID: 11400000, guid: 8cd63eca302515542b8fbd03166e6b7a, type: 2}
+  enemiesUnitType: {fileID: 11400000, guid: 12afc8e2c5c7616459fec985e03a3642, type: 2}
   uniqueID: 3
   HP: 0
   ATK: 0
   hpText: {fileID: 1018761997}
   atkText: {fileID: 1319065531}
+  enemiesUnitSprite: {fileID: 1063637902}
   CurrentEffects: 
   TurnSkipSlow: 0
-  GreyDebuffBar: {fileID: 0}
-  GreenDebuffBar: {fileID: 0}
-  LightBlueDebuffBar: {fileID: 0}
-  GoldDebuffBar: {fileID: 0}
-  GreyDebuffText: {fileID: 0}
-  GreenDebuffText: {fileID: 0}
-  LightBlueDebuffText: {fileID: 0}
-  GoldDebuffText: {fileID: 0}
+  GreyDebuffBar: {fileID: 1819142428}
+  GreenDebuffBar: {fileID: 1955993299}
+  LightBlueDebuffBar: {fileID: 909242178}
+  GoldDebuffBar: {fileID: 521655830}
+  GreyDebuffText: {fileID: 616367284}
+  GreenDebuffText: {fileID: 566700657}
+  LightBlueDebuffText: {fileID: 2053504044}
+  GoldDebuffText: {fileID: 2081849808}
   MaxDebuff: 3
   ESS: {fileID: 0}
 --- !u!1 &1063652260
@@ -6478,9 +6523,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75.966064, y: 638.8474}
+  m_AnchoredPosition: {x: -1457.8125, y: -570}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1.01, y: 1}
+  m_Pivot: {x: -0.1, y: 0}
 --- !u!114 &1063652262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7734,6 +7779,7 @@ MonoBehaviour:
   enemyUnits:
   - {fileID: 1010031871078717547}
   - {fileID: 1504271218}
+  - {fileID: 1063637905}
   playerPositions:
   - {fileID: 775915125}
   - {fileID: 489142964}
@@ -8421,7 +8467,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 2042002289}
   atkText: {fileID: 1267563318}
-  unitSprite: {fileID: 1413335269}
+  playerUnitSprite: {fileID: 1413335269}
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -9168,12 +9214,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesUnitType: {fileID: 11400000, guid: 8cd63eca302515542b8fbd03166e6b7a, type: 2}
+  enemiesUnitType: {fileID: 11400000, guid: 12afc8e2c5c7616459fec985e03a3642, type: 2}
   uniqueID: Enemy2
   HP: 0
   ATK: 0
   hpText: {fileID: 763116686}
   atkText: {fileID: 426412685}
+  enemiesUnitSprite: {fileID: 1504271215}
   CurrentEffects: 
   TurnSkipSlow: 0
   GreyDebuffBar: {fileID: 1065205562}
@@ -9728,9 +9775,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fca95bed38f59a84bb652d93200faf79, type: 2}
   itemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
   shopOpenState:
-  - {fileID: 1478435145}
-  shopCloseState:
   - {fileID: 380313215}
+  shopCloseState:
+  - {fileID: 1478435145}
   nextStageButton: {fileID: 392277738}
 --- !u!4 &1547362857
 Transform:
@@ -10451,6 +10498,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b37515a7d29d846b31abaec8fa4320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1819142428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1974863361204518199, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1848658814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10584,7 +10642,7 @@ MonoBehaviour:
   ShopSlot: []
   fileName: ShopSaveData
   ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
-  Shop: {fileID: 0}
+  Shop: {fileID: 1478435145}
 --- !u!114 &1850631905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10968,6 +11026,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1955993299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6731881118723191589, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2005677588 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7446105506645258722, guid: c869644a15dbaf944be4cf5bdd702058, type: 3}
@@ -11173,6 +11242,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042002286}
   m_CullTransparentMesh: 1
+--- !u!114 &2053504044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5523746910128254844, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2066599446 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6731881118723191589, guid: 14d2fa778d474b843b62282973d43427, type: 3}
@@ -11182,6 +11262,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2081849808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3748946616597875564, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &2089892502 stripped
@@ -11432,12 +11523,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesUnitType: {fileID: 11400000, guid: 8cd63eca302515542b8fbd03166e6b7a, type: 2}
+  enemiesUnitType: {fileID: 11400000, guid: 12afc8e2c5c7616459fec985e03a3642, type: 2}
   uniqueID: Enemy1
   HP: 0
   ATK: 0
   hpText: {fileID: 217888637730994228}
   atkText: {fileID: 2516654386379562437}
+  enemiesUnitSprite: {fileID: 5642492611405910757}
   CurrentEffects: 
   TurnSkipSlow: 0
   GreyDebuffBar: {fileID: 1499462093}

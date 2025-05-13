@@ -14,6 +14,7 @@ public class EnemiesUnit : MonoBehaviour
 
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
+    public Image enemiesUnitSprite;
     
     int DropGold;
     int MPDrop;
@@ -47,12 +48,14 @@ public class EnemiesUnit : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("test awake enemy unit 1");
         HP = enemiesUnitType.HP;
         ATK = enemiesUnitType.ATK;
+        Debug.Log("test awake enemy unit 2");
+        enemiesUnitSprite.sprite = enemiesUnitType.UnitSprite;
+        Debug.Log("test awake enemy unit 3");
         UpdateVisual();
         myType = enemiesUnitType.myType;
-        //SR = GetComponent<SpriteRenderer>();
-        //SR.sprite = playerUnitType.Sprite;
     }
 
     private void Start()

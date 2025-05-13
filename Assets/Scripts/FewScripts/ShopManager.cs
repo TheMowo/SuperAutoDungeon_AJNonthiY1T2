@@ -32,8 +32,8 @@ public class ShopManager : MonoBehaviour
 
                 priceTexts[i].text = $"{randomItem.price} D";
             }
-            Debug.Log($"Restocking {count} item; restocked!");
         }
+        Debug.Log($"Restocking {count} item; restocked!");
     }
     public void DestroyShopItems()
     {
@@ -57,6 +57,7 @@ public class ShopManager : MonoBehaviour
 
     public void OpenShopOnWin()
     {
+        Debug.Log("OpenShopOnWin");
         AddRandomItems(8);
         foreach (var shopO in shopOpenState)
         {

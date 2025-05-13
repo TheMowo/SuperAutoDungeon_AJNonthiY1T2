@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c2c74654931ee444c8340a86ee298616
+guid: 0303e3a338676564bb38e2eb36ed487c
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -103,12 +103,12 @@ TextureImporter:
       name: PlayerUnitSwordman_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 52
-        height: 34
+        x: 0
+        y: 0
+        width: 60
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0cade471499f4b34ca146e7072d10391
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayerUnitSwordman_0: -2813320989260563313
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
