@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
 
     //AudioSources that will be spawned and destroyed to play sounds
     [SerializeField] private AudioSource _soundFxSource;
+    [SerializeField] private AudioSource _uiSource;
     [SerializeField] private AudioSource _musicSource; //might move to a music manager since it uses a whole system of it's own??
     public void PlaySfxClip(AudioClip audioClip, Transform spawnTransform)
     {
