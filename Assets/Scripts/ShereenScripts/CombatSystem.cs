@@ -15,9 +15,9 @@ public class CombatSystem : MonoBehaviour
     public Transform battlePoint;
     public enemySpawner enemySpawner;
 
-    public GameObject[] shopOpenState;
-    public GameObject[] shopCloseState;
-    public GameObject nextStageButton;
+    //public GameObject[] shopOpenState;
+    //public GameObject[] shopCloseState;
+    //public GameObject nextStageButton;
     public ShopManager shopManager;
 
     public PlayerSaveSystem PSS;
@@ -120,18 +120,8 @@ public class CombatSystem : MonoBehaviour
                 ResetPlayerHP();
 
                 RepositionUnits();
+                shopManager.OpenShopOnWin();
 
-                shopManager.AddRandomItems(8);
-                
-                foreach (var shopO in shopOpenState)
-                {
-                    shopO.SetActive(true);
-                }
-                foreach (var shopC in shopCloseState)
-                {
-                    shopC.SetActive(false);
-                }
-                nextStageButton.SetActive(true);
                 SSS.GetAllShopSlotList();
                 SSS.ShopoSaveData();
                 yield break;
@@ -169,17 +159,7 @@ public class CombatSystem : MonoBehaviour
             ResetPlayerHP();
 
             RepositionUnits();
-
-            shopManager.AddRandomItems(8);
-            foreach (var shopO in shopOpenState)
-                {
-                    shopO.SetActive(true);
-                }
-                foreach (var shopC in shopCloseState)
-                {
-                    shopC.SetActive(false);
-                }
-            nextStageButton.SetActive(true);
+            shopManager.OpenShopOnWin();
         }
     }
 
@@ -392,7 +372,10 @@ public class CombatSystem : MonoBehaviour
         {
             if (player != null)
             {
-                player.BasedHP = player.playerUnitType.HP;
+                //player.BasedHP = player.playerUnitType.HP;
+                //player.BasedATK = player.playerUnitType.ATK;
+                player.CurrentATK = 0;
+                player.CurrentHP = 0;
                 Debug.Log(player.name + " HP Reset to " + player.BasedHP);
             }
         }
