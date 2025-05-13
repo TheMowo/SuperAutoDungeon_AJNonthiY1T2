@@ -32,12 +32,11 @@ public class MenuController : MonoBehaviour
     public Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
+    public static MenuController Instance; private void Awake() { if (Instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); Instance = this; }
+
     //// void Start
     private void Start()
     {
-        //Dont destroy
-        DontDestroyOnLoad(this.gameObject);
-
         //Find Screen Resolutions
         resolutions = Screen.resolutions;
 
