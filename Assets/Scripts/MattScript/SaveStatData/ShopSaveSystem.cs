@@ -10,23 +10,27 @@ public class ShopSaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
+    public GameObject Shop;
 
     void Start()
     {
-        GetAllShopSlotList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         ShopLoad();
     }
 
-    void GetAllShopSlotList()
+    private void Update()
     {
-        ShopSlot = FindObjectsByType<ShopSlot>(FindObjectsSortMode.None).ToList();
+        if (Shop.active = false)
+        {
+            GetAllShopSlotList();
+            ShopLoad();
+        }
     }
 
-    private void OnApplicationQuit()
+    public void GetAllShopSlotList()
     {
-        ShopoSaveData();
+        ShopSlot = FindObjectsByType<ShopSlot>(FindObjectsSortMode.None).ToList();
     }
 
     public void ShopoSaveData()
@@ -113,6 +117,20 @@ public class ShopSaveSystem : MonoBehaviour
         foreach (Transform child in slot.transform)
         {
             Destroy(child.gameObject);
+        }
+    }
+
+    public void DeleteSaveFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, "ShopSaveData.json");
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted: " + fullPath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete at: " + fullPath);
         }
     }
 }

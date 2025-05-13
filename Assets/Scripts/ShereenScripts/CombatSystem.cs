@@ -122,6 +122,7 @@ public class CombatSystem : MonoBehaviour
                 RepositionUnits();
 
                 shopManager.AddRandomItems(8);
+                
                 foreach (var shopO in shopOpenState)
                 {
                     shopO.SetActive(true);
@@ -131,7 +132,7 @@ public class CombatSystem : MonoBehaviour
                     shopC.SetActive(false);
                 }
                 nextStageButton.SetActive(true);
-
+                SSS.GetAllShopSlotList();
                 SSS.ShopoSaveData();
                 yield break;
             }

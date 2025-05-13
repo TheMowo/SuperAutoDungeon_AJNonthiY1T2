@@ -2430,6 +2430,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 1215797370}
   atkText: {fileID: 466581826}
+  unitSprite: {fileID: 0}
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -5844,7 +5845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2432.4556, y: 1738.9324}
+  m_AnchoredPosition: {x: -2425.6228, y: 1715.0178}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &799732249
@@ -7392,6 +7393,7 @@ MonoBehaviour:
   ShopSlot: []
   fileName: ShopSaveData
   ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
+  Shop: {fileID: 433521274}
 --- !u!114 &990847618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9810,6 +9812,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 1235217168}
   atkText: {fileID: 751576425}
+  unitSprite: {fileID: 0}
   playerType: 1
   CurrentEffects: 
   TurnSkipSlow: 0
@@ -11679,6 +11682,7 @@ MonoBehaviour:
   CurrentATK: 0
   hpText: {fileID: 129314639}
   atkText: {fileID: 1094184801}
+  unitSprite: {fileID: 0}
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0

@@ -114,5 +114,19 @@ public class ItemSaveSystem : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+    public void DeleteSaveFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, "ItemSaveData.json");
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted: " + fullPath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete at: " + fullPath);
+        }
+    }
 }
 

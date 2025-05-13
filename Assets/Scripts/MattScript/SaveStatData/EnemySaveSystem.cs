@@ -68,4 +68,18 @@ public class EnemySaveSystem : MonoBehaviour
         }
         Debug.Log("Enemy Loaded!");
     }
+
+    public void DeleteSaveFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, "EnemySaveData.json");
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted: " + fullPath);
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete at: " + fullPath);
+        }
+    }
 }
