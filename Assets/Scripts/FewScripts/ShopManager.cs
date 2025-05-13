@@ -6,6 +6,10 @@ public class ShopManager : MonoBehaviour
     public TMPro.TextMeshProUGUI[] priceTexts;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
+    
+    public GameObject[] shopOpenState;
+    public GameObject[] shopCloseState;
+    public GameObject nextStageButton;
 
     private void Awake()
     {
@@ -49,5 +53,19 @@ public class ShopManager : MonoBehaviour
         Debug.Log("Shop Items Cleared");
         Delay.Run(0.1f, () => Debug.Log("Shop Items Created"));
         Delay.Run(0.1f, () => AddRandomItems(8));
+    }
+
+    public void OpenShopOnWin()
+    {
+        AddRandomItems(8);
+        foreach (var shopO in shopOpenState)
+        {
+            shopO.SetActive(true);
+        }
+        foreach (var shopC in shopCloseState)
+        {
+            shopC.SetActive(false);
+        }
+        nextStageButton.SetActive(true);
     }
 }

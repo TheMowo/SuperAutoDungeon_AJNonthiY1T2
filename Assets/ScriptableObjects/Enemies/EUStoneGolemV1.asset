@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EUStoneGolemV1
   m_EditorClassIdentifier: 
   myType: 0
-  HP: 10
-  ATK: 1
+  HP: 18
+  ATK: 4
   DropGold: 15
   MPDrop: 1
   Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}

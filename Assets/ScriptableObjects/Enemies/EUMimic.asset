@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EUMimic
   m_EditorClassIdentifier: 
   myType: 0
-  HP: 12
+  HP: 20
   ATK: 3
   DropGold: 50
   MPDrop: 1
