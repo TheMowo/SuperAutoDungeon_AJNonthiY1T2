@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c2c74654931ee444c8340a86ee298616
+guid: 9272a3dc8b455b9458c6ee335aae5b63
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2813320989260563313
-    second: PlayerUnitSwordman_0
+      213: -1956347417829856741
+    second: EnemyUnitZombie_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerUnitSwordman_0
+      name: EnemyUnitZombie_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 52
-        height: 34
+        x: 0
+        y: 0
+        width: 60
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8c39f3477315f8d0800000000000000
-      internalID: -2813320989260563313
+      spriteID: b1aaffe7368a9d4e0800000000000000
+      internalID: -1956347417829856741
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e5d0f2f690f1f5c46bffc3c7c77e8cd7
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerUnitSwordman_0: -2813320989260563313
+      EnemyUnitZombie_0: -1956347417829856741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
