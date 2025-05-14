@@ -1,12 +1,10 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -21,11 +19,11 @@ public class MainMenuController : MonoBehaviour
     //[SerializeField] private GameObject[] EscapeMenuPanels;
 
     [Header("Escape Menu Screens")]
-    [SerializeField] private GameObject MainPanel;
+    //[SerializeField] private GameObject MainPanel;
     [SerializeField] private GameObject SettingsPanel;
 
-    [Header("Settings Screen: Video")]
-    public Dropdown resolutionDropdown;
+    //[Header("Settings Screen: Video")]
+    public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
     //// void Start
@@ -33,7 +31,6 @@ public class MainMenuController : MonoBehaviour
     {
         //Find Screen Resolutions
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
 
         List<string> optionsList = new List<string>();

@@ -1293,22 +1293,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 186597141}
-    - target: {fileID: 1191298927905334103, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191298927905334103, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191298927905334103, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 317.77026
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191298927905334103, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -326
-      objectReference: {fileID: 0}
     - target: {fileID: 1614460871339347093, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 865.1173
@@ -1381,22 +1365,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 186597141}
-    - target: {fileID: 2644341275262470992, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644341275262470992, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644341275262470992, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 317.77026
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644341275262470992, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -476.6667
-      objectReference: {fileID: 0}
     - target: {fileID: 3067985510013447946, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1529,22 +1497,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu (permanent)
       objectReference: {fileID: 0}
-    - target: {fileID: 6997044194748638302, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997044194748638302, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997044194748638302, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 317.77026
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997044194748638302, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -175.33334
-      objectReference: {fileID: 0}
     - target: {fileID: 7210489376393539653, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1561,10 +1513,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 186597141}
-    - target: {fileID: 9040746186497786462, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9655,11 +9603,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426938015}
   m_CullTransparentMesh: 1
---- !u!1 &1461068805 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9040746186497786462, guid: 60016dd58d6781d4595cbce2b82709e9, type: 3}
-  m_PrefabInstance: {fileID: 318133055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470396144
 GameObject:
   m_ObjectHideFlags: 0
@@ -13316,11 +13259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EscapeMenuObject: {fileID: 1369446958}
-  EscapeMenuButtons:
-  - {fileID: 1461068805}
-  MainPanel: {fileID: 0}
+  EscapeMenuButtons: []
   SettingsPanel: {fileID: 1071449544}
-  resolutionDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 999375438}
   SettingsMenuPanels:
   - {fileID: 550511605}
   - {fileID: 1073244625}
