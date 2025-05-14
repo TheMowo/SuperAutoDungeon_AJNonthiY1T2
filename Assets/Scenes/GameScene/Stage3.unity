@@ -808,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitType: {fileID: 11400000, guid: c7c3f33cafa18fa43b5616514973ae76, type: 2}
   uniqueID: 
+  isDead: 0
   BasedHP: 0
   BasedATK: 0
   CurrentHP: 0
@@ -822,6 +823,10 @@ MonoBehaviour:
   GreenDebuffBar: {fileID: 0}
   LightBlueDebuffBar: {fileID: 0}
   GoldDebuffBar: {fileID: 0}
+  GreyDebuffBox: {fileID: 0}
+  GreenDebuffBox: {fileID: 0}
+  LightBlueDebuffBox: {fileID: 0}
+  GoldDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 0}
   GreenDebuffText: {fileID: 0}
   LightBlueDebuffText: {fileID: 0}
@@ -1873,6 +1878,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+--- !u!114 &322643032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7960109880886428981, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &322643033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5422953850004158368, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &322643034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653017989851335354, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &322643035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2241993963829863429, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 322643031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &334637489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3191,6 +3240,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+--- !u!114 &462640381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7960109880886428981, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 462640380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &462640382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653017989851335354, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 462640380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &462640383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2241993963829863429, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 462640380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &462640384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5422953850004158368, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 462640380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &474666502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3850,6 +3943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitType: {fileID: 11400000, guid: 8473ee26c70b88540846d0d0a659a213, type: 2}
   uniqueID: Player2
+  isDead: 0
   BasedHP: 0
   BasedATK: 0
   CurrentHP: 0
@@ -3864,6 +3958,10 @@ MonoBehaviour:
   GreenDebuffBar: {fileID: 1533254458}
   LightBlueDebuffBar: {fileID: 16556515}
   GoldDebuffBar: {fileID: 290534291}
+  GreyDebuffBox: {fileID: 4853378785025476551}
+  GreenDebuffBox: {fileID: 4853378785025476550}
+  LightBlueDebuffBox: {fileID: 4853378785025476549}
+  GoldDebuffBox: {fileID: 4853378785025476548}
   GreyDebuffText: {fileID: 1242820157}
   GreenDebuffText: {fileID: 1431043582}
   LightBlueDebuffText: {fileID: 413781209}
@@ -5116,6 +5214,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 137}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &787117357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787117359}
+  - component: {fileID: 787117358}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787117358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787117357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f644259db386c5449b6ce4d41389427b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatSystem: {fileID: 1302574091}
+  PlayerLosePrefab: {fileID: 2083032019866338842, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
+--- !u!4 &787117359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787117357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 917.88727, y: 489.4704, z: 3.969052}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &794455407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5359,6 +5503,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+--- !u!114 &874693054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7960109880886428981, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 874693053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &874693055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653017989851335354, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 874693053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &874693056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2241993963829863429, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 874693053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &874693057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5422953850004158368, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 874693053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &894740010
 GameObject:
   m_ObjectHideFlags: 0
@@ -6467,7 +6655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1063637901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6556,8 +6744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesUnitType: {fileID: 11400000, guid: 80318f869d1a4754e86119a5270c614d, type: 2}
-  uniqueID: 3
+  enemiesUnitType: {fileID: 11400000, guid: 035826ccfe60b0e4d8fdc1db84b529f1, type: 2}
+  uniqueID: Enemy3
   HP: 0
   ATK: 0
   hpText: {fileID: 1018761997}
@@ -6569,6 +6757,10 @@ MonoBehaviour:
   GreenDebuffBar: {fileID: 1955993299}
   LightBlueDebuffBar: {fileID: 909242178}
   GoldDebuffBar: {fileID: 521655830}
+  GreyDebuffBox: {fileID: 322643033}
+  GreenDebuffBox: {fileID: 322643035}
+  LightBlueDebuffBox: {fileID: 322643034}
+  GoldDebuffBox: {fileID: 322643032}
   GreyDebuffText: {fileID: 616367284}
   GreenDebuffText: {fileID: 566700657}
   LightBlueDebuffText: {fileID: 2053504044}
@@ -6629,7 +6821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5076.726, y: -239.1459}
+  m_AnchoredPosition: {x: -776.40753, y: -1052.6542}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 0}
 --- !u!114 &1063652262
@@ -7778,6 +7970,7 @@ MonoBehaviour:
   enemyUnits:
   - {fileID: 1010031871078717547}
   - {fileID: 1504271218}
+  - {fileID: 1063637905}
   playerPositions:
   - {fileID: 775915125}
   - {fileID: 489142964}
@@ -7789,6 +7982,7 @@ MonoBehaviour:
   battlePoint: {fileID: 393579852}
   enemySpawner: {fileID: 318970897}
   shopManager: {fileID: 1547362856}
+  isWin: 0
   PSS: {fileID: 0}
   TSS: {fileID: 0}
   SSS: {fileID: 0}
@@ -7797,6 +7991,7 @@ MonoBehaviour:
   maxTurns: 6
   currentTurn: 1
   swordmanAttackAudio_: {fileID: 0}
+  bowmanAttackAudio_: {fileID: 0}
 --- !u!114 &1302574092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7922,6 +8117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySaveSystem: {fileID: 0}
   playerSaveSystem: {fileID: 0}
+  itemSaveSystem: {fileID: 0}
 --- !u!4 &1316333594
 Transform:
   m_ObjectHideFlags: 0
@@ -8540,6 +8736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitType: {fileID: 11400000, guid: d1c3a02c204833945bde928dfd6b13dd, type: 2}
   uniqueID: Player1
+  isDead: 0
   BasedHP: 0
   BasedATK: 0
   CurrentHP: 0
@@ -8554,6 +8751,10 @@ MonoBehaviour:
   GreenDebuffBar: {fileID: 2066599446}
   LightBlueDebuffBar: {fileID: 847117806}
   GoldDebuffBar: {fileID: 252187936}
+  GreyDebuffBox: {fileID: 462640384}
+  GreenDebuffBox: {fileID: 462640383}
+  LightBlueDebuffBox: {fileID: 462640382}
+  GoldDebuffBox: {fileID: 462640381}
   GreyDebuffText: {fileID: 281401100}
   GreenDebuffText: {fileID: 123236785}
   LightBlueDebuffText: {fileID: 213784312}
@@ -9293,7 +9494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesUnitType: {fileID: 11400000, guid: 3689bb7666c7b7b4baa9b84e90410611, type: 2}
+  enemiesUnitType: {fileID: 11400000, guid: 480db62faf00c2840ac2ca2abc027bdd, type: 2}
   uniqueID: Enemy2
   HP: 0
   ATK: 0
@@ -9306,6 +9507,10 @@ MonoBehaviour:
   GreenDebuffBar: {fileID: 1294498030}
   LightBlueDebuffBar: {fileID: 1643078964}
   GoldDebuffBar: {fileID: 1144015041}
+  GreyDebuffBox: {fileID: 1524703960}
+  GreenDebuffBox: {fileID: 1524703959}
+  LightBlueDebuffBox: {fileID: 1524703958}
+  GoldDebuffBox: {fileID: 1524703957}
   GreyDebuffText: {fileID: 1466506651}
   GreenDebuffText: {fileID: 438270451}
   LightBlueDebuffText: {fileID: 2121609917}
@@ -9701,6 +9906,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+--- !u!114 &1524703957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7960109880886428981, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 1524703956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524703958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653017989851335354, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 1524703956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524703959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2241993963829863429, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 1524703956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524703960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5422953850004158368, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 1524703956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1533254458 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6731881118723191589, guid: 14d2fa778d474b843b62282973d43427, type: 3}
@@ -11496,7 +11745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4f1e3ec473a8648a1f4f29386a5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesUnitType: {fileID: 11400000, guid: 80318f869d1a4754e86119a5270c614d, type: 2}
+  enemiesUnitType: {fileID: 11400000, guid: 480db62faf00c2840ac2ca2abc027bdd, type: 2}
   uniqueID: Enemy1
   HP: 0
   ATK: 0
@@ -11509,6 +11758,10 @@ MonoBehaviour:
   GreenDebuffBar: {fileID: 457321434}
   LightBlueDebuffBar: {fileID: 1430976067}
   GoldDebuffBar: {fileID: 92401917}
+  GreyDebuffBox: {fileID: 874693057}
+  GreenDebuffBox: {fileID: 874693056}
+  LightBlueDebuffBox: {fileID: 874693055}
+  GoldDebuffBox: {fileID: 874693054}
   GreyDebuffText: {fileID: 532262007}
   GreenDebuffText: {fileID: 219205128}
   LightBlueDebuffText: {fileID: 121774291}
@@ -11927,6 +12180,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+--- !u!114 &4853378785025476548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7960109880886428981, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 4853378785025476547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4853378785025476549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653017989851335354, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 4853378785025476547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4853378785025476550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2241993963829863429, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 4853378785025476547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4853378785025476551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5422953850004158368, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+  m_PrefabInstance: {fileID: 4853378785025476547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4947006979752350381
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12238,3 +12535,4 @@ SceneRoots:
   - {fileID: 318970898}
   - {fileID: 2144414847}
   - {fileID: 1316333594}
+  - {fileID: 787117359}

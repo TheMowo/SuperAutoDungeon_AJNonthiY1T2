@@ -8,7 +8,7 @@ public class CheckPlayerLose : MonoBehaviour
     bool isOver = false;
     void Update()
     {
-        if(combatSystem.playerUnits.Count == 0 && isOver == false)
+        if(combatSystem.playerUnits[1].isDead && isOver == false)
         {
             TriggerLose();
         }

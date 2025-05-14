@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EUBlaze
   m_EditorClassIdentifier: 
   myType: 2
-  HP: 14
-  ATK: 3
-  DropGold: 15
+  HP: 16
+  ATK: 6
+  DropGold: 25
   MPDrop: 1
-  Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
+  UnitSprite: {fileID: -7697641174695945914, guid: 418d929a440c0754a86fbbf47275d1d2, type: 3}
   FavFood: {fileID: 0}
   isUndead: 0
