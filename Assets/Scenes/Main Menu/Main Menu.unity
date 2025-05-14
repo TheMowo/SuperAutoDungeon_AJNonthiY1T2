@@ -1069,7 +1069,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241331431}
   m_CullTransparentMesh: 1
---- !u!1 &303205695
+--- !u!1 &266656602
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1077,85 +1077,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 303205702}
-  - component: {fileID: 303205701}
-  - component: {fileID: 303205700}
-  - component: {fileID: 303205699}
-  - component: {fileID: 303205698}
-  - component: {fileID: 303205696}
+  - component: {fileID: 266656608}
+  - component: {fileID: 266656607}
+  - component: {fileID: 266656606}
+  - component: {fileID: 266656605}
+  - component: {fileID: 266656604}
+  - component: {fileID: 266656603}
   m_Layer: 0
-  m_Name: Player Save Scripts
+  m_Name: ===SaveLoad===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &303205696
+--- !u!114 &266656603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303205695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f911d2587527594e8b79fce948f5bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShopSlot: []
-  fileName: ShopSaveData
-  ItemPrefab: {fileID: 0}
-  Shop: {fileID: 0}
---- !u!114 &303205698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303205695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504d6893417f7f54eadbf82a665df6f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allPlayers: []
-  fileName: PlayerSaveData
---- !u!114 &303205699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303205695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d9806b7f27913041bb8d5e02098b2a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Inventoryslot: []
-  fileName: ItemSaveData
-  ItemPrefab: {fileID: 0}
---- !u!114 &303205700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303205695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2578382fe2b4cb4a8a891ebef393cd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allEnemys: []
-  fileName: EnemySaveData
---- !u!114 &303205701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303205695}
+  m_GameObject: {fileID: 266656602}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03226edc44e111d42a94f539eb1b9bd9, type: 3}
@@ -1163,16 +1104,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Currency: {fileID: 0}
   fileName: CurrencySaveData
---- !u!4 &303205702
+--- !u!114 &266656604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266656602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f911d2587527594e8b79fce948f5bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopSlot: []
+  fileName: ShopSaveData
+  ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
+  Shop: {fileID: 0}
+--- !u!114 &266656605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266656602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9806b7f27913041bb8d5e02098b2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inventoryslot: []
+  fileName: ItemSaveData
+  ItemPrefab: {fileID: 4100813280967360941, guid: 20b42538b7517a645afe0eb65511c26d, type: 3}
+--- !u!114 &266656606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266656602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2578382fe2b4cb4a8a891ebef393cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allEnemys: []
+  fileName: EnemySaveData
+--- !u!114 &266656607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266656602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504d6893417f7f54eadbf82a665df6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPlayers: []
+  fileName: PlayerSaveData
+--- !u!4 &266656608
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303205695}
+  m_GameObject: {fileID: 266656602}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1093.3586, y: 508.9141, z: 4.797833}
+  m_LocalPosition: {x: 896.7476, y: 358.4825, z: -5.324671}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9841,11 +9841,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9298a720b11f6a34682223723c7d4981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencySaveSystem: {fileID: 303205701}
-  enemySaveSystem: {fileID: 303205700}
-  itemSaveSystem: {fileID: 303205699}
-  playerSaveSystem: {fileID: 303205698}
-  shopSaveSystem: {fileID: 303205696}
+  currencySaveSystem: {fileID: 266656603}
+  enemySaveSystem: {fileID: 266656606}
+  itemSaveSystem: {fileID: 266656605}
+  playerSaveSystem: {fileID: 266656607}
+  shopSaveSystem: {fileID: 266656604}
   ConfirmationOverlay: {fileID: 138751196}
 --- !u!114 &1479534210
 MonoBehaviour:
@@ -13271,7 +13271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EscapeMenuObject: {fileID: 1369446958}
-  EscapeMenuButtons: []
   SettingsPanel: {fileID: 1071449544}
   resolutionDropdown: {fileID: 999375438}
   SettingsMenuPanels:
@@ -13754,9 +13753,9 @@ SceneRoots:
   - {fileID: 2020558897}
   - {fileID: 1939874090}
   - {fileID: 1670254800}
-  - {fileID: 303205702}
   - {fileID: 915863260}
   - {fileID: 8287792744354225400}
   - {fileID: 1555009097}
   - {fileID: 318133055}
   - {fileID: 186597138}
+  - {fileID: 266656608}

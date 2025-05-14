@@ -6773,9 +6773,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23.6167, y: 718.239}
+  m_AnchoredPosition: {x: -3369.0337, y: -178.26855}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: -0.1, y: 1}
+  m_Pivot: {x: -0.1, y: 0}
 --- !u!114 &1063652262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7941,7 +7941,8 @@ MonoBehaviour:
   attackSpeed: 2000
   maxTurns: 6
   currentTurn: 1
-  swordmanAttackAudio_: {fileID: 0}
+  swordmanAttackAudio_: {fileID: 8300000, guid: 4f925aa240a0a864ca06062e6456e994, type: 3}
+  bowmanAttackAudio_: {fileID: 8300000, guid: a39009bb947e2fc48b95a59f7dbc6caf, type: 3}
 --- !u!114 &1302574092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7958,7 +7959,7 @@ MonoBehaviour:
   - {fileID: 1731105052049815701, guid: 57558ea1efd00274eb8a9a3c28ac5e53, type: 3}
   - {fileID: 5181725310738572136, guid: 120f0e225a08dfc43aadd6d308d2508c, type: 3}
   UICanva: {fileID: 610402177}
-  combatSystem: {fileID: 0}
+  combatSystem: {fileID: 1302574091}
   targetIndex: 0
 --- !u!1 &1303676478
 GameObject:
