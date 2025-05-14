@@ -17,6 +17,7 @@ public class CombatSystem : MonoBehaviour
     public Transform battlePoint;
     public enemySpawner enemySpawner;
     public ShopManager shopManager;
+    public bool isWin;
 
     public PlayerSaveSystem PSS;
     public ItemSaveSystem TSS;
@@ -119,6 +120,7 @@ public class CombatSystem : MonoBehaviour
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
                 RepositionUnits();
+                isWin = true;
 
                 shopManager.OpenShopOnWin();
                 SSS.GetAllShopSlotList();
@@ -163,6 +165,7 @@ public class CombatSystem : MonoBehaviour
             Debug.Log("No one died, Player Wins");
             ResetPlayerHP();
             RepositionUnits();
+            isWin = true;
 
             shopManager.OpenShopOnWin();
             SSS.GetAllShopSlotList();

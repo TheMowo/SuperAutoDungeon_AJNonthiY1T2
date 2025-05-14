@@ -15,5 +15,6 @@ public class UniitFinder : MonoBehaviour
         playerSaveSystem.GetAllPlayerUnitList();
         itemSaveSystem = FindFirstObjectByType<ItemSaveSystem>();
         itemSaveSystem.GetAllInventorySlotList();
+        itemSaveSystem.ItemLoad();
     }
 }
