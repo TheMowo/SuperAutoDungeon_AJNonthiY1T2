@@ -363,6 +363,31 @@ public class CombatSystem : MonoBehaviour
     //    }
     //}
 
+    void Update()
+    {
+        PlayerUnit targetPlayer = playerUnits[0];
+        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+        {
+            Debug.Log($"{targetPlayer.name} has died");
+            playerUnits.RemoveAt(0);
+            Destroy(targetPlayer.gameObject);
+            RepositionUnits();
+        }
+        
+        for (int i = 0; i < enemyUnits.Count; i++)
+        {
+            EnemiesUnit attacker = enemyUnits[i];
+            if (attacker.HP <= 0)
+            {
+                Debug.Log($"{attacker.name} has died");
+                enemyUnits.Remove(attacker);
+                inventory.playerCurrency += attacker.enemiesUnitType.DropGold;
+                inventory.UpdateCurrencyUI();
+                Destroy(attacker.gameObject);
+                RepositionUnits();
+            }
+        }
+    }
     private void RepositionUnits() 
     {
         for (int i = 0; i < playerUnits.Count; i++)
