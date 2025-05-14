@@ -28,6 +28,7 @@ public class PlayerUnit : MonoBehaviour
 {
     [SerializeField] public PlayerUnitType playerUnitType;
     public string uniqueID;
+    public bool isDead;
     public int BasedHP;
     public int BasedATK;
     public int CurrentHP;
