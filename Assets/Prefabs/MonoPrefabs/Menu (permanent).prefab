@@ -1700,9 +1700,9 @@ RectTransform:
   - {fileID: 5169044326504649175}
   m_Father: {fileID: 7587465496215485961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 317.77026, y: -326}
   m_SizeDelta: {x: 400, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8231293142206356188
@@ -6765,9 +6765,9 @@ RectTransform:
   - {fileID: 3242822689872838912}
   m_Father: {fileID: 7587465496215485961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 317.77026, y: -476.6667}
   m_SizeDelta: {x: 400, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5534312101413380235
@@ -7940,7 +7940,7 @@ MonoBehaviour:
   - {fileID: 5603938215009617922}
   MainPanel: {fileID: 653859475056022816}
   SettingsPanel: {fileID: 12098451546881379}
-  resolutionDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 1786473874337757879}
   SettingsMenuPanels:
   - {fileID: 6313701702598165809}
   - {fileID: 1610495071235411730}
@@ -9480,9 +9480,9 @@ RectTransform:
   - {fileID: 5451495047433073296}
   m_Father: {fileID: 7587465496215485961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 317.77026, y: -175.33334}
   m_SizeDelta: {x: 400, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9062412375814388263

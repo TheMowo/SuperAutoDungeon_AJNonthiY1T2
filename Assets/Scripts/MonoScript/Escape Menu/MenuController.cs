@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class MenuController : MonoBehaviour
     bool isPaused;
 
     //[Header("Settings Screen: Video")]
-    [HideInInspector] public Dropdown resolutionDropdown;
+    public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
     public static MenuController Instance; private void Awake() { if (Instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); Instance = this; }
