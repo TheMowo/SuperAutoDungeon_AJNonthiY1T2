@@ -1091,6 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitType: {fileID: 11400000, guid: c7c3f33cafa18fa43b5616514973ae76, type: 2}
   uniqueID: 
+  isDead: 0
   BasedHP: 0
   BasedATK: 0
   CurrentHP: 0
@@ -5738,6 +5739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitType: {fileID: 11400000, guid: 8473ee26c70b88540846d0d0a659a213, type: 2}
   uniqueID: Player2
+  isDead: 0
   BasedHP: 0
   BasedATK: 0
   CurrentHP: 0
@@ -9753,9 +9755,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3369.0337, y: -178.26855}
+  m_AnchoredPosition: {x: 19.731873, y: 676.89014}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: -0.1, y: 0}
+  m_Pivot: {x: 1.01, y: 1}
 --- !u!114 &1063652262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10719,7 +10721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1181561490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13290,6 +13292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitType: {fileID: 11400000, guid: d1c3a02c204833945bde928dfd6b13dd, type: 2}
   uniqueID: Player1
+  isDead: 0
   BasedHP: 0
   BasedATK: 0
   CurrentHP: 0
@@ -17781,7 +17784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2143453414
 RectTransform:
   m_ObjectHideFlags: 0

@@ -401,6 +401,16 @@ public class CombatSystem : MonoBehaviour
             //Destroy(targetPlayer.gameObject);
             RepositionUnits();
         }
+        PlayerUnit targetPlayer1 = playerUnits[1];
+        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+        {
+            Debug.Log($"{targetPlayer.name} has died");
+            targetPlayer1.isDead = true;
+            SetAlpha(targetPlayer1.gameObject, 0.5f);
+            //playerUnits.RemoveAt(0);
+            //Destroy(targetPlayer.gameObject);
+            RepositionUnits();
+        }
         
         for (int i = 0; i < enemyUnits.Count; i++)
         {

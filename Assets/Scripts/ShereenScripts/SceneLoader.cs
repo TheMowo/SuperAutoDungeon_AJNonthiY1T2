@@ -12,7 +12,6 @@ public class SceneLoader : MonoBehaviour
         Player = FindFirstObjectByType<PlayerSaveSystem>();
         Player.PlayerSaveData();
         ISS.ItemSaveData();
-        SceneManager.LoadScene("Stage2");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
