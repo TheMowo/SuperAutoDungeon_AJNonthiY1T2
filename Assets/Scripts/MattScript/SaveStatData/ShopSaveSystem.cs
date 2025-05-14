@@ -11,6 +11,7 @@ public class ShopSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
     public GameObject Shop;
+    private int I;
 
     void Start()
     {
@@ -26,10 +27,11 @@ public class ShopSaveSystem : MonoBehaviour
     {
         if (GameObject.Find("Player Unit 1") == true)
         {
-            if (Shop.active == true)
+            if (Shop.active == true && I < 0.1f)
             {
                 GetAllShopSlotList();
                 ShopLoad();
+                I += 1;
             }
         }
     }
