@@ -15,6 +15,7 @@ public class UniitFinder : MonoBehaviour
         itemSaveSystem.GetAllInventorySlotList();
         enemySaveSystem.GetAllPlayerUnitList();
         playerSaveSystem.GetAllPlayerUnitList();
+        playerSaveSystem.PlayerLoad();
         itemSaveSystem.ItemLoad();
     }
 }
