@@ -15,7 +15,7 @@ MonoBehaviour:
   myType: 0
   HP: 4
   ATK: 1
-  DropGold: 10
+  DropGold: 15
   MPDrop: 1
   UnitSprite: {fileID: 7808177329381408524, guid: 0f84b3abdfd29a44eb5323591a232194, type: 3}
   FavFood: {fileID: 0}

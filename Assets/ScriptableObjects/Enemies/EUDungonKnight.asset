@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EUDungonKnight
   m_EditorClassIdentifier: 
   myType: 3
-  HP: 30
-  ATK: 5
-  DropGold: 15
+  HP: 18
+  ATK: 3
+  DropGold: 30
   MPDrop: 1
-  Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
+  UnitSprite: {fileID: 5885728433202849284, guid: 0abc12b9777eaef47a5c5f30ec178b52, type: 3}
   FavFood: {fileID: 0}
   isUndead: 0
