@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuButton_Continue : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class MainMenuButton_Continue : MonoBehaviour
     // Enable
     // When enabled continues game based on last saved data
     private bool hasSave = false;
+
+    GameSettingSaveSystem gameSettingSaveSystem;
 
     private void CheckSave()
     {
@@ -18,8 +21,9 @@ public class MainMenuButton_Continue : MonoBehaviour
         }
     } //checks if there is an existing save file
 
-    private void Start()
+    private void Start()// For enabling continue button
     {
+        gameSettingSaveSystem = FindFirstObjectByType<GameSettingSaveSystem>();
         CheckSave();
         if (hasSave)
         {
@@ -31,8 +35,8 @@ public class MainMenuButton_Continue : MonoBehaviour
         }
     }
 
-    public void LoadSaveData()
+    private void LoadLastPlayedScene()
     {
-
+        SceneManager.LoadScene(gameSettingSaveSystem.SceneIndex);
     }
 }
