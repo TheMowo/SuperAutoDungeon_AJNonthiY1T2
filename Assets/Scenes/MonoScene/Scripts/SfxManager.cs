@@ -13,7 +13,7 @@ public class SfxManager : MonoBehaviour
             if (sound.Key == key)
             {
                 // play sfx
-                SoundManager.Instance.PlaySfxClip(sound.Clip, transform);
+                SoundManager.Instance.PlaySfxClip(sound.Clip);
                 return;
             }
         }
@@ -25,7 +25,7 @@ public class SfxManager : MonoBehaviour
             if (sound.Key == key)
             {
                 // play sfx
-                SoundManager.Instance.PlaySfxClipWithPitchChange(sound.Clip, transform);
+                SoundManager.Instance.PlaySfxClipWithPitchChange(sound.Clip);
                 return;
             }
         }
