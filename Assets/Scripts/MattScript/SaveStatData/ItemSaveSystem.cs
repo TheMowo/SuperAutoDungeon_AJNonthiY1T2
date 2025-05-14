@@ -27,8 +27,10 @@ public class ItemSaveSystem : MonoBehaviour
         Debug.Log(this.dataHandler);
         if (GameObject.Find("Player Unit 1") != null)
         {
+            GetAllInventorySlotList();
             ItemLoad();
         }
+        Debug.Log("---------HELP---------");
     }
 
     public void GetAllInventorySlotList()
