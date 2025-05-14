@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene/Stage2.unity
     guid: 1fc5cd1a48376b04b88fa09d06330640
   - enabled: 1
+    path: Assets/Scenes/GameScene/Stage3.unity
+    guid: cf8be248032ae934aaa9be5754f71295
+  - enabled: 1
+    path: Assets/Scenes/GameScene/Stage4.unity
+    guid: faac8eb9bf8d77340842aa5ecf1cb8a6
+  - enabled: 1
+    path: Assets/Scenes/GameScene/Stage5.unity
+    guid: 4f9d0a3efdb10534fa5161f8f0824ef3
+  - enabled: 1
     path: Assets/Scenes/Win Scene/WinScene.unity
     guid: b3ec20958d00e5348a74d16feded5613
   m_configObjects:
