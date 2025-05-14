@@ -11,11 +11,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _soundFxSource;
     [SerializeField] private AudioSource _uiSource;
     [SerializeField] private AudioSource _musicSource; //might move to a music manager since it uses a whole system of it's own??
-    public void PlaySfxClip(AudioClip audioClip, Transform spawnTransform)
+    public void PlaySfxClip(AudioClip audioClip)
     {
         //spawn in GameObject
-        AudioSource _audioSource = Instantiate(_soundFxSource, spawnTransform.position, Quaternion.identity);
-        Debug.Log("SoundManager: PlaySFXClip() has Instantiated an AudioSource at " + transform.position);
+        AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2 (0,0), Quaternion.identity);
+        Debug.Log("SoundManager: PlaySfxClip() has Instantiated an AudioSource at " + transform.position);
 
         //ensures audio does not loop
         _audioSource.loop = false;
@@ -33,10 +33,10 @@ public class SoundManager : MonoBehaviour
         Destroy(_audioSource.gameObject, clipLength);
     }
 
-    public void PlaySfxClipWithPitchChange(AudioClip audioSource, Transform spawnTransform)
+    public void PlaySfxClipWithPitchChange(AudioClip audioSource)
     {
         //spawn in GameObject
-        AudioSource _audioSource = Instantiate(_soundFxSource, spawnTransform.position, Quaternion.identity);
+        AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
         Debug.Log("SoundManager: PlaySFXClipWithPitchChange() has Instantiated an AudioSource at " + transform.position);
 
         //ensures audio does not loop

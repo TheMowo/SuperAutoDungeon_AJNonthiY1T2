@@ -18,7 +18,7 @@ public class MainMenuButton_Continue : MonoBehaviour
         }
     } //checks if there is an existing save file
 
-    private void Start()
+    private void Start()// For enabling continue button
     {
         CheckSave();
         if (hasSave)
@@ -31,7 +31,7 @@ public class MainMenuButton_Continue : MonoBehaviour
         }
     }
 
-    public void LoadSaveData()
+    private void LoadLastPlayedScene()
     {
 
     }

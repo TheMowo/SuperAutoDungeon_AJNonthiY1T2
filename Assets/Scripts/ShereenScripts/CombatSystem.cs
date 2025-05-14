@@ -28,7 +28,9 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private int maxTurns = 5;
     public int currentTurn = 1;
 
-    [SerializeField] AudioSource swordmanAttackAudio_;
+    [Header("Audio Files for Sfx")]
+    [SerializeField] AudioClip swordmanAttackAudio_;
+    [SerializeField] AudioClip bowmanAttackAudio_;
 
     public void Awake()
     {
@@ -205,7 +207,7 @@ public class CombatSystem : MonoBehaviour
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
                     spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
-                    //SoundManager.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
+                    SoundManager.Instance.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
@@ -217,7 +219,7 @@ public class CombatSystem : MonoBehaviour
                     {
                         target = enemyUnits[t];
                         spawnAnimatedUI.PlayerAttackAnimationAt(t, 1);
-                        //SoundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
+                        SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
                 }
