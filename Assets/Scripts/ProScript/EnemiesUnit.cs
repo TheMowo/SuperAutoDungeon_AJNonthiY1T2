@@ -37,6 +37,11 @@ public class EnemiesUnit : MonoBehaviour
     [SerializeField] Image LightBlueDebuffBar;
     [SerializeField] Image GoldDebuffBar;
 
+    [SerializeField] Image GreyDebuffBox;
+    [SerializeField] Image GreenDebuffBox;
+    [SerializeField] Image LightBlueDebuffBox;
+    [SerializeField] Image GoldDebuffBox;
+
     [SerializeField] TMP_Text GreyDebuffText;
     [SerializeField] TMP_Text GreenDebuffText;
     [SerializeField] TMP_Text LightBlueDebuffText;
@@ -224,6 +229,42 @@ public class EnemiesUnit : MonoBehaviour
 
     public void UpdateVisual()
     {
+        if (CurrentGreyDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Weakness))
+        {
+            GreyDebuffBox.gameObject.SetActive(true);
+        }
+        else GreyDebuffBox.gameObject.SetActive(false);
+        if (CurrentGreenDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Poison))
+        {
+            GreenDebuffBox.gameObject.SetActive(true);
+        }
+        else GreenDebuffBox.gameObject.SetActive(false);
+        if (CurrentGoldDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+        {
+            GoldDebuffBox.gameObject.SetActive(true);
+        }
+        else GoldDebuffBox.gameObject.SetActive(false);
+        if (CurrentLightBlueDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Slowness))
+        {
+            LightBlueDebuffBox.gameObject.SetActive(true);
+        }
+        else LightBlueDebuffBox.gameObject.SetActive(false);
+
+        TooltipTrigger[] tooltipTriggers = GetComponentsInChildren<TooltipTrigger>();
+        List<GameObject> debuffBars = new List<GameObject>();
+
+        foreach (TooltipTrigger trigger in tooltipTriggers)
+        {
+            debuffBars.Add(trigger.gameObject);
+        }
+
+        float StartingPos = (debuffBars.Count - 1) * -22.5f;
+
+        foreach (GameObject debuff in debuffBars)
+        {
+            debuff.GetComponent<RectTransform>().localPosition = new Vector3(StartingPos, 0);
+            StartingPos += 45f;
+        }
         GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff / 3;
         GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;
         LightBlueDebuffBar.fillAmount = (float)CurrentLightBlueDebuff / 3;
