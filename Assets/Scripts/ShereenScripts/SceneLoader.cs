@@ -15,7 +15,5 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
         Player.PlayerSaveData();
-        SceneManager.LoadScene("Stage2");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
