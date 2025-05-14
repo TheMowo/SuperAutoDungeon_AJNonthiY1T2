@@ -9,6 +9,11 @@ public class CurrencySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
+    }
+
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want

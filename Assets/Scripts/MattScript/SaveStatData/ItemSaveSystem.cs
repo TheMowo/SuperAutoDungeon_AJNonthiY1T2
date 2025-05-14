@@ -15,6 +15,11 @@ public class ItemSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
+    }
+
     void Start()
     {
         GetAllInventorySlotList();

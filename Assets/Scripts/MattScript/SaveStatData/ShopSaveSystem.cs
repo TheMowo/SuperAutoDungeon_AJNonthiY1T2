@@ -13,6 +13,11 @@ public class ShopSaveSystem : MonoBehaviour
     public GameObject Shop;
     private int I;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
+    }
+
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
