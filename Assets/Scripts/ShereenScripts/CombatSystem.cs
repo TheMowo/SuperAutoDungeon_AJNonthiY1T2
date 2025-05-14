@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System;
 
 public class CombatSystem : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class CombatSystem : MonoBehaviour
     public int currentTurn = 1;
 
     [SerializeField] AudioSource swordmanAttackAudio_;
-
     public void Awake()
     {
         inventory = FindAnyObjectByType<InventoryManager>();
@@ -111,7 +111,7 @@ public class CombatSystem : MonoBehaviour
             yield return StartCoroutine(PlayerAttackPhase());
             // then checks if player killed off all enemies
             if (enemyUnits.Count == 0)
-            {
+            {                
                 PSS.PlayerSaveData();
                 TSS.ItemSaveData();
                 CSS.CurrencySaveData();
@@ -320,7 +320,15 @@ public class CombatSystem : MonoBehaviour
 
         if (playerUnits.Count > 0)
         {
-            PlayerUnit targetPlayer = playerUnits[0];
+            PlayerUnit targetPlayer = null;
+            foreach (var unit in playerUnits)
+            {
+                //if (!unit.isDead)
+                {
+                    targetPlayer = unit;
+                    break;
+                }
+            }
             if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
             {
                 targetPlayer.CurrentHP -= totalATK * 2;
@@ -340,8 +348,10 @@ public class CombatSystem : MonoBehaviour
             if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
             {
                 Debug.Log($"{targetPlayer.name} has died");
-                playerUnits.RemoveAt(0);
-                Destroy(targetPlayer.gameObject);
+                //targetPlayer.isDead = true;
+                SetAlpha(targetPlayer.gameObject, 0.5f);
+                //playerUnits.RemoveAt(0);
+                //Destroy(targetPlayer.gameObject);
             }
         }
 
@@ -362,7 +372,16 @@ public class CombatSystem : MonoBehaviour
     //        yield return null;
     //    }
     //}
-
+    private void SetAlpha(GameObject obj, float alpha)
+    {
+        var renderers = obj.GetComponentsInChildren<CanvasRenderer>();
+        foreach (var r in renderers)
+        {
+            Color color = r.GetColor();
+            color.a = alpha;
+            r.SetColor(color);
+        }
+    }
     void Update()
     {
         PlayerUnit targetPlayer = playerUnits[0];
@@ -388,7 +407,7 @@ public class CombatSystem : MonoBehaviour
             }
         }
     }
-    private void RepositionUnits() 
+    public void RepositionUnits() 
     {
         for (int i = 0; i < playerUnits.Count; i++)
         {
