@@ -5,7 +5,8 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
-    public SpawnAnimatedUI spawnAnimatedUI;
+    [SerializeField] private TurnCountUI turnCountUI;
+    [SerializeField] private SpawnAnimatedUI spawnAnimatedUI;
     public TMP_Text atkDisplayText;
     public InventoryManager inventory;
     public List<PlayerUnit> playerUnits;
@@ -30,6 +31,8 @@ public class CombatSystem : MonoBehaviour
 
     [SerializeField] private int maxTurns = 5;
     public int currentTurn = 1;
+
+    [SerializeField] AudioSource swordmanAttackAudio_;
 
     public void Awake()
     {
@@ -139,6 +142,7 @@ public class CombatSystem : MonoBehaviour
 
             RepositionUnits();
             currentTurn++;
+            turnCountUI.UpdateTurnsUI();
             yield return new WaitForSeconds(1.0f);
         }
 
@@ -205,6 +209,7 @@ public class CombatSystem : MonoBehaviour
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
                     spawnAnimatedUI.PlayAnimationAt(0, 0);
+                    //SoundManager.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
@@ -216,6 +221,7 @@ public class CombatSystem : MonoBehaviour
                     {
                         target = enemyUnits[t];
                         spawnAnimatedUI.PlayAnimationAt(t, 1);
+                        //SoundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
                 }
