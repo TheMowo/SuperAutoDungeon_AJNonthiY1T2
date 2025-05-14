@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class CurrencySaveSystem : MonoBehaviour
@@ -20,6 +21,7 @@ public class CurrencySaveSystem : MonoBehaviour
         Debug.Log(this.dataHandler);
         if(GameObject.Find("Player Unit 1") == true)
         {
+            //Currency = gameObject.GetComponent<InventoryManager>();
             CurrencyLoad();
         }
     }
@@ -60,5 +62,10 @@ public class CurrencySaveSystem : MonoBehaviour
         {
             Debug.LogWarning("No save file found to delete at: " + fullPath);
         }
+    }
+
+    public void FindCurrency(InventoryManager inventoryManager)
+    {
+        Currency = inventoryManager;
     }
 }

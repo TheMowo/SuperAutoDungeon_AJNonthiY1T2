@@ -22,19 +22,20 @@ public class ShopSaveSystem : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        if (GameObject.Find("Player Unit 1") == true)
+        if (GameObject.Find("Player Unit 1") != null)
         {
+            Shop = GameObject.Find("--- ShopOpenUI ---");
             ShopLoad();
         }
     }
 
     private void Update()
     {
-        if (GameObject.Find("Player Unit 1") == true)
+        if (GameObject.Find("Player Unit 1") != null)
         {
-            if (Shop.active == true && I < 0.1f)
+            GetAllShopSlotList();
+            if (Shop != null && I < 0.1f)
             {
-                GetAllShopSlotList();
                 ShopLoad();
                 I += 1;
             }

@@ -22,16 +22,16 @@ public class ItemSaveSystem : MonoBehaviour
 
     void Start()
     {
-        GetAllInventorySlotList();
+        ClearAllInventorySlots();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        if (GameObject.Find("Player Unit 1") == true)
+        if (GameObject.Find("Player Unit 1") != null)
         {
             ItemLoad();
         }
     }
 
-    void GetAllInventorySlotList()
+    public void GetAllInventorySlotList()
     {
         Inventoryslot = FindObjectsByType<InventorySlot>(FindObjectsSortMode.None).ToList();
     }
