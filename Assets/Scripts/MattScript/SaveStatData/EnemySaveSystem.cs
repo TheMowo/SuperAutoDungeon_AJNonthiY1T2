@@ -14,15 +14,22 @@ public class EnemySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    void Start()
+    void Awake()
     {
-        GetAllPlayerUnitList();
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
-        Debug.Log(this.dataHandler);
-        EnemyLoad();
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
     }
 
-    void GetAllPlayerUnitList()
+    void Start()
+    {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
+        Debug.Log(this.dataHandler);
+        if (GameObject.Find("Player Unit 1") == true)
+        {
+            EnemyLoad();
+        }
+    }
+
+    public void GetAllPlayerUnitList()
     {
         if(FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList() != null)
         {

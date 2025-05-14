@@ -159,21 +159,4 @@ public class MainMenuController : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(EscapeMenuButtons[0]);
     }
-
-    public SettingSaveData GetSaveData()
-    {
-        return new SettingSaveData()
-        {
-            resolutionIndex = resolutionDropdown.value,
-            fullscrene = Screen.fullScreen,
-            qualityIndex = QualitySettings.GetQualityLevel(),
-        };
-    }
-
-    public void LoadSaveData(SettingSaveData Data)
-    {
-        resolutionDropdown.value = Data.resolutionIndex;
-        Screen.fullScreen = Data.fullscrene;
-        QualitySettings.SetQualityLevel(Data.qualityIndex);
-    }
 }

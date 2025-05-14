@@ -5,7 +5,8 @@ using TMPro;
 
 public class CombatSystem : MonoBehaviour
 {
-    public SpawnAnimatedUI spawnAnimatedUI;
+    [SerializeField] private TurnCountUI turnCountUI;
+    [SerializeField] private SpawnAnimatedUI spawnAnimatedUI;
     public TMP_Text atkDisplayText;
     public InventoryManager inventory;
     public List<PlayerUnit> playerUnits;
@@ -15,10 +16,6 @@ public class CombatSystem : MonoBehaviour
     public List<Transform> enemyPositions;
     public Transform battlePoint;
     public enemySpawner enemySpawner;
-
-    public GameObject[] shopOpenState;
-    public GameObject[] shopCloseState;
-    //public GameObject nextStageButton;
     public ShopManager shopManager;
 
     public PlayerSaveSystem PSS;
@@ -30,6 +27,8 @@ public class CombatSystem : MonoBehaviour
 
     [SerializeField] private int maxTurns = 5;
     public int currentTurn = 1;
+
+    [SerializeField] AudioSource swordmanAttackAudio_;
 
     public void Awake()
     {
@@ -139,6 +138,7 @@ public class CombatSystem : MonoBehaviour
 
             RepositionUnits();
             currentTurn++;
+            turnCountUI.UpdateTurnsUI();
             yield return new WaitForSeconds(1.0f);
         }
 
@@ -204,7 +204,8 @@ public class CombatSystem : MonoBehaviour
             {
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
-                    spawnAnimatedUI.PlayAnimationAt(0, 0);
+                    spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
+                    //SoundManager.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
@@ -215,7 +216,8 @@ public class CombatSystem : MonoBehaviour
                     if (t < enemyUnits.Count)
                     {
                         target = enemyUnits[t];
-                        spawnAnimatedUI.PlayAnimationAt(t, 1);
+                        spawnAnimatedUI.PlayerAttackAnimationAt(t, 1);
+                        //SoundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
                 }
@@ -330,11 +332,12 @@ public class CombatSystem : MonoBehaviour
                 targetPlayer.CurrentHP = 0;
             }
 
+            spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
             targetPlayer.UpdateUI();
 
             Debug.Log("Total Enemy ATK = " + totalATK);
 
-            if (targetPlayer.BasedHP <= 0)
+            if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
             {
                 Debug.Log($"{targetPlayer.name} has died");
                 playerUnits.RemoveAt(0);
@@ -360,6 +363,31 @@ public class CombatSystem : MonoBehaviour
     //    }
     //}
 
+    void Update()
+    {
+        PlayerUnit targetPlayer = playerUnits[0];
+        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+        {
+            Debug.Log($"{targetPlayer.name} has died");
+            playerUnits.RemoveAt(0);
+            Destroy(targetPlayer.gameObject);
+            RepositionUnits();
+        }
+        
+        for (int i = 0; i < enemyUnits.Count; i++)
+        {
+            EnemiesUnit attacker = enemyUnits[i];
+            if (attacker.HP <= 0)
+            {
+                Debug.Log($"{attacker.name} has died");
+                enemyUnits.Remove(attacker);
+                inventory.playerCurrency += attacker.enemiesUnitType.DropGold;
+                inventory.UpdateCurrencyUI();
+                Destroy(attacker.gameObject);
+                RepositionUnits();
+            }
+        }
+    }
     private void RepositionUnits() 
     {
         for (int i = 0; i < playerUnits.Count; i++)

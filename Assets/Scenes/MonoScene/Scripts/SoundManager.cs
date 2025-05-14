@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour
         Destroy(_audioSource.gameObject, clipLength);
     }
 
-    public void PlaySfxClipWithPitchChange(AudioClip audioClip, Transform spawnTransform)
+    public void PlaySfxClipWithPitchChange(AudioClip audioSource, Transform spawnTransform)
     {
         //spawn in GameObject
         AudioSource _audioSource = Instantiate(_soundFxSource, spawnTransform.position, Quaternion.identity);
@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour
         _audioSource.pitch = Random.Range(0.9f, 1.5f);
 
         //assign the audioClip
-        _audioSource.clip = audioClip;
+        _audioSource.clip = audioSource;
 
         //play sound
         _audioSource.Play();

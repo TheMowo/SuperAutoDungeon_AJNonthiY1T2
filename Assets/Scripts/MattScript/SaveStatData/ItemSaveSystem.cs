@@ -15,15 +15,23 @@ public class ItemSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
 
-    void Start()
+    void Awake()
     {
-        GetAllInventorySlotList();
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
-        Debug.Log(this.dataHandler);
-        ItemLoad();
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
     }
 
-    void GetAllInventorySlotList()
+    void Start()
+    {
+        ClearAllInventorySlots();
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
+        Debug.Log(this.dataHandler);
+        if (GameObject.Find("Player Unit 1") != null)
+        {
+            ItemLoad();
+        }
+    }
+
+    public void GetAllInventorySlotList()
     {
         Inventoryslot = FindObjectsByType<InventorySlot>(FindObjectsSortMode.None).ToList();
     }
@@ -46,7 +54,6 @@ public class ItemSaveSystem : MonoBehaviour
         if (!File.Exists(ItemSavePath))
         {
             Debug.LogWarning("No save file found. Clearing all inventory slots.");
-            ClearAllInventorySlots();
             return;
         }
 

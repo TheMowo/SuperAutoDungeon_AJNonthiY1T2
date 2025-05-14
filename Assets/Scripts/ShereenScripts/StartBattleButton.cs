@@ -16,6 +16,9 @@ public class StartBattleButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(StartBattle);
         UpdateButtonState();
+        ESS = FindFirstObjectByType<EnemySaveSystem>();
+        PSS = FindFirstObjectByType<PlayerSaveSystem>();
+        TSS = FindFirstObjectByType<ItemSaveSystem>();
     }
 
     void Update()
