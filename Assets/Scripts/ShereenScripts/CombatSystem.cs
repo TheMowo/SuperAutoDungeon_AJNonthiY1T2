@@ -16,10 +16,6 @@ public class CombatSystem : MonoBehaviour
     public List<Transform> enemyPositions;
     public Transform battlePoint;
     public enemySpawner enemySpawner;
-
-    public GameObject[] shopOpenState;
-    public GameObject[] shopCloseState;
-    //public GameObject nextStageButton;
     public ShopManager shopManager;
 
     public PlayerSaveSystem PSS;
@@ -208,7 +204,7 @@ public class CombatSystem : MonoBehaviour
             {
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
-                    spawnAnimatedUI.PlayAnimationAt(0, 0);
+                    spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
                     //SoundManager.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow)
@@ -220,7 +216,7 @@ public class CombatSystem : MonoBehaviour
                     if (t < enemyUnits.Count)
                     {
                         target = enemyUnits[t];
-                        spawnAnimatedUI.PlayAnimationAt(t, 1);
+                        spawnAnimatedUI.PlayerAttackAnimationAt(t, 1);
                         //SoundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
@@ -336,11 +332,12 @@ public class CombatSystem : MonoBehaviour
                 targetPlayer.CurrentHP = 0;
             }
 
+            spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
             targetPlayer.UpdateUI();
 
             Debug.Log("Total Enemy ATK = " + totalATK);
 
-            if (targetPlayer.BasedHP <= 0)
+            if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
             {
                 Debug.Log($"{targetPlayer.name} has died");
                 playerUnits.RemoveAt(0);

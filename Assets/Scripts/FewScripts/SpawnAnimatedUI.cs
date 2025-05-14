@@ -18,7 +18,7 @@ public class SpawnAnimatedUI : MonoBehaviour
             combatSystem = FindObjectOfType<CombatSystem>();
         }
     }
-    public void PlayAnimationAt(int index, int animIndex = 0)
+    public void PlayerAttackAnimationAt(int index, int animIndex = 0)
     {
         if (index < 0 || index >= combatSystem.enemyUnits.Count) return;
         if (animIndex < 0 || animIndex >= animatedUIPrefabs.Count) return;
@@ -31,11 +31,24 @@ public class SpawnAnimatedUI : MonoBehaviour
         rect.anchoredPosition = enemyPos;
     }
 
-    private void Update()
+    public void EnemyAttackAnimationAt(int index, int animIndex = 0)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayAnimationAt(targetIndex);
-        }
+        if (index < 0 || index >= combatSystem.playerUnits.Count) return;
+        if (animIndex < 0 || animIndex >= animatedUIPrefabs.Count) return;
+        
+        RectTransform enemyRect = combatSystem.playerUnits[index].GetComponent<RectTransform>();
+        Vector2 enemyPos = enemyRect.anchoredPosition;
+
+        GameObject anim = Instantiate(animatedUIPrefabs[animIndex], UICanva);
+        RectTransform rect = anim.GetComponent<RectTransform>();
+        rect.anchoredPosition = enemyPos;
     }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        PlayAnimationAt(targetIndex);
+    //    }
+    //}
 }
