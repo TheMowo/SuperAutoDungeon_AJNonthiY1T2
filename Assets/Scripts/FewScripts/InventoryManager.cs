@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -16,8 +17,10 @@ public class InventoryManager : MonoBehaviour
     {
         currencySaveSystem = FindFirstObjectByType<CurrencySaveSystem>();
         currencySaveSystem.FindCurrency(this);
-        UpdateCurrencyUI();
+        Delay.Run(0.0000000000000000000000000000000000000000000000000000000001f, () => UpdateCurrencyUI());
     }
+
+
     public void UpdateCurrencyUI()
     {
         currencyText.text = $"Doubloon: {playerCurrency}";

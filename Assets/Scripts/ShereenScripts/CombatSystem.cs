@@ -22,7 +22,6 @@ public class CombatSystem : MonoBehaviour
     public PlayerSaveSystem PSS;
     public ItemSaveSystem TSS;
     public ShopSaveSystem SSS;
-    public CurrencySaveSystem CSS;
 
     public float attackSpeed = 3.0f;
 
@@ -117,7 +116,6 @@ public class CombatSystem : MonoBehaviour
             {
                 PSS.PlayerSaveData();
                 TSS.ItemSaveData();
-                CSS.CurrencySaveData();
                 
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
@@ -162,7 +160,6 @@ public class CombatSystem : MonoBehaviour
         {
             PSS.PlayerSaveData();
             TSS.ItemSaveData();
-            CSS.CurrencySaveData();
 
             Debug.Log("No one died, Player Wins");
             ResetPlayerHP();

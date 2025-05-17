@@ -21,7 +21,7 @@ public class CurrencySaveSystem : MonoBehaviour
         Debug.Log(this.dataHandler);
         if(GameObject.Find("Player Unit 1") == true)
         {
-            //Currency = gameObject.GetComponent<InventoryManager>();
+            Currency = FindFirstObjectByType<InventoryManager>();
             CurrencyLoad();
         }
     }
@@ -47,6 +47,7 @@ public class CurrencySaveSystem : MonoBehaviour
 
         CurrencySaveData loadedData = JsonUtility.FromJson<CurrencySaveData>(json);
         Currency.LoadFromSaveData(loadedData); // Apply loaded data
+        //UpdateCurrencyUI();
         Debug.Log("Currency loaded!");
     }
 
