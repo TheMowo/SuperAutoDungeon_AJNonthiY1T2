@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4e2e4b2b6e2fc564289f43a568cd4cc2
+guid: fd6659ee42bba41428086d33aa83b5c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5545987585116848489
-    second: Map for dungone 2_0
+      213: 2389193319765324094
+    second: shield_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Map for dungone 2_0
+      name: shield_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 960
-        height: 540
+        x: 11
+        y: 3
+        width: 42
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 961cd93235e47fc40800000000000000
-      internalID: 5545987585116848489
+      spriteID: e3139547aae182120800000000000000
+      internalID: 2389193319765324094
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Map for dungone 2_0: 5545987585116848489
+      shield_0: 2389193319765324094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
