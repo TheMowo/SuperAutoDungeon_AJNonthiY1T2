@@ -13,48 +13,63 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource; //might move to a music manager since it uses a whole system of it's own??
     public void PlaySfxClip(AudioClip audioClip)
     {
-        //spawn in GameObject
-        AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2 (0,0), Quaternion.identity);
-        Debug.Log("SoundManager: PlaySfxClip() has Instantiated an AudioSource at " + transform.position);
+        if (audioClip == null)
+        {
+            Debug.Log("audioClip is Null");
+        }
+        else
+        {
+            //spawn in GameObject
+            AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
+            Debug.Log("SoundManager: PlaySfxClip() has Instantiated an AudioSource at " + transform.position);
 
-        //ensures audio does not loop
-        _audioSource.loop = false;
+            //ensures audio does not loop
+            _audioSource.loop = false;
 
-        //assign the audioClip
-        _audioSource.clip = audioClip;
+            //assign the audioClip
+            _audioSource.clip = audioClip;
 
-        //play sound
-        _audioSource.Play();
+            //play sound
+            _audioSource.Play();
 
-        //get length of sound fx clip
-        float clipLength = _audioSource.clip.length;
+            //get length of sound fx clip
+            float clipLength = _audioSource.clip.length;
 
-        //destroy the clip after it is done playing
-        Destroy(_audioSource.gameObject, clipLength);
+            //destroy the clip after it is done playing
+            Destroy(_audioSource.gameObject, clipLength);
+        }
     }
 
-    public void PlaySfxClipWithPitchChange(AudioClip audioSource)
+    public void PlaySfxClipWithPitchChange(AudioClip audioClip)
     {
-        //spawn in GameObject
-        AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
-        Debug.Log("SoundManager: PlaySFXClipWithPitchChange() has Instantiated an AudioSource at " + transform.position);
 
-        //ensures audio does not loop
-        _audioSource.loop = false;
+        if (audioClip == null)
+        {
+            Debug.Log("audioClip is Null");
+        }
+        else
+        {
+            //spawn in GameObject
+            AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
+            Debug.Log("SoundManager: PlaySFXClipWithPitchChange() has Instantiated an AudioSource at " + transform.position);
 
-        _audioSource.pitch = Random.Range(0.9f, 1.5f);
+            //ensures audio does not loop
+            _audioSource.loop = false;
 
-        //assign the audioClip
-        _audioSource.clip = audioSource;
+            _audioSource.pitch = Random.Range(0.9f, 1.5f);
 
-        //play sound
-        _audioSource.Play();
+            //assign the audioClip
+            _audioSource.clip = audioClip;
 
-        //get length of sound fx clip
-        float clipLength = _audioSource.clip.length;
+            //play sound
+            _audioSource.Play();
 
-        //destroy the clip after it is done playing
-        Destroy(_audioSource.gameObject, clipLength);
+            //get length of sound fx clip
+            float clipLength = _audioSource.clip.length;
+
+            //destroy the clip after it is done playing
+            Destroy(_audioSource.gameObject, clipLength);
+        }
     }
 }
 
