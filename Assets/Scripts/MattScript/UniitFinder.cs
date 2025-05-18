@@ -14,11 +14,14 @@ public class UniitFinder : MonoBehaviour
         playerSaveSystem = FindFirstObjectByType<PlayerSaveSystem>();
         enemySaveSystem = FindFirstObjectByType<EnemySaveSystem>();
         currencySaveSystem = FindFirstObjectByType<CurrencySaveSystem>();
-        itemSaveSystem.GetAllInventorySlotList();
-        enemySaveSystem.GetAllPlayerUnitList();
-        playerSaveSystem.GetAllPlayerUnitList();
-        playerSaveSystem.PlayerLoad();
-        itemSaveSystem.ItemLoad();
-        currencySaveSystem.CurrencyLoad();
+        if (enemySaveSystem != null)
+        {
+            itemSaveSystem.GetAllInventorySlotList();
+            enemySaveSystem.GetAllPlayerUnitList();
+            playerSaveSystem.GetAllPlayerUnitList();
+            playerSaveSystem.PlayerLoad();
+            itemSaveSystem.ItemLoad();
+            currencySaveSystem.CurrencyLoad();
+        }
     }
 }

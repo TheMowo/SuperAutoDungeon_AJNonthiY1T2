@@ -40,9 +40,12 @@ public class StartBattleButton : MonoBehaviour
 
     void StartBattle()
     {
-        ESS.EnemySaveData();
-        PSS.PlayerSaveData();
-        TSS.ItemSaveData();
+        if (PSS != null)
+        {
+            ESS.EnemySaveData();
+            PSS.PlayerSaveData();
+            TSS.ItemSaveData();
+        }
         combatSystem.StartBattle();
         button.interactable = false;
     }

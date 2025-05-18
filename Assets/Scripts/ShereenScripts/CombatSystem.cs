@@ -114,17 +114,31 @@ public class CombatSystem : MonoBehaviour
             // then checks if player killed off all enemies
             if (enemyUnits.Count == 0)
             {
-                PSS.PlayerSaveData();
-                TSS.ItemSaveData();
-                
+                if(PSS != null)
+                {
+                    PSS.PlayerSaveData();
+                    TSS.ItemSaveData();
+                }
+                else
+                {
+                    Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+                }
+
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
                 RepositionUnits();
                 isWin = true;
 
                 shopManager.OpenShopOnWin();
-                SSS.GetAllShopSlotList();
-                SSS.ShopoSaveData();
+                if (PSS != null)
+                {
+                    SSS.GetAllShopSlotList();
+                    SSS.ShopoSaveData();
+                }
+                else
+                {
+                    Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+                }
 
                 yield break;
             }
@@ -158,17 +172,31 @@ public class CombatSystem : MonoBehaviour
         }
         else
         {
-            PSS.PlayerSaveData();
-            TSS.ItemSaveData();
+            if (PSS != null)
+            {
+                PSS.PlayerSaveData();
+                TSS.ItemSaveData();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+            }
 
-            Debug.Log("No one died, Player Wins");
+            Debug.Log("No one die, Player Wins");
             ResetPlayerHP();
             RepositionUnits();
             isWin = true;
 
             shopManager.OpenShopOnWin();
-            SSS.GetAllShopSlotList();
-            SSS.ShopoSaveData();
+            if (PSS != null)
+            {
+                SSS.GetAllShopSlotList();
+                SSS.ShopoSaveData();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+            }
         }
     }
 

@@ -16,7 +16,10 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         currencySaveSystem = FindFirstObjectByType<CurrencySaveSystem>();
-        currencySaveSystem.FindCurrency(this);
+        if (currencySaveSystem != null)
+        {
+            currencySaveSystem.FindCurrency(this);
+        }
         Delay.Run(0.0000000000000000000000000000000000000000000000000000000001f, () => UpdateCurrencyUI());
     }
 
