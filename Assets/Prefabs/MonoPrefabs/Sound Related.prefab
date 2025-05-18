@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4479114507677798365}
   m_Layer: 0
-  m_Name: Sound Sources (for playing sounds)
+  m_Name: --- Sound Sources ---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,47 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7794640972338165004}
-  - {fileID: 8742948370502136567}
-  - {fileID: 4744933289731396508}
-  - {fileID: 1196641849847598118}
-  - {fileID: 8408835856104182228}
-  - {fileID: 4321731841580891208}
-  - {fileID: 4622210942029131967}
-  m_Father: {fileID: 8600819887248775548}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6594495968978366932
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6481138322486002042}
-  m_Layer: 0
-  m_Name: Unused
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6481138322486002042
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6594495968978366932}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1572734156045993843}
-  - {fileID: 4684360584218047277}
+  m_Children: []
   m_Father: {fileID: 8600819887248775548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7288174735066824845
@@ -116,68 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
---- !u!1 &7397333320399606211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4684360584218047277}
-  m_Layer: 0
-  m_Name: MusicController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4684360584218047277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7397333320399606211}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.431946, y: -144.95215, z: 11.272036}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6481138322486002042}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7447562130167450547
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1572734156045993843}
-  m_Layer: 0
-  m_Name: MusicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1572734156045993843
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447562130167450547}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.431946, y: -144.95215, z: 11.272036}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6481138322486002042}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8369944357082531810
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +108,13 @@ Transform:
   m_Children:
   - {fileID: 7085896381386777834}
   - {fileID: 4479114507677798365}
-  - {fileID: 6481138322486002042}
+  - {fileID: 7794640972338165004}
+  - {fileID: 8742948370502136567}
+  - {fileID: 4744933289731396508}
+  - {fileID: 1196641849847598118}
+  - {fileID: 8408835856104182228}
+  - {fileID: 4321731841580891208}
+  - {fileID: 4622210942029131967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8235361250166154480
@@ -234,7 +138,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 300527695530456108, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Name
@@ -308,7 +212,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 300527695530456108, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Name
@@ -382,7 +286,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 300527695530456108, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Name
@@ -453,7 +357,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 300527695530456108, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Name
@@ -527,7 +431,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 300527695530456108, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Name
@@ -606,7 +510,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 300527695530456108, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Name
@@ -680,7 +584,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4479114507677798365}
+    m_TransformParent: {fileID: 8600819887248775548}
     m_Modifications:
     - target: {fileID: 976823771340273665, guid: c8d74e4686f398946ba4906ea55fdb10, type: 3}
       propertyPath: OutputAudioMixerGroup
