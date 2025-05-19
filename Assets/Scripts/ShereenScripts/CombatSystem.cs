@@ -325,6 +325,13 @@ public class CombatSystem : MonoBehaviour
                 else attacker.TurnSkipSlow = 0;
             }
 
+            //EnemyCooldownDisplay - cooldown
+            EnemyCooldownDisplay cdDisplay = attacker.GetComponent<EnemyCooldownDisplay>();
+            if (cdDisplay != null)
+            {
+                cdDisplay.TickDownCooldown();
+            }
+
             Vector3 originalPos = attacker.transform.position;
             Vector3 popPos = originalPos + Vector3.up * 100f;
             attacker.transform.position = popPos;
@@ -341,7 +348,7 @@ public class CombatSystem : MonoBehaviour
             {
                 Debug.LogWarning("atkDisplayText is not assigned in the Inspector");
             }
-               
+
             yield return new WaitForSeconds(0.3f);
 
             attacker.transform.position = originalPos;
@@ -359,6 +366,17 @@ public class CombatSystem : MonoBehaviour
                     break;
                 }
             }
+
+            //EnemyCooldownDisplay - Target's Name
+            foreach (var enemy in enemyUnits)
+            {
+                var display = enemy.GetComponent<EnemyCooldownDisplay>();
+                if (display != null && targetPlayer != null)
+                {
+                    display.SetTargetText(targetPlayer.playerType.ToString());
+                }
+            }
+
             if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
             {
                 targetPlayer.CurrentHP -= totalATK * 2;
@@ -380,7 +398,7 @@ public class CombatSystem : MonoBehaviour
                 Debug.Log($"{targetPlayer.name} has died");
                 targetPlayer.isDead = true;
                 SetAlpha(targetPlayer.gameObject, 0.5f);
-                
+
                 //playerUnits.RemoveAt(0);
                 //Destroy(targetPlayer.gameObject);
             }

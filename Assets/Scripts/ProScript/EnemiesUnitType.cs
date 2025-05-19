@@ -19,4 +19,5 @@ public class EnemiesUnitType : ScriptableObject
     public Sprite UnitSprite;
     public ConsumableItem FavFood;
     public bool isUndead;
+    public int attackCooldown = 3;
 }
