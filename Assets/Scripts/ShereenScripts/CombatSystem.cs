@@ -126,6 +126,7 @@ public class CombatSystem : MonoBehaviour
 
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
+                SetAlpha(playerUnits[0].gameObject, 1f);
                 RepositionUnits();
                 isWin = true;
 
@@ -162,6 +163,7 @@ public class CombatSystem : MonoBehaviour
         {
             Debug.Log("Player Wins");
             ResetPlayerHP(); // Player wins, health back to same value
+            SetAlpha(playerUnits[0].gameObject, 1f);
             
             RepositionUnits();
         }
@@ -184,6 +186,8 @@ public class CombatSystem : MonoBehaviour
 
             Debug.Log("No one die, Player Wins");
             ResetPlayerHP();
+            SetAlpha(playerUnits[0].gameObject, 1f);
+            
             RepositionUnits();
             isWin = true;
 
@@ -230,14 +234,14 @@ public class CombatSystem : MonoBehaviour
 
             EnemiesUnit target = null;
 
-            if (attacker.playerType == PlayerType.Sword)
+            if (attacker.playerType == PlayerType.Sword && attacker.isDead == false)
             {
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
                     spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
                     SoundManager.Instance.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
-            else if (attacker.playerType == PlayerType.Bow)
+            else if (attacker.playerType == PlayerType.Bow && attacker.isDead == false)
             {
                 int baseTargetIndex = 2 - i; //Next 2 slots
 
@@ -355,7 +359,14 @@ public class CombatSystem : MonoBehaviour
             {
                 if (!unit.isDead)
                 {
-                    targetPlayer = unit;
+                    targetPlayer = playerUnits[0];
+                    spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
+                    break;
+                }
+                else
+                {
+                    targetPlayer = playerUnits[1];
+                    spawnAnimatedUI.EnemyAttackAnimationAt(1, 1);
                     break;
                 }
             }
@@ -369,8 +380,7 @@ public class CombatSystem : MonoBehaviour
             {
                 targetPlayer.CurrentHP = 0;
             }
-
-            spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
+            
             targetPlayer.UpdateUI();
 
             Debug.Log("Total Enemy ATK = " + totalATK);
@@ -416,24 +426,21 @@ public class CombatSystem : MonoBehaviour
     }
     void Update()
     {
-        PlayerUnit targetPlayer = playerUnits[0];
-        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+        if (playerUnits[0].BasedHP + playerUnits[0].CurrentHP <= 0 && !playerUnits[0].isDead)
         {
-            Debug.Log($"{targetPlayer.name} has died");
-            targetPlayer.isDead = true;
-            SetAlpha(targetPlayer.gameObject, 0.5f);
-            //playerUnits.RemoveAt(0);
-            //Destroy(targetPlayer.gameObject);
+            Debug.Log($"{playerUnits[0].name} has died");
+            playerUnits[0].isDead = true;
+            SetAlpha(playerUnits[0].gameObject, 0.5f);
+
             RepositionUnits();
         }
-        PlayerUnit targetPlayer1 = playerUnits[1];
-        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+
+        if (playerUnits[1].BasedHP + playerUnits[1].CurrentHP <= 0 && !playerUnits[1].isDead)
         {
-            Debug.Log($"{targetPlayer.name} has died");
-            targetPlayer1.isDead = true;
-            SetAlpha(targetPlayer1.gameObject, 0.5f);
-            //playerUnits.RemoveAt(0);
-            //Destroy(targetPlayer.gameObject);
+            Debug.Log($"{playerUnits[1].name} has died");
+            playerUnits[1].isDead = true;
+            SetAlpha(playerUnits[1].gameObject, 0.5f);
+
             RepositionUnits();
         }
         
