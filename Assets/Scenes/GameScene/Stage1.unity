@@ -3150,6 +3150,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebuffsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 257726621495470627, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403031940339893184, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868818331822178287, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926140919452708267, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4429534323859875788, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3228,6 +3244,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4429534323859875788, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775105224511912707, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010816836349142885, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858615246138773070, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4754,6 +4782,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebuffsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 257726621495470627, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403031940339893184, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1123698117926962760, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -4762,6 +4798,14 @@ PrefabInstance:
       propertyPath: tooltipSystem
       value: 
       objectReference: {fileID: 1437020167}
+    - target: {fileID: 1868818331822178287, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926140919452708267, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4253993735547882331, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -4846,6 +4890,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4775105224511912707, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010816836349142885, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5237449616088108002, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -4861,6 +4913,10 @@ PrefabInstance:
     - target: {fileID: 5798605202144520971, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 67.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858615246138773070, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8204597107901692659, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: currentItem
@@ -8507,6 +8563,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebuffsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 257726621495470627, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403031940339893184, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1123698117926962760, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -8515,6 +8579,14 @@ PrefabInstance:
       propertyPath: tooltipSystem
       value: 
       objectReference: {fileID: 1437020167}
+    - target: {fileID: 1868818331822178287, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926140919452708267, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4253993735547882331, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -8599,10 +8671,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4775105224511912707, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010816836349142885, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5237449616088108002, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
       objectReference: {fileID: 1437020167}
+    - target: {fileID: 7858615246138773070, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10082,9 +10166,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.5967407, y: 670.05237}
+  m_AnchoredPosition: {x: -1410.7854, y: 225.2356}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1.01, y: 1}
+  m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &1063652262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15167,6 +15251,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebuffsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 257726621495470627, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403031940339893184, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1123698117926962760, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -15175,6 +15267,14 @@ PrefabInstance:
       propertyPath: tooltipSystem
       value: 
       objectReference: {fileID: 1437020167}
+    - target: {fileID: 1868818331822178287, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926140919452708267, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4253993735547882331, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -15259,10 +15359,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4775105224511912707, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010816836349142885, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5237449616088108002, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
       objectReference: {fileID: 1437020167}
+    - target: {fileID: 7858615246138773070, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18959,6 +19071,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebuffsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 257726621495470627, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403031940339893184, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1123698117926962760, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -18967,6 +19087,14 @@ PrefabInstance:
       propertyPath: tooltipSystem
       value: 
       objectReference: {fileID: 1437020167}
+    - target: {fileID: 1868818331822178287, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926140919452708267, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4253993735547882331, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -19051,6 +19179,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4775105224511912707, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010816836349142885, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5237449616088108002, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: tooltipSystem
       value: 
@@ -19058,6 +19194,10 @@ PrefabInstance:
     - target: {fileID: 5798605202144520971, guid: 14d2fa778d474b843b62282973d43427, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 67.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858615246138773070, guid: 14d2fa778d474b843b62282973d43427, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
