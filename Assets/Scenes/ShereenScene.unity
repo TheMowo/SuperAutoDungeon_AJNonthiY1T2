@@ -2000,18 +2000,30 @@ MonoBehaviour:
   enemiesUnitSprite: {fileID: 311073080}
   CurrentEffects: 
   TurnSkipSlow: 0
+  GreyDebuffDuration: 0
+  GreenDebuffDuration: 0
+  LightBlueDebuffDuration: 0
+  GoldDebuffDuration: 0
+  LifeStealDebuffDuration: 0
+  ShieldDebuffDuration: 0
   GreyDebuffBar: {fileID: 344088360}
   GreenDebuffBar: {fileID: 344088359}
   LightBlueDebuffBar: {fileID: 344088358}
   GoldDebuffBar: {fileID: 344088357}
+  ShieldDebuffBar: {fileID: 0}
+  LifeStealDebuffBar: {fileID: 0}
   GreyDebuffBox: {fileID: 344088356}
   GreenDebuffBox: {fileID: 344088355}
   LightBlueDebuffBox: {fileID: 344088354}
   GoldDebuffBox: {fileID: 344088353}
+  ShieldDebuffBox: {fileID: 0}
+  LifeStealDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 344088352}
   GreenDebuffText: {fileID: 344088351}
   LightBlueDebuffText: {fileID: 344088350}
   GoldDebuffText: {fileID: 344088348}
+  ShieldDebuffText: {fileID: 0}
+  LifeStealDebuffText: {fileID: 0}
   MaxDebuff: 3
   ESS: {fileID: 0}
 --- !u!224 &311073079
@@ -2029,7 +2041,6 @@ RectTransform:
   - {fileID: 1327023376}
   - {fileID: 1694567344}
   - {fileID: 1821560833}
-  - {fileID: 1171948680}
   - {fileID: 344088349}
   m_Father: {fileID: 152397800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2119,7 +2130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownText: {fileID: 1821560835}
-  targetText: {fileID: 1171948682}
 --- !u!1 &334660954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,142 +2817,6 @@ RectTransform:
   m_AnchoredPosition: {x: 87.535, y: 801}
   m_SizeDelta: {x: 489.3169, y: 78.3898}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &396908733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 396908734}
-  - component: {fileID: 396908736}
-  - component: {fileID: 396908735}
-  m_Layer: 5
-  m_Name: Target_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &396908734
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396908733}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1129937582}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: 164}
-  m_SizeDelta: {x: 56.993, y: 89.4186}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &396908735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396908733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 0
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -36.430054, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &396908736
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396908733}
-  m_CullTransparentMesh: 1
 --- !u!1 &407591482
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,18 +3211,30 @@ MonoBehaviour:
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
+  GreyDebuffDuration: 0
+  GreenDebuffDuration: 0
+  LightBlueDebuffDuration: 0
+  GoldDebuffDuration: 0
+  LifeStealDebuffDuration: 0
+  ShieldDebuffDuration: 0
   GreyDebuffBar: {fileID: 0}
   GreenDebuffBar: {fileID: 0}
   LightBlueDebuffBar: {fileID: 0}
   GoldDebuffBar: {fileID: 0}
+  ShieldDebuffBar: {fileID: 0}
+  LifeStealDebuffBar: {fileID: 0}
   GreyDebuffBox: {fileID: 0}
   GreenDebuffBox: {fileID: 0}
   LightBlueDebuffBox: {fileID: 0}
   GoldDebuffBox: {fileID: 0}
+  ShieldDebuffBox: {fileID: 0}
+  LifeStealDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 0}
   GreenDebuffText: {fileID: 0}
   LightBlueDebuffText: {fileID: 0}
   GoldDebuffText: {fileID: 0}
+  ShieldDebuffText: {fileID: 0}
+  LifeStealDebuffText: {fileID: 0}
   MaxDebuff: 3
 --- !u!114 &506330821
 MonoBehaviour:
@@ -4622,7 +4508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4800.4727, y: 2512.9133}
+  m_AnchoredPosition: {x: -43.783752, y: 625.13513}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.1, y: 1}
 --- !u!114 &680007815
@@ -5963,18 +5849,30 @@ MonoBehaviour:
   enemiesUnitSprite: {fileID: 994413897}
   CurrentEffects: 
   TurnSkipSlow: 0
+  GreyDebuffDuration: 0
+  GreenDebuffDuration: 0
+  LightBlueDebuffDuration: 0
+  GoldDebuffDuration: 0
+  LifeStealDebuffDuration: 0
+  ShieldDebuffDuration: 0
   GreyDebuffBar: {fileID: 2130283725}
   GreenDebuffBar: {fileID: 2130283731}
   LightBlueDebuffBar: {fileID: 2130283728}
   GoldDebuffBar: {fileID: 2130283722}
+  ShieldDebuffBar: {fileID: 0}
+  LifeStealDebuffBar: {fileID: 0}
   GreyDebuffBox: {fileID: 2130283726}
   GreenDebuffBox: {fileID: 2130283732}
   LightBlueDebuffBox: {fileID: 2130283729}
   GoldDebuffBox: {fileID: 2130283723}
+  ShieldDebuffBox: {fileID: 0}
+  LifeStealDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 2130283724}
   GreenDebuffText: {fileID: 2130283730}
   LightBlueDebuffText: {fileID: 2130283727}
   GoldDebuffText: {fileID: 2130283721}
+  ShieldDebuffText: {fileID: 0}
+  LifeStealDebuffText: {fileID: 0}
   MaxDebuff: 3
   ESS: {fileID: 0}
 --- !u!114 &994413897
@@ -7002,18 +6900,30 @@ MonoBehaviour:
   enemiesUnitSprite: {fileID: 1129937583}
   CurrentEffects: 
   TurnSkipSlow: 0
+  GreyDebuffDuration: 0
+  GreenDebuffDuration: 0
+  LightBlueDebuffDuration: 0
+  GoldDebuffDuration: 0
+  LifeStealDebuffDuration: 0
+  ShieldDebuffDuration: 0
   GreyDebuffBar: {fileID: 510991860}
   GreenDebuffBar: {fileID: 510991859}
   LightBlueDebuffBar: {fileID: 510991858}
   GoldDebuffBar: {fileID: 510991857}
+  ShieldDebuffBar: {fileID: 0}
+  LifeStealDebuffBar: {fileID: 0}
   GreyDebuffBox: {fileID: 510991856}
   GreenDebuffBox: {fileID: 510991855}
   LightBlueDebuffBox: {fileID: 510991854}
   GoldDebuffBox: {fileID: 510991853}
+  ShieldDebuffBox: {fileID: 0}
+  LifeStealDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 510991852}
   GreenDebuffText: {fileID: 510991851}
   LightBlueDebuffText: {fileID: 510991850}
   GoldDebuffText: {fileID: 510991848}
+  ShieldDebuffText: {fileID: 0}
+  LifeStealDebuffText: {fileID: 0}
   MaxDebuff: 3
   ESS: {fileID: 0}
 --- !u!224 &1129937582
@@ -7031,7 +6941,6 @@ RectTransform:
   - {fileID: 836600388}
   - {fileID: 1241283058}
   - {fileID: 1544339479}
-  - {fileID: 396908734}
   - {fileID: 510991849}
   m_Father: {fileID: 152397800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7121,7 +7030,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownText: {fileID: 1544339480}
-  targetText: {fileID: 396908735}
 --- !u!1 &1138716971
 GameObject:
   m_ObjectHideFlags: 0
@@ -7462,142 +7370,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2562996564818354951, guid: c4f769a0646cbf34d97b031b7e20eed9, type: 3}
   m_PrefabInstance: {fileID: 1150930062}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1171948679
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1171948680}
-  - component: {fileID: 1171948683}
-  - component: {fileID: 1171948682}
-  m_Layer: 5
-  m_Name: Target_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1171948680
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171948679}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 311073079}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: 164}
-  m_SizeDelta: {x: 56.993, y: 89.4186}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1171948682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171948679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 0
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -36.430054, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1171948683
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171948679}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1216662096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10013,18 +9785,30 @@ MonoBehaviour:
   playerType: 0
   CurrentEffects: 
   TurnSkipSlow: 0
+  GreyDebuffDuration: 0
+  GreenDebuffDuration: 0
+  LightBlueDebuffDuration: 0
+  GoldDebuffDuration: 0
+  LifeStealDebuffDuration: 0
+  ShieldDebuffDuration: 0
   GreyDebuffBar: {fileID: 1040766838}
   GreenDebuffBar: {fileID: 1040766837}
   LightBlueDebuffBar: {fileID: 1040766836}
   GoldDebuffBar: {fileID: 1040766835}
+  ShieldDebuffBar: {fileID: 0}
+  LifeStealDebuffBar: {fileID: 0}
   GreyDebuffBox: {fileID: 1040766834}
   GreenDebuffBox: {fileID: 1040766833}
   LightBlueDebuffBox: {fileID: 1040766832}
   GoldDebuffBox: {fileID: 1040766831}
+  ShieldDebuffBox: {fileID: 0}
+  LifeStealDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 1040766830}
   GreenDebuffText: {fileID: 1040766829}
   LightBlueDebuffText: {fileID: 1040766828}
   GoldDebuffText: {fileID: 1040766826}
+  ShieldDebuffText: {fileID: 0}
+  LifeStealDebuffText: {fileID: 0}
   MaxDebuff: 3
 --- !u!224 &1546797896
 RectTransform:
@@ -12938,18 +12722,30 @@ MonoBehaviour:
   playerType: 1
   CurrentEffects: 
   TurnSkipSlow: 0
+  GreyDebuffDuration: 0
+  GreenDebuffDuration: 0
+  LightBlueDebuffDuration: 0
+  GoldDebuffDuration: 0
+  LifeStealDebuffDuration: 0
+  ShieldDebuffDuration: 0
   GreyDebuffBar: {fileID: 1245650644}
   GreenDebuffBar: {fileID: 1245650643}
   LightBlueDebuffBar: {fileID: 1245650642}
   GoldDebuffBar: {fileID: 1245650641}
+  ShieldDebuffBar: {fileID: 0}
+  LifeStealDebuffBar: {fileID: 0}
   GreyDebuffBox: {fileID: 1245650640}
   GreenDebuffBox: {fileID: 1245650639}
   LightBlueDebuffBox: {fileID: 1245650638}
   GoldDebuffBox: {fileID: 1245650637}
+  ShieldDebuffBox: {fileID: 0}
+  LifeStealDebuffBox: {fileID: 0}
   GreyDebuffText: {fileID: 1245650636}
   GreenDebuffText: {fileID: 1245650635}
   LightBlueDebuffText: {fileID: 1245650634}
   GoldDebuffText: {fileID: 1245650632}
+  ShieldDebuffText: {fileID: 0}
+  LifeStealDebuffText: {fileID: 0}
   MaxDebuff: 3
 --- !u!224 &2114363932
 RectTransform:

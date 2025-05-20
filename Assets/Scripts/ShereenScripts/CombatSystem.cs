@@ -337,8 +337,6 @@ public class CombatSystem : MonoBehaviour
         if (enemyUnits.Count == 0 || playerUnits.Count == 0)
             yield break;
 
-        int totalATK = 0;
-
         for (int i = 0; i < enemyUnits.Count; i++)
         {
             EnemiesUnit attacker = enemyUnits[i];
@@ -355,19 +353,22 @@ public class CombatSystem : MonoBehaviour
 
             //EnemyCooldownDisplay - cooldown
             EnemyCooldownDisplay cdDisplay = attacker.GetComponent<EnemyCooldownDisplay>();
+            bool canAttack = false;
+
             if (cdDisplay != null)
             {
-                cdDisplay.TickDownCooldown();
+                canAttack = cdDisplay.TickDownCooldown();
             }
 
+            if (!canAttack) continue;
+
+            //Move up
             Vector3 originalPos = attacker.transform.position;
             Vector3 popPos = originalPos + Vector3.up * 100f;
             attacker.transform.position = popPos;
 
             yield return new WaitForSeconds(0.3f);
 
-            totalATK += attacker.ATK;
-
             PlayerUnit targetPlayer = null;
             foreach (var unit in playerUnits)
             {
@@ -378,89 +379,52 @@ public class CombatSystem : MonoBehaviour
                 }
             }
 
-            int PresumeDamageTake = attacker.ATK;
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+            if (targetPlayer != null)
             {
-                PresumeDamageTake *= 2;
-            }
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
-            {
-                PresumeDamageTake = 0;
-            }
-            if (attacker.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
-            {
-                attacker.HP += PresumeDamageTake;
-            }
+                int damage = attacker.ATK;
 
-            if (atkDisplayText != null)
-            {
-                atkDisplayText.text = $"{totalATK}";
-            }
-            else
-            {
-                Debug.LogWarning("atkDisplayText is not assigned in the Inspector");
+                if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+                {
+                    damage *= 2;
+                }
+                if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
+                {
+                    damage = 0;
+                }
+                if (attacker.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+                {
+                    attacker.HP += damage;
+                }
+
+                targetPlayer.CurrentHP -= damage;
+                spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
+                targetPlayer.UpdateUI();
+
+                if (atkDisplayText != null)
+                {
+                    atkDisplayText.text = $"{damage}";
+                }
+
+                Debug.Log($"{attacker.name} attacked {targetPlayer.name} for {damage}");
+
+                if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+                {
+                    Debug.Log($"{targetPlayer.name} has died");
+                    targetPlayer.isDead = true;
+                    SetAlpha(targetPlayer.gameObject, 0.5f);
+                }
             }
 
             yield return new WaitForSeconds(0.3f);
-
             attacker.transform.position = originalPos;
             yield return new WaitForSeconds(0.3f);
         }
-
-        if (playerUnits.Count > 0)
-        {
-            PlayerUnit targetPlayer = null;
-            foreach (var unit in playerUnits)
-            {
-                if (!unit.isDead)
-                {
-                    targetPlayer = unit;
-                    break;
-                }
-            }
-
-            //EnemyCooldownDisplay - Target's Name
-            foreach (var enemy in enemyUnits)
-            {
-                var display = enemy.GetComponent<EnemyCooldownDisplay>();
-                if (display != null && targetPlayer != null)
-                {
-                    display.SetTargetText(targetPlayer.playerType.ToString());
-                }
-            }
-
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
-            {
-                totalATK *= 2;
-            }
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
-            {
-                totalATK = 0;
-            }
-            targetPlayer.CurrentHP -= totalATK;
-
-            spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
-            targetPlayer.UpdateUI();
-
-            Debug.Log("Total Enemy ATK = " + totalATK);
-
-            if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
-            {
-                Debug.Log($"{targetPlayer.name} has died");
-                targetPlayer.isDead = true;
-                SetAlpha(targetPlayer.gameObject, 0.5f);
-
-                //playerUnits.RemoveAt(0);
-                //Destroy(targetPlayer.gameObject);
-            }
-        }
-
-        yield return new WaitForSeconds(0.5f);
 
         if (atkDisplayText != null)
         {
             atkDisplayText.text = "";
         }
+        yield return new WaitForSeconds(0.5f);
     }
 
 
