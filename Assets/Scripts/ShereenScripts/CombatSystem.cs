@@ -383,7 +383,7 @@ public class CombatSystem : MonoBehaviour
             {
                 PresumeDamageTake *= 2;
             }
-            else if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
+            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
             {
                 PresumeDamageTake = 0;
             }
@@ -433,11 +433,11 @@ public class CombatSystem : MonoBehaviour
             {
                 totalATK *= 2;
             }
-            else if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
+            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
             {
                 totalATK = 0;
             }
-            else targetPlayer.CurrentHP -= totalATK;
+            targetPlayer.CurrentHP -= totalATK;
 
             spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
             targetPlayer.UpdateUI();
