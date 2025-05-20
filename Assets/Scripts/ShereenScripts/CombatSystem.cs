@@ -228,8 +228,11 @@ public class CombatSystem : MonoBehaviour
             }
 
             Vector3 originalPos = attacker.transform.position;
-            Vector3 popPos = originalPos + Vector3.up * 100f;
-            attacker.transform.position = popPos;
+            if(!attacker.isDead)
+            {
+                Vector3 popPos = originalPos + Vector3.up * 100f;
+                attacker.transform.position = popPos;
+            }
             yield return new WaitForSeconds(0.2f);
 
             EnemiesUnit target = null;
@@ -284,6 +287,7 @@ public class CombatSystem : MonoBehaviour
                     enemyUnits.Remove(target);
                     inventory.playerCurrency += target.enemiesUnitType.DropGold;
                     inventory.UpdateCurrencyUI();
+                    inventory.AddRandomItem();
                     Destroy(target.gameObject);
                 }
             }
@@ -368,12 +372,14 @@ public class CombatSystem : MonoBehaviour
                 {
                     targetPlayer = playerUnits[0];
                     spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
+                    SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                     break;
                 }
                 else
                 {
                     targetPlayer = playerUnits[1];
                     spawnAnimatedUI.EnemyAttackAnimationAt(1, 1);
+                    SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                     break;
                 }
             }
