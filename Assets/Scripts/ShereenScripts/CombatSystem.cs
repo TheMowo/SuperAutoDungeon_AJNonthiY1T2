@@ -262,7 +262,7 @@ public class CombatSystem : MonoBehaviour
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
                     spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
-                    SoundManager.Instance.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
+                    //SoundManager.Instance.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
@@ -274,7 +274,7 @@ public class CombatSystem : MonoBehaviour
                     {
                         target = enemyUnits[t];
                         spawnAnimatedUI.PlayerAttackAnimationAt(t, 1);
-                        SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
+                        //SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
                 }
@@ -292,7 +292,7 @@ public class CombatSystem : MonoBehaviour
                 {
                     DamageTake = 0;
                 }
-                else target.HP -= DamageTake;
+                target.HP -= DamageTake;
 
                 if (attacker.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
                 {
