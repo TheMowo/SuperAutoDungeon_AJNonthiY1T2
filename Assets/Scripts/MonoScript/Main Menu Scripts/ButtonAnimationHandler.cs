@@ -17,6 +17,11 @@ public class ButtonAnimationHandler : MonoBehaviour, IPointerEnterHandler, IPoin
         //_startPos = transform.position;
         _startScale = transform.localScale;
     }
+    private void OnDisable()
+    {
+        transform.localScale = _startScale;
+    }
+
     private IEnumerator MoveButton(bool startingAnimation)
     {
         //Vector3 endPosition;
