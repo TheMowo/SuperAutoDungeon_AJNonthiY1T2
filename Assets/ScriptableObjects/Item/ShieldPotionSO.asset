@@ -19,7 +19,7 @@ MonoBehaviour:
   AtkEffect: 0
   Sprite: {fileID: 2389193319765324094, guid: fd6659ee42bba41428086d33aa83b5c7, type: 3}
   GreenDebuffEffect: 0
-  GreyDebuffEffect: 1
+  GreyDebuffEffect: 0
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
   LifeStealDebuffEffect: 0

@@ -60,7 +60,7 @@ public class EnemiesUnit : MonoBehaviour
 
 
 
-    [SerializeField] int MaxDebuff = 3;
+    [SerializeField] int MaxDebuff = 5;
 
     private void Awake()
     {
@@ -138,6 +138,22 @@ public class EnemiesUnit : MonoBehaviour
 
             GoldDebuffDuration += consumable.GoldDebuffEffect;
 
+            if (GreyDebuffDuration > 5)
+            {
+                GreyDebuffDuration = 5;
+            }
+            if (GreenDebuffDuration > 5)
+            {
+                GreenDebuffDuration = 5;
+            }
+            if (GoldDebuffDuration > 5)
+            {
+                GoldDebuffDuration = 5;
+            }
+            if (LightBlueDebuffDuration > 5)
+            {
+                LightBlueDebuffDuration = 5;
+            }
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
@@ -145,11 +161,23 @@ public class EnemiesUnit : MonoBehaviour
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.Shield)
         {
+            HP += consumable.HpEffect;
+            ATK += consumable.AtkEffect;
             ShieldDebuffDuration += consumable.ShieldDebuffEffect;
+            if (ShieldDebuffDuration > 5)
+            {
+                ShieldDebuffDuration = 5;
+            }
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.LifeStealPotion)
         {
+            HP += consumable.HpEffect;
+            ATK += consumable.AtkEffect;
             LifeStealDebuffDuration += consumable.LifeStealDebuffEffect;
+            if (LifeStealDebuffDuration > 5)
+            {
+                LifeStealDebuffDuration = 5;
+            }
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.FragileStrengthPotion)
         {
@@ -331,12 +359,12 @@ public class EnemiesUnit : MonoBehaviour
             StartingPos += 45f;
         }
 
-        GreyDebuffBar.fillAmount = (float)GreyDebuffDuration / 5;
-        GreenDebuffBar.fillAmount = (float)GreenDebuffDuration / 5;
-        LightBlueDebuffBar.fillAmount = (float)LightBlueDebuffDuration / 5;
-        GoldDebuffBar.fillAmount = (float)GoldDebuffDuration / 5;
-        ShieldDebuffBar.fillAmount = (float)ShieldDebuffDuration / 5;
-        LifeStealDebuffBar.fillAmount = (float)LifeStealDebuffDuration / 5;
+        GreyDebuffBar.fillAmount = (float)GreyDebuffDuration / MaxDebuff;
+        GreenDebuffBar.fillAmount = (float)GreenDebuffDuration / MaxDebuff;
+        LightBlueDebuffBar.fillAmount = (float)LightBlueDebuffDuration / MaxDebuff;
+        GoldDebuffBar.fillAmount = (float)GoldDebuffDuration / MaxDebuff;
+        ShieldDebuffBar.fillAmount = (float)ShieldDebuffDuration / MaxDebuff;
+        LifeStealDebuffBar.fillAmount = (float)LifeStealDebuffDuration / MaxDebuff ;
         if (CurrentEffects.Count == 0)
         {
             GreyDebuffText.text = "";
