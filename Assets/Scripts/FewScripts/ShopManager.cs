@@ -10,11 +10,16 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopOpenState;
     public GameObject[] shopCloseState;
     public GameObject nextStageButton;
+    [HideInInspector] public GameObject inventoryManagerObject;
+    [HideInInspector] public InventoryManager inventoryManager;
 
     private void Awake()
     {
         AddRandomItems(8);
+        inventoryManagerObject = GameObject.FindGameObjectWithTag("InventoryManager");
+        inventoryManager = inventoryManagerObject.GetComponent<InventoryManager>();
     }
+    
     public void AddRandomItems(int count)
     {
         for (int i = 0; i < count; i++)
@@ -51,8 +56,24 @@ public class ShopManager : MonoBehaviour
     {
         DestroyShopItems();
         Debug.Log("Shop Items Cleared");
-        Delay.Run(1f, () => Debug.Log("Shop Items Created"));
-        Delay.Run(1f, () => AddRandomItems(8));
+        Delay.Run(0.01f, () => Debug.Log("Shop Items Created"));
+        Delay.Run(0.01f, () => AddRandomItems(8));
+    }
+    public void RerollShopItem()
+    {
+        if(inventoryManager.playerCurrency < 5)
+        {
+            Debug.Log("Not Enough Currency!");
+        }
+        else
+        {
+            inventoryManager.playerCurrency -= 5;
+            inventoryManager.UpdateCurrencyUI();
+            DestroyShopItems();
+            Debug.Log("Shop Items Cleared");
+            Delay.Run(0.01f, () => Debug.Log("Shop Items Created"));
+            Delay.Run(0.01f, () => AddRandomItems(8));
+        }
     }
 
     public void OpenShopOnWin()
