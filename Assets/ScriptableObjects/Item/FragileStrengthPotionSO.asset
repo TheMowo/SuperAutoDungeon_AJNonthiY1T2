@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
+  m_Name: FragileStrengthPotionSO
+  m_EditorClassIdentifier: 
+  myEffectType: 7
+  Name: Fragile Strength Potion
+  Description: Cut HP in half, those halved HP \nwill be added into ATK
+  HpEffect: 0
+  AtkEffect: 0
+  Sprite: {fileID: 7123017666264362218, guid: b8501f8db26ff2d4d98239e1a84c0a93, type: 3}
+  GreenDebuffEffect: 0
+  GreyDebuffEffect: 0
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 0
+  duration: 0
+  price: 15
