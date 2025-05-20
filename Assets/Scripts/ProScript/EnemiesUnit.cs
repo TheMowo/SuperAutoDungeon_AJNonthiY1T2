@@ -15,7 +15,7 @@ public class EnemiesUnit : MonoBehaviour
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
     public Image enemiesUnitSprite;
-    
+
     int DropGold;
     int MPDrop;
 
@@ -24,28 +24,39 @@ public class EnemiesUnit : MonoBehaviour
     public List<DebuffEffectType> CurrentEffects;
     public int TurnSkipSlow;
 
-    int CurrentGreyDebuff;
-    int CurrentGreenDebuff;
-    int CurrentLightBlueDebuff;
-    int CurrentGoldDebuff;
-
     EnemiesUnitType.EnemiesType myType;
+
+
+    public int GreyDebuffDuration;
+    public int GreenDebuffDuration;
+    public int LightBlueDebuffDuration;
+    public int GoldDebuffDuration;
+    public int LifeStealDebuffDuration;
+    public int ShieldDebuffDuration;
 
 
     [SerializeField] Image GreyDebuffBar;
     [SerializeField] Image GreenDebuffBar;
     [SerializeField] Image LightBlueDebuffBar;
     [SerializeField] Image GoldDebuffBar;
+    [SerializeField] Image ShieldDebuffBar;
+    [SerializeField] Image LifeStealDebuffBar;
 
     [SerializeField] Image GreyDebuffBox;
     [SerializeField] Image GreenDebuffBox;
     [SerializeField] Image LightBlueDebuffBox;
     [SerializeField] Image GoldDebuffBox;
+    [SerializeField] Image ShieldDebuffBox;
+    [SerializeField] Image LifeStealDebuffBox;
+
+
 
     [SerializeField] TMP_Text GreyDebuffText;
     [SerializeField] TMP_Text GreenDebuffText;
     [SerializeField] TMP_Text LightBlueDebuffText;
     [SerializeField] TMP_Text GoldDebuffText;
+    [SerializeField] TMP_Text ShieldDebuffText;
+    [SerializeField] TMP_Text LifeStealDebuffText;
 
 
 
@@ -72,12 +83,10 @@ public class EnemiesUnit : MonoBehaviour
     {
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.Food)
         {
-            if (consumable == FavFood)
-            {
-                OnFed();
-            }
             HP += consumable.HpEffect;
             ATK += consumable.AtkEffect;
+            //CurrentHP += consumable.HpEffect;
+            //CurrentATK += consumable.AtkEffect;
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.HealingPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.StatsPotion || consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
         {
@@ -115,74 +124,86 @@ public class EnemiesUnit : MonoBehaviour
                 HP -= consumable.HpEffect;
                 ATK -= consumable.AtkEffect;
             }
-            else 
+            else
             {
                 HP += consumable.HpEffect;
                 ATK += consumable.AtkEffect;
             }
 
-            CurrentGreyDebuff += consumable.GreyDebuffEffect;
+            GreyDebuffDuration += consumable.GreyDebuffEffect;
 
-            CurrentGreenDebuff += consumable.GreenDebuffEffect;
+            GreenDebuffDuration += consumable.GreenDebuffEffect;
 
-            CurrentLightBlueDebuff += consumable.LightBlueDebuffEffect;
+            LightBlueDebuffDuration += consumable.LightBlueDebuffEffect;
 
-            CurrentGoldDebuff += consumable.GoldDebuffEffect;
+            GoldDebuffDuration += consumable.GoldDebuffEffect;
 
-
-            if (CurrentGreyDebuff < 0)
-                CurrentGreyDebuff = 0;
-            if (CurrentGreenDebuff < 0)
-                CurrentGreenDebuff = 0;
-            if (CurrentLightBlueDebuff < 0)
-                CurrentLightBlueDebuff = 0;
-            if (CurrentGoldDebuff < 0)
-                CurrentGoldDebuff = 0;
-
-            CheckDebuffFull();
-            CheckDebuffFull();
+        }
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.InstantDamage)
+        {
+            HP += consumable.HpEffect;
+        }
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.Shield)
+        {
+            ShieldDebuffDuration += consumable.ShieldDebuffEffect;
+        }
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.LifeStealPotion)
+        {
+            LifeStealDebuffDuration += consumable.LifeStealDebuffEffect;
+        }
+        if (consumable.myEffectType == ConsumableItem.ItemEffectType.FragileStrengthPotion)
+        {
+            HP /= 2;
+            ATK += HP;
         }
         if (consumable.myEffectType == ConsumableItem.ItemEffectType.CleansingPotion)
         {
-            CurrentGreyDebuff = 0;
-            CurrentGreenDebuff = 0;
-            CurrentLightBlueDebuff = 0;
-            CurrentGoldDebuff = 0;
-        }
-        if (consumable.myEffectType == ConsumableItem.ItemEffectType.BetterCleansingPotion)
-        {
-            CurrentGreyDebuff = 0;
-            CurrentGreenDebuff = 0;
-            CurrentLightBlueDebuff = 0;
-            CurrentGoldDebuff = 0;
+            GreyDebuffDuration = 0;
+            GreenDebuffDuration = 0;
+            LightBlueDebuffDuration = 0;
+            GoldDebuffDuration = 0;
 
             CurrentEffects.Clear();
         }
-        UpdateVisual();
+
+        CheckDebuff();
+
     }
 
-    void CheckDebuffFull()
+    public void CheckDebuff()
     {
-        if (CurrentGreenDebuff >= 3)
+        if (GreenDebuffDuration > 0)
         {
             ApplyDebuffEffects(DebuffEffectType.Poison);
-            CurrentGreenDebuff -= 3;
         }
-        if (CurrentGreyDebuff >= 3)
+        else CurrentEffects.Remove(DebuffEffectType.Poison);
+        if (GreyDebuffDuration > 0)
         {
             ApplyDebuffEffects(DebuffEffectType.Weakness);
-            CurrentGreyDebuff -= 3;
         }
-        if (CurrentLightBlueDebuff >= 3)
+        else CurrentEffects.Remove(DebuffEffectType.Weakness);
+        if (LightBlueDebuffDuration > 0)
         {
             ApplyDebuffEffects(DebuffEffectType.Slowness);
-            CurrentLightBlueDebuff -= 3;
         }
-        if (CurrentGoldDebuff >= 3)
+        else CurrentEffects.Remove(DebuffEffectType.Slowness);
+        if (GoldDebuffDuration > 0)
         {
             ApplyDebuffEffects(DebuffEffectType.Vulnerable);
-            CurrentGoldDebuff -= 3;
         }
+        else CurrentEffects.Remove(DebuffEffectType.Vulnerable);
+        if (ShieldDebuffDuration > 0)
+        {
+            ApplyDebuffEffects(DebuffEffectType.Shield);
+        }
+        else CurrentEffects.Remove(DebuffEffectType.Shield);
+        if (LifeStealDebuffDuration > 0)
+        {
+            ApplyDebuffEffects(DebuffEffectType.LifeSteal);
+        }
+        else CurrentEffects.Remove(DebuffEffectType.LifeSteal);
+
+        UpdateVisual();
     }
     public void UpdateUI()
     {
@@ -195,60 +216,104 @@ public class EnemiesUnit : MonoBehaviour
         UpdateUI();
     }
 
-    void ApplyDebuffEffects(DebuffEffectType effect)
+    bool ApplyDebuffEffects(DebuffEffectType effect)
     {
+        bool canApply = false;
         if (effect == DebuffEffectType.Poison)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Poison))
+            {
                 CurrentEffects.Add(DebuffEffectType.Poison);
+                canApply = true;
+            }
             else
-                CurrentEffects.Add(DebuffEffectType.PoisonII);
+                canApply = false;
         }
         if (effect == DebuffEffectType.Weakness)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Weakness))
+            {
                 CurrentEffects.Add(DebuffEffectType.Weakness);
+                canApply = true;
+            }
             else
-                CurrentEffects.Add(DebuffEffectType.WeaknessII);
+                canApply = false;
         }
         if (effect == DebuffEffectType.Vulnerable)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+            {
                 CurrentEffects.Add(DebuffEffectType.Vulnerable);
+                canApply = true;
+            }
             else
-                CurrentEffects.Add(DebuffEffectType.Lethal);
+                canApply = false;
         }
         if (effect == DebuffEffectType.Slowness)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Slowness))
+            {
                 CurrentEffects.Add(DebuffEffectType.Slowness);
+                canApply = true;
+            }
             else
-                CurrentEffects.Add(DebuffEffectType.Frozen);
+                canApply = false;
         }
+        if (effect == DebuffEffectType.Shield)
+        {
+            if (!CurrentEffects.Contains(DebuffEffectType.Shield))
+            {
+                CurrentEffects.Add(DebuffEffectType.Shield);
+                canApply = true;
+            }
+            else
+                canApply = false;
+        }
+        if (effect == DebuffEffectType.LifeSteal)
+        {
+            if (!CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+            {
+                CurrentEffects.Add(DebuffEffectType.LifeSteal);
+                canApply = true;
+            }
+            else
+                canApply = false;
+        }
+        return canApply;
     }
 
     public void UpdateVisual()
     {
-        if (CurrentGreyDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Weakness))
+        if (GreyDebuffDuration != 0)
         {
             GreyDebuffBox.gameObject.SetActive(true);
         }
         else GreyDebuffBox.gameObject.SetActive(false);
-        if (CurrentGreenDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Poison))
+        if (GreenDebuffDuration != 0)
         {
             GreenDebuffBox.gameObject.SetActive(true);
         }
         else GreenDebuffBox.gameObject.SetActive(false);
-        if (CurrentGoldDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+        if (GoldDebuffDuration != 0)
         {
             GoldDebuffBox.gameObject.SetActive(true);
         }
         else GoldDebuffBox.gameObject.SetActive(false);
-        if (CurrentLightBlueDebuff != 0 || CurrentEffects.Contains(DebuffEffectType.Slowness))
+        if (LightBlueDebuffDuration != 0)
         {
             LightBlueDebuffBox.gameObject.SetActive(true);
         }
         else LightBlueDebuffBox.gameObject.SetActive(false);
+        if (LifeStealDebuffDuration != 0)
+        {
+            LifeStealDebuffBox.gameObject.SetActive(true);
+        }
+        else LifeStealDebuffBox.gameObject.SetActive(false);
+        if (ShieldDebuffDuration != 0)
+        {
+            ShieldDebuffBox.gameObject.SetActive(true);
+        }
+        else ShieldDebuffBox.gameObject.SetActive(false);
 
         TooltipTrigger[] tooltipTriggers = GetComponentsInChildren<TooltipTrigger>();
         List<GameObject> debuffBars = new List<GameObject>();
@@ -265,48 +330,45 @@ public class EnemiesUnit : MonoBehaviour
             debuff.GetComponent<RectTransform>().localPosition = new Vector3(StartingPos, 0);
             StartingPos += 45f;
         }
-        GreyDebuffBar.fillAmount = (float)CurrentGreyDebuff / 3;
-        GreenDebuffBar.fillAmount = (float)CurrentGreenDebuff / 3;
-        LightBlueDebuffBar.fillAmount = (float)CurrentLightBlueDebuff / 3;
-        GoldDebuffBar.fillAmount = (float)CurrentGoldDebuff / 3;
+
+        GreyDebuffBar.fillAmount = (float)GreyDebuffDuration / 5;
+        GreenDebuffBar.fillAmount = (float)GreenDebuffDuration / 5;
+        LightBlueDebuffBar.fillAmount = (float)LightBlueDebuffDuration / 5;
+        GoldDebuffBar.fillAmount = (float)GoldDebuffDuration / 5;
+        ShieldDebuffBar.fillAmount = (float)ShieldDebuffDuration / 5;
+        LifeStealDebuffBar.fillAmount = (float)LifeStealDebuffDuration / 5;
         if (CurrentEffects.Count == 0)
         {
             GreyDebuffText.text = "";
             GreenDebuffText.text = "";
             LightBlueDebuffText.text = "";
             GoldDebuffText.text = "";
+            ShieldDebuffText.text = "";
+            LifeStealDebuffText.text = "";
         }
         if (CurrentEffects.Contains(DebuffEffectType.Poison))
         {
-            GreenDebuffText.text = "I";
-        }
-        if (CurrentEffects.Contains(DebuffEffectType.PoisonII))
-        {
-            GreenDebuffText.text = "II";
+            GreenDebuffText.text = $"{GreenDebuffDuration}";
         }
         if (CurrentEffects.Contains(DebuffEffectType.Weakness))
         {
-            GreyDebuffText.text = "I";
-        }
-        if (CurrentEffects.Contains(DebuffEffectType.WeaknessII))
-        {
-            GreyDebuffText.text = "II";
+            GreyDebuffText.text = $"{GreyDebuffDuration}";
         }
         if (CurrentEffects.Contains(DebuffEffectType.Vulnerable))
         {
-            GoldDebuffText.text = "I";
-        }
-        if (CurrentEffects.Contains(DebuffEffectType.Lethal))
-        {
-            GoldDebuffText.text = "II";
+            GoldDebuffText.text = $"{GoldDebuffDuration}";
         }
         if (CurrentEffects.Contains(DebuffEffectType.Slowness))
         {
-            LightBlueDebuffText.text = "I";
+            LightBlueDebuffText.text = $"{LightBlueDebuffDuration}";
         }
-        if (CurrentEffects.Contains(DebuffEffectType.Frozen))
+        if (CurrentEffects.Contains(DebuffEffectType.Shield))
         {
-            LightBlueDebuffText.text = "II";
+            ShieldDebuffText.text = $"{ShieldDebuffDuration}";
+        }
+        if (CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+        {
+            LifeStealDebuffText.text = $"{LifeStealDebuffDuration}";
         }
     }
 
@@ -328,10 +390,10 @@ public class EnemiesUnit : MonoBehaviour
                 position = new float[] { transform.position.x, transform.position.y, transform.position.z },
                 BaseHP = this.HP,
                 BaseATK = this.ATK,
-                CurrentGreyDebuff = this.CurrentGreyDebuff,
-                CurrentGreenDebuff = this.CurrentGreenDebuff,
-                CurrentLightBlueDebuff = this.CurrentLightBlueDebuff,
-                CurrentGoldDebuff = this.CurrentGoldDebuff,
+                CurrentGreyDebuff = this.GreyDebuffDuration,
+                CurrentGreenDebuff = this.GreenDebuffDuration,
+                CurrentLightBlueDebuff = this.LightBlueDebuffDuration,
+                CurrentGoldDebuff = this.GoldDebuffDuration,
                 CurrentEffects = this.CurrentEffects,
             };
         }
@@ -347,10 +409,11 @@ public class EnemiesUnit : MonoBehaviour
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         this.ATK = data.BaseATK;
         this.HP = data.BaseHP;
-        this.CurrentGreyDebuff = data.CurrentGreyDebuff;
-        this.CurrentGreenDebuff = data.CurrentGreenDebuff;
-        this.CurrentLightBlueDebuff = data.CurrentLightBlueDebuff;
-        this.CurrentGoldDebuff = data.CurrentGoldDebuff;
+        this.GreyDebuffDuration = data.CurrentGreyDebuff;
+        this.GreenDebuffDuration = data.CurrentGreenDebuff;
+        this.LightBlueDebuffDuration = data.CurrentLightBlueDebuff;
+        this.GoldDebuffDuration = data.CurrentGoldDebuff;
         this.CurrentEffects = data.CurrentEffects;
     }
+
 }
