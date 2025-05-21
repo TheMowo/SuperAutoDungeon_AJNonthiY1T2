@@ -47,7 +47,7 @@ public class SettingSaveSystem : MonoBehaviour
         Debug.Log("Loaded JSON:\n" + json);
 
         SettingSaveData loadedData = JsonUtility.FromJson<SettingSaveData>(json);
-        Setting.LoadSaveData(loadedData);
+        //Setting.LoadSaveData(loadedData);
         Debug.Log("Settings loaded!");
     }
 
