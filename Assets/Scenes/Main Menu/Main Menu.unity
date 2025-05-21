@@ -13810,6 +13810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (for lose screen)
       objectReference: {fileID: 0}
+    - target: {fileID: 2083032019866338842, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4399872723796888427, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
