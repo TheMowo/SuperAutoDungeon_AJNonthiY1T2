@@ -11,20 +11,34 @@ public class ShopSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
     public GameObject Shop;
+    private int I;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
+    }
 
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        ShopLoad();
+        if (GameObject.Find("Player Unit 1") != null)
+        {
+            Shop = GameObject.Find("--- ShopOpenUI ---");
+            ShopLoad();
+        }
     }
 
     private void Update()
     {
-        if (Shop.active == true && GameObject.Find("SHOP") == null)
+        if (GameObject.Find("Player Unit 1") != null)
         {
             GetAllShopSlotList();
-            ShopLoad();
+            if (Shop != null && I < 0.1f)
+            {
+                ShopLoad();
+                I += 1;
+            }
         }
     }
 

@@ -1,11 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using System;
-using static UnityEditor.Progress;
 using System.Linq;
-using UnityEditor.Overlays;
-using Unity.VisualScripting;
 
 public class ItemSaveSystem : MonoBehaviour
 {
@@ -15,15 +11,25 @@ public class ItemSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
 
-    void Start()
+    void Awake()
     {
-        GetAllInventorySlotList();
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
-        Debug.Log(this.dataHandler);
-        ItemLoad();
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
     }
 
-    void GetAllInventorySlotList()
+    void Start()
+    {
+        ClearAllInventorySlots();
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
+        Debug.Log(this.dataHandler);
+        if (GameObject.Find("Player Unit 1") != null)
+        {
+            GetAllInventorySlotList();
+            ItemLoad();
+        }
+        Debug.Log("---------HELP---------");
+    }
+
+    public void GetAllInventorySlotList()
     {
         Inventoryslot = FindObjectsByType<InventorySlot>(FindObjectsSortMode.None).ToList();
     }

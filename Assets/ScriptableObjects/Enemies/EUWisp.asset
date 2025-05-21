@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb139f0f8f7d964585d7d43d5cc9f29, type: 3}
   m_Name: EUWisp
   m_EditorClassIdentifier: 
-  myType: 0
-  HP: 8
+  myType: 2
+  HP: 6
   ATK: 2
-  DropGold: 15
+  DropGold: 5
   MPDrop: 1
-  Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
+  UnitSprite: {fileID: 1486575889, guid: 40e72e10fcf3e3a47a06a6d692cccf27, type: 3}
   FavFood: {fileID: 0}
   isUndead: 0

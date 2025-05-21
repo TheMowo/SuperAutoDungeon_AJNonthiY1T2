@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 0
   HP: 20
-  ATK: 3
-  DropGold: 50
+  ATK: 1
+  DropGold: 100
   MPDrop: 1
-  Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
+  UnitSprite: {fileID: -7027985933419936355, guid: 5cc232d76ba88604a981907946ba80c1, type: 3}
   FavFood: {fileID: 0}
   isUndead: 0

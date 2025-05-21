@@ -1,11 +1,8 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -28,18 +25,17 @@ public class MenuController : MonoBehaviour
 
     bool isPaused;
 
-    [Header("Settings Screen: Video")]
-    public Dropdown resolutionDropdown;
+    //[Header("Settings Screen: Video")]
+    public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
-    public static MenuController Instance; private void Awake() { if (Instance != null) Destroy(this.gameObject); DontDestroyOnLoad(this.gameObject); Instance = this; }
+    public static MenuController Instance; private void Awake() { if (Instance != null) { Destroy(gameObject); } DontDestroyOnLoad(gameObject); Instance = this; }
 
     //// void Start
     private void Start()
     {
         //Find Screen Resolutions
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
 
         List<string> optionsList = new List<string>();

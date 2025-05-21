@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -6,14 +8,22 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot trashSlot;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
+    CurrencySaveSystem currencySaveSystem;
 
     public int playerCurrency = 100;
-    public TMPro.TextMeshProUGUI currencyText;
+    public TMP_Text currencyText;
 
     void Start()
     {
-        UpdateCurrencyUI();
+        currencySaveSystem = FindFirstObjectByType<CurrencySaveSystem>();
+        if (currencySaveSystem != null)
+        {
+            currencySaveSystem.FindCurrency(this);
+        }
+        Delay.Run(0.0000000000000000000000000000000000000000000000000000000001f, () => UpdateCurrencyUI());
     }
+
+
     public void UpdateCurrencyUI()
     {
         currencyText.text = $"Doubloon: {playerCurrency}";

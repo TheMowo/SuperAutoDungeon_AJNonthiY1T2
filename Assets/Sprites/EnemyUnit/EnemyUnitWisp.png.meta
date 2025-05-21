@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: c2c74654931ee444c8340a86ee298616
+guid: 40e72e10fcf3e3a47a06a6d692cccf27
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2813320989260563313
-    second: PlayerUnitSwordman_0
+      213: -6305776332585144259
+    second: EnemyUnitWisp_0
+  - first:
+      213: 3380891185850343276
+    second: EnemyUnitWisp_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,23 +103,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerUnitSwordman_0
+      name: EnemyUnitWisp_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 52
-        height: 34
+        x: 0
+        y: 0
+        width: 60
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f8c39f3477315f8d0800000000000000
-      internalID: -2813320989260563313
+      spriteID: ffb03cb830d630f4482ab1ae5bbf159d
+      internalID: 1486575889
       vertices: []
       indices: 
       edges: []
@@ -125,7 +128,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 77c690385a60b6f4e87ea0ccf1963b97
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +138,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerUnitSwordman_0: -2813320989260563313
+      EnemyUnitWisp_0: 1486575889
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

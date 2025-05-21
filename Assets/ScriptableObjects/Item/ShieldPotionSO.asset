@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e48d1f0b34c0a45b8928b2ccec99b6, type: 3}
+  m_Name: ShieldPotionSO
+  m_EditorClassIdentifier: 
+  myEffectType: 5
+  Name: Shield Potion
+  Description: Negate all incoming damage for a turn
+  HpEffect: 0
+  AtkEffect: 0
+  Sprite: {fileID: 2389193319765324094, guid: fd6659ee42bba41428086d33aa83b5c7, type: 3}
+  GreenDebuffEffect: 0
+  GreyDebuffEffect: 0
+  LightBlueDebuffEffect: 0
+  GoldDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 1
+  duration: 0
+  price: 15

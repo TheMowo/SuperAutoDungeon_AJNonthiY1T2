@@ -1,11 +1,10 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -16,15 +15,15 @@ public class MainMenuController : MonoBehaviour
     /// <important>
     [Header("Escape Menu")]
     [SerializeField] private GameObject EscapeMenuObject;
-    [SerializeField] private GameObject[] EscapeMenuButtons; //for use with Unity Input system
+    //[SerializeField] private GameObject[] EscapeMenuButtons; //for use with Unity Input system
     //[SerializeField] private GameObject[] EscapeMenuPanels;
 
     [Header("Escape Menu Screens")]
-    [SerializeField] private GameObject MainPanel;
+    //[SerializeField] private GameObject MainPanel;
     [SerializeField] private GameObject SettingsPanel;
 
-    [Header("Settings Screen: Video")]
-    public Dropdown resolutionDropdown;
+    //[Header("Settings Screen: Video")]
+    public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
     //// void Start
@@ -32,7 +31,6 @@ public class MainMenuController : MonoBehaviour
     {
         //Find Screen Resolutions
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
 
         List<string> optionsList = new List<string>();
@@ -154,11 +152,5 @@ public class MainMenuController : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);//Screen.fullscreen is a bool so players SetFullscreen() take priority (setting resolutions shouldnt override that)
-    }
-
-
-    private void OnEnable() //For using keyboard controls in UI
-    {
-        EventSystem.current.SetSelectedGameObject(EscapeMenuButtons[0]);
     }
 }

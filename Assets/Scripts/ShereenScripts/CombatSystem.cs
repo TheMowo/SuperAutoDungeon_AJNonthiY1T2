@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class CombatSystem : MonoBehaviour
 {
+    [SerializeField] private TurnCountUI turnCountUI;
+    [SerializeField] private SpawnAnimatedUI spawnAnimatedUI;
     public TMP_Text atkDisplayText;
     public InventoryManager inventory;
     public List<PlayerUnit> playerUnits;
@@ -14,21 +17,21 @@ public class CombatSystem : MonoBehaviour
     public List<Transform> enemyPositions;
     public Transform battlePoint;
     public enemySpawner enemySpawner;
-
-    public GameObject[] shopOpenState;
-    public GameObject[] shopCloseState;
-    //public GameObject nextStageButton;
     public ShopManager shopManager;
+    public bool isWin;
 
     public PlayerSaveSystem PSS;
     public ItemSaveSystem TSS;
     public ShopSaveSystem SSS;
-    public CurrencySaveSystem CSS;
 
     public float attackSpeed = 3.0f;
 
     [SerializeField] private int maxTurns = 5;
     public int currentTurn = 1;
+
+    [Header("Audio Files for Sfx")]
+    [SerializeField] AudioClip swordmanAttackAudio_;
+    [SerializeField] AudioClip bowmanAttackAudio_;
 
     public void Awake()
     {
@@ -67,62 +70,36 @@ public class CombatSystem : MonoBehaviour
 
             Debug.Log("Turn " + (currentTurn + 1));
 
-            foreach (var unit in playerUnits)
-            {
-                if (unit.CurrentEffects.Contains(DebuffEffectType.Poison))
-                {
-                    unit.CurrentHP -= 1;
-                }
-                if (unit.CurrentEffects.Contains(DebuffEffectType.PoisonII))
-                {
-                    unit.CurrentHP /= 2;
-                }
-                if (unit.CurrentEffects.Contains(DebuffEffectType.Weakness))
-                {
-                    unit.CurrentATK -= 1;
-                }
-                if (unit.CurrentEffects.Contains(DebuffEffectType.WeaknessII))
-                {
-                    unit.CurrentATK /= 2;
-                }
-            }
-
-            foreach (var unit in enemyUnits)
-            {
-                if (unit.CurrentEffects.Contains(DebuffEffectType.Poison))
-                {
-                    unit.HP -= 1;
-                }
-                if (unit.CurrentEffects.Contains(DebuffEffectType.PoisonII))
-                {
-                    unit.HP /= 2;
-                }
-                if (unit.CurrentEffects.Contains(DebuffEffectType.Weakness))
-                {
-                    unit.ATK -= 1;
-                }
-                if (unit.CurrentEffects.Contains(DebuffEffectType.WeaknessII))
-                {
-                    unit.ATK /= 2;
-                }
-            }
-
             // Players attack first
             yield return StartCoroutine(PlayerAttackPhase());
             // then checks if player killed off all enemies
             if (enemyUnits.Count == 0)
             {
-                PSS.PlayerSaveData();
-                TSS.ItemSaveData();
-                CSS.CurrencySaveData();
-                
+                if(PSS != null)
+                {
+                    PSS.PlayerSaveData();
+                    TSS.ItemSaveData();
+                }
+                else
+                {
+                    Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+                }
+
                 Debug.Log("Player Wins");
                 ResetPlayerHP();
                 RepositionUnits();
+                isWin = true;
 
                 shopManager.OpenShopOnWin();
-                SSS.GetAllShopSlotList();
-                SSS.ShopoSaveData();
+                if (PSS != null)
+                {
+                    SSS.GetAllShopSlotList();
+                    SSS.ShopoSaveData();
+                }
+                else
+                {
+                    Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+                }
 
                 yield break;
             }
@@ -136,8 +113,79 @@ public class CombatSystem : MonoBehaviour
                 yield break;
             }
 
+            foreach (var unit in playerUnits)
+            {
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Poison))
+                {
+                    unit.CurrentHP -= 1;
+                    unit.GreenDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Weakness))
+                {
+                    if (unit.CurrentATK > 0)
+                    {
+                        unit.CurrentATK -= 1;
+                    }
+                    unit.GreyDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Slowness))
+                {
+                    unit.LightBlueDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+                {
+                    unit.GoldDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Shield))
+                {
+                    unit.ShieldDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+                {
+                    unit.LifeStealDebuffDuration -= 1;
+                }
+
+                unit.CheckDebuff();
+            }
+
+            foreach (var unit in enemyUnits)
+            {
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Poison))
+                {
+                    unit.HP -= 1;
+                    unit.GreenDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Weakness))
+                {
+                    if (unit.ATK > 0)
+                    {
+                        unit.ATK -= 1;
+                    }
+                    unit.GreyDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Slowness))
+                {
+                    unit.LightBlueDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+                {
+                    unit.GoldDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.Shield))
+                {
+                    unit.ShieldDebuffDuration -= 1;
+                }
+                if (unit.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+                {
+                    unit.LifeStealDebuffDuration -= 1;
+                }
+
+                unit.CheckDebuff();
+            }
+
             RepositionUnits();
             currentTurn++;
+            turnCountUI.UpdateTurnsUI();
             yield return new WaitForSeconds(1.0f);
         }
 
@@ -155,17 +203,31 @@ public class CombatSystem : MonoBehaviour
         }
         else
         {
-            PSS.PlayerSaveData();
-            TSS.ItemSaveData();
-            CSS.CurrencySaveData();
+            if (PSS != null)
+            {
+                PSS.PlayerSaveData();
+                TSS.ItemSaveData();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+            }
 
-            Debug.Log("No one died, Player Wins");
+            Debug.Log("No one die, Player Wins");
             ResetPlayerHP();
             RepositionUnits();
+            isWin = true;
 
             shopManager.OpenShopOnWin();
-            SSS.GetAllShopSlotList();
-            SSS.ShopoSaveData();
+            if (PSS != null)
+            {
+                SSS.GetAllShopSlotList();
+                SSS.ShopoSaveData();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerSaveSystem (PSS) is not assigned!");
+            }
         }
     }
 
@@ -178,11 +240,7 @@ public class CombatSystem : MonoBehaviour
         {
             PlayerUnit attacker = playerUnits[i];
             if (attacker == null) continue;
-            if (attacker.CurrentEffects.Contains(DebuffEffectType.Frozen))
-            {
-                continue;
-            }
-            else if (attacker.CurrentEffects.Contains(DebuffEffectType.Slowness))
+            if (attacker.CurrentEffects.Contains(DebuffEffectType.Slowness))
             {
                 if (attacker.TurnSkipSlow == 0)
                 {
@@ -203,6 +261,8 @@ public class CombatSystem : MonoBehaviour
             {
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
+                    spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
+                    //SoundManager.Instance.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow)
             {
@@ -213,6 +273,8 @@ public class CombatSystem : MonoBehaviour
                     if (t < enemyUnits.Count)
                     {
                         target = enemyUnits[t];
+                        spawnAnimatedUI.PlayerAttackAnimationAt(t, 1);
+                        //SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
                 }
@@ -221,15 +283,20 @@ public class CombatSystem : MonoBehaviour
 
             if (target != null)
             {
+                int DamageTake = attacker.BasedATK + attacker.CurrentATK;
                 if (target.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
                 {
-                    target.HP -= (attacker.BasedATK + attacker.CurrentATK) * 2;
+                    DamageTake *= 2;
                 }
-                else target.HP -= attacker.BasedATK + attacker.CurrentATK;
-
-                if (target.CurrentEffects.Contains(DebuffEffectType.Lethal) && attacker.BasedATK > 0)
+                else if (target.CurrentEffects.Contains(DebuffEffectType.Shield))
                 {
-                    target.HP = 0;
+                    DamageTake = 0;
+                }
+                target.HP -= DamageTake;
+
+                if (attacker.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+                {
+                    attacker.CurrentHP += DamageTake;
                 }
 
                 target.UpdateUI();
@@ -270,17 +337,11 @@ public class CombatSystem : MonoBehaviour
         if (enemyUnits.Count == 0 || playerUnits.Count == 0)
             yield break;
 
-        int totalATK = 0;
-
         for (int i = 0; i < enemyUnits.Count; i++)
         {
             EnemiesUnit attacker = enemyUnits[i];
             if (attacker == null) continue;
-            if (attacker.CurrentEffects.Contains(DebuffEffectType.Frozen))
-            {
-                continue;
-            }
-            else if (attacker.CurrentEffects.Contains(DebuffEffectType.Slowness))
+            if (attacker.CurrentEffects.Contains(DebuffEffectType.Slowness))
             {
                 if (attacker.TurnSkipSlow == 0)
                 {
@@ -290,61 +351,80 @@ public class CombatSystem : MonoBehaviour
                 else attacker.TurnSkipSlow = 0;
             }
 
+            //EnemyCooldownDisplay - cooldown
+            EnemyCooldownDisplay cdDisplay = attacker.GetComponent<EnemyCooldownDisplay>();
+            bool canAttack = false;
+
+            if (cdDisplay != null)
+            {
+                canAttack = cdDisplay.TickDownCooldown();
+            }
+
+            if (!canAttack) continue;
+
+            //Move up
             Vector3 originalPos = attacker.transform.position;
             Vector3 popPos = originalPos + Vector3.up * 100f;
             attacker.transform.position = popPos;
 
             yield return new WaitForSeconds(0.3f);
 
-            totalATK += attacker.ATK;
+            PlayerUnit targetPlayer = null;
+            foreach (var unit in playerUnits)
+            {
+                if (!unit.isDead)
+                {
+                    targetPlayer = unit;
+                    break;
+                }
+            }
 
-            if (atkDisplayText != null)
+            if (targetPlayer != null)
             {
-                atkDisplayText.text = $"{totalATK}";
+                int damage = attacker.ATK;
+
+                if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
+                {
+                    damage *= 2;
+                }
+                if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Shield))
+                {
+                    damage = 0;
+                }
+                if (attacker.CurrentEffects.Contains(DebuffEffectType.LifeSteal))
+                {
+                    attacker.HP += damage;
+                }
+
+                targetPlayer.CurrentHP -= damage;
+                spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
+                targetPlayer.UpdateUI();
+
+                if (atkDisplayText != null)
+                {
+                    atkDisplayText.text = $"{damage}";
+                }
+
+                Debug.Log($"{attacker.name} attacked {targetPlayer.name} for {damage}");
+
+                if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+                {
+                    Debug.Log($"{targetPlayer.name} has died");
+                    targetPlayer.isDead = true;
+                    SetAlpha(targetPlayer.gameObject, 0.5f);
+                }
             }
-            else
-            {
-                Debug.LogWarning("atkDisplayText is not assigned in the Inspector");
-            }
-               
+
             yield return new WaitForSeconds(0.3f);
-
             attacker.transform.position = originalPos;
             yield return new WaitForSeconds(0.3f);
         }
-
-        if (playerUnits.Count > 0)
-        {
-            PlayerUnit targetPlayer = playerUnits[0];
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Vulnerable))
-            {
-                targetPlayer.CurrentHP -= totalATK * 2;
-            }
-            else targetPlayer.CurrentHP -= totalATK;
-
-            if (targetPlayer.CurrentEffects.Contains(DebuffEffectType.Lethal) && totalATK > 0)
-            {
-                targetPlayer.CurrentHP = 0;
-            }
-
-            targetPlayer.UpdateUI();
-
-            Debug.Log("Total Enemy ATK = " + totalATK);
-
-            if (targetPlayer.BasedHP <= 0)
-            {
-                Debug.Log($"{targetPlayer.name} has died");
-                playerUnits.RemoveAt(0);
-                Destroy(targetPlayer.gameObject);
-            }
-        }
-
-        yield return new WaitForSeconds(0.5f);
 
         if (atkDisplayText != null)
         {
             atkDisplayText.text = "";
         }
+        yield return new WaitForSeconds(0.5f);
     }
 
 
@@ -357,6 +437,53 @@ public class CombatSystem : MonoBehaviour
     //    }
     //}
 
+    private void SetAlpha(GameObject obj, float alpha)
+    {
+        var renderers = obj.GetComponentsInChildren<CanvasRenderer>();
+        foreach (var r in renderers)
+        {
+            Color color = r.GetColor();
+            color.a = alpha;
+            r.SetColor(color);
+        }
+    }
+    void Update()
+    {
+        PlayerUnit targetPlayer = playerUnits[0];
+        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+        {
+            Debug.Log($"{targetPlayer.name} has died");
+            targetPlayer.isDead = true;
+            SetAlpha(targetPlayer.gameObject, 0.5f);
+            //playerUnits.RemoveAt(0);
+            //Destroy(targetPlayer.gameObject);
+            RepositionUnits();
+        }
+        PlayerUnit targetPlayer1 = playerUnits[1];
+        if (targetPlayer.BasedHP + targetPlayer.CurrentHP <= 0)
+        {
+            Debug.Log($"{targetPlayer.name} has died");
+            targetPlayer1.isDead = true;
+            SetAlpha(targetPlayer1.gameObject, 0.5f);
+            //playerUnits.RemoveAt(0);
+            //Destroy(targetPlayer.gameObject);
+            RepositionUnits();
+        }
+        
+        for (int i = 0; i < enemyUnits.Count; i++)
+        {
+            EnemiesUnit attacker = enemyUnits[i];
+            if (attacker.HP <= 0)
+            {
+                Debug.Log($"{attacker.name} has died");
+                enemyUnits.Remove(attacker);
+                inventory.playerCurrency += attacker.enemiesUnitType.DropGold;
+                inventory.UpdateCurrencyUI();
+                Destroy(attacker.gameObject);
+                RepositionUnits();
+            }
+        }
+    }
     private void RepositionUnits() 
     {
         for (int i = 0; i < playerUnits.Count; i++)

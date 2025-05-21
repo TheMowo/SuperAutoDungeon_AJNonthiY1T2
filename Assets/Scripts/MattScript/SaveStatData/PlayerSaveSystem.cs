@@ -1,12 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using System;
-using static UnityEditor.Progress;
 using System.Linq;
-using UnityEditor.Overlays;
-using Unity.VisualScripting;
-using System.Collections;
 
 public class PlayerSaveSystem : MonoBehaviour
 {
@@ -15,15 +10,22 @@ public class PlayerSaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    void Start()
+    void Awake()
     {
-        GetAllPlayerUnitList();
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
-        Debug.Log(this.dataHandler);
-        PlayerLoad();
+        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
     }
 
-    void GetAllPlayerUnitList()
+    void Start()
+    {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
+        Debug.Log(this.dataHandler);
+        if (GameObject.Find("Player Unit 1") == true)
+        {
+            PlayerLoad();
+        }
+    }
+
+    public void GetAllPlayerUnitList()
     {
         allPlayers = FindObjectsByType<PlayerUnit>(FindObjectsSortMode.None).ToList();
     }

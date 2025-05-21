@@ -10,7 +10,9 @@ public class ConsumableItem : ScriptableObject
         InstantDamage,
         StatsPotion,
         CleansingPotion,
-        BetterCleansingPotion
+        Shield,
+        LifeStealPotion,
+        FragileStrengthPotion
     }
     [SerializeField] public ItemEffectType myEffectType;
     public string Name;
@@ -22,6 +24,8 @@ public class ConsumableItem : ScriptableObject
     public int GreyDebuffEffect;
     public int LightBlueDebuffEffect;
     public int GoldDebuffEffect;
-    public int BlackDebuffEffect;
+    public int LifeStealDebuffEffect;
+    public int ShieldDebuffEffect;
+    public int duration;
     public int price;
 }
