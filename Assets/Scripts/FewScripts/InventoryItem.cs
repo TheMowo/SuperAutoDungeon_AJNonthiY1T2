@@ -95,9 +95,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             InventoryManager inventory = FindObjectOfType<InventoryManager>();
             ShopManager shopManager = FindObjectOfType<ShopManager>(); 
+            SoundManager soundManager = FindAnyObjectByType<SoundManager>();
+            AudioClip audioClip = GameObject.Find("SfxSource_ItemBuy").GetComponent<AudioSource>().clip;
 
             if (inventory.TryBuyItem(CurrentItem)) // If player have enough Doubloons
             {
+                soundManager.PlaySfxClip(audioClip);
                 Destroy(gameObject);
             }
             else

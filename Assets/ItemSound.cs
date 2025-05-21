@@ -11,7 +11,7 @@ public class ItemSound : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void Start()
     {
-        soundManager = FindFirstObjectByType<SoundManager>().GetComponent<SoundManager>();
+        soundManager = FindAnyObjectByType<SoundManager>();
         PickUpSfx = GameObject.Find("SfxSource_ItemPickUp").GetComponent<AudioSource>();
         DropSfx = GameObject.Find("SfxSource_ItemDrop").GetComponent<AudioSource>();
     }
