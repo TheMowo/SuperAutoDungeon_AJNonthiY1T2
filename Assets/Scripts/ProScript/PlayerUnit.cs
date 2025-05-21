@@ -208,70 +208,50 @@ public class PlayerUnit : MonoBehaviour
         atkText.text = $"ATK {BasedATK}";
     }
 
-    bool ApplyDebuffEffects(DebuffEffectType effect)
+    void ApplyDebuffEffects(DebuffEffectType effect)
     {
-        bool canApply = false;
         if (effect == DebuffEffectType.Poison)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Poison))
             {
                 CurrentEffects.Add(DebuffEffectType.Poison);
-                canApply = true;
             }
-            else
-                canApply = false;
         }
         if (effect == DebuffEffectType.Weakness)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Weakness))
             {
                 CurrentEffects.Add(DebuffEffectType.Weakness);
-                canApply = true;
             }
-            else
-                canApply = false;
         }
         if (effect == DebuffEffectType.Vulnerable)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Vulnerable))
             {
                 CurrentEffects.Add(DebuffEffectType.Vulnerable);
-                canApply = true;
             }
-            else
-                canApply = false;
         }
         if (effect == DebuffEffectType.Slowness)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Slowness))
             {
                 CurrentEffects.Add(DebuffEffectType.Slowness);
-                canApply = true;
             }
-            else
-                canApply = false;
         }
         if (effect == DebuffEffectType.Shield)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.Shield))
             {
                 CurrentEffects.Add(DebuffEffectType.Shield);
-                canApply = true;
             }
-            else
-                canApply = false;
         }
         if (effect == DebuffEffectType.LifeSteal)
         {
             if (!CurrentEffects.Contains(DebuffEffectType.LifeSteal))
             {
                 CurrentEffects.Add(DebuffEffectType.LifeSteal);
-                canApply = true;
             }
-            else
-                canApply = false;
         }
-        return canApply;
     }
 
     public void UpdateVisual()

@@ -288,7 +288,7 @@ public class CombatSystem : MonoBehaviour
                 {
                     DamageTake *= 2;
                 }
-                else if (target.CurrentEffects.Contains(DebuffEffectType.Shield))
+                if (target.CurrentEffects.Contains(DebuffEffectType.Shield))
                 {
                     DamageTake = 0;
                 }
