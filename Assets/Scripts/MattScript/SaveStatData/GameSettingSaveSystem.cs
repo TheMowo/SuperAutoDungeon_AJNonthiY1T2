@@ -19,9 +19,10 @@ public class GameSettingSaveSystem : MonoBehaviour
         Debug.Log(this.dataHandler);
         if (GameObject.Find("Player Unit 1") != null)
         {
-            combatSystem = FindFirstObjectByType<CombatSystem>();
             gameSettingSaveData = FindFirstObjectByType<GameSettingSaveSystem>();
+            combatSystem = FindFirstObjectByType<CombatSystem>();
             GameSettingLoad();
+            Debug.Log("HELP MEMEMEMEMEMEMEMEMEME");
         }
     }
 

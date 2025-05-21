@@ -18,6 +18,7 @@ public class UniitFinder : MonoBehaviour
         gameSettingSaveSystem = FindFirstObjectByType<GameSettingSaveSystem>();
         if (enemySaveSystem != null)
         {
+            gameSettingSaveSystem.combatSystem = FindFirstObjectByType<CombatSystem>();
             itemSaveSystem.GetAllInventorySlotList();
             enemySaveSystem.GetAllPlayerUnitList();
             playerSaveSystem.GetAllPlayerUnitList();
