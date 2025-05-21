@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     //Converts to Singleton
-    public static SoundManager Instance; private void Awake(){if (Instance != null) {Debug.Log("SoundManager Instance Check !Null");  Destroy(this.gameObject);  } else DontDestroyOnLoad(this.gameObject); Instance = this;}
+    public static SoundManager Instance; private void Awake(){if (Instance != null){Debug.Log("SoundManager Instance Check !Null");Destroy(this.gameObject);}else{DontDestroyOnLoad(this.gameObject); Instance = this;}}
 
     //AudioSources that will be spawned and destroyed to play sounds
     [SerializeField] private AudioSource _soundFxSource;

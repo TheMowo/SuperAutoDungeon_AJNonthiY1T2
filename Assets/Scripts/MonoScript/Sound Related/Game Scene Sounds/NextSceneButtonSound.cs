@@ -5,10 +5,11 @@ public class NextSceneButtonSound : MonoBehaviour, IPointerDownHandler
 {
     //I recommend you avert your eyes from this wacky solution to the sound problem-
     AudioClip Sfx;
-    SoundManager soundManager = SoundManager.Instance;
+    SoundManager soundManager;
 
     void Start()
     {
+        soundManager = FindAnyObjectByType<SoundManager>();
         Sfx = GameObject.Find("UiSource_OnNext").GetComponent<AudioSource>().clip;
     }
 
