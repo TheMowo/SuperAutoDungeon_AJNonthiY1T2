@@ -26,6 +26,8 @@ public class UniitFinder : MonoBehaviour
             playerSaveSystem.PlayerLoad();
             itemSaveSystem.ItemLoad();
             currencySaveSystem.CurrencyLoad();
+            gameSettingSaveSystem.GameSettingSaveData();
+            gameSettingSaveSystem.GameSettingLoad();
         }
     }
 }

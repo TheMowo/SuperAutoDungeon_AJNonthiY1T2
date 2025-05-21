@@ -13,14 +13,15 @@ public class SceneLoader : MonoBehaviour
         ISS = FindFirstObjectByType<ItemSaveSystem>();
         Player = FindFirstObjectByType<PlayerSaveSystem>();
         CSS = FindFirstObjectByType<CurrencySaveSystem>();
-        GSS.combatSystem = FindFirstObjectByType<CombatSystem>();
+        GSS = FindFirstObjectByType<GameSettingSaveSystem>();
+        GSS.gameSettingSaveData = FindFirstObjectByType<GameSettingSaveSystem>();
 
         if (ISS != null)
         {
+            GSS.combatSystem = FindFirstObjectByType<CombatSystem>();
             ISS.ItemSaveData();
             CSS.CurrencySaveData();
             Player.PlayerSaveData();
-            GSS.GetSaveData();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

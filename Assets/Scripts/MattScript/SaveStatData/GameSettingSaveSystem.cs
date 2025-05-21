@@ -13,7 +13,7 @@ public class GameSettingSaveSystem : MonoBehaviour
     public int SceneIndex;
     public static GameSettingSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("GameSettingSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
-    void Start()
+    private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
@@ -66,6 +66,7 @@ public class GameSettingSaveSystem : MonoBehaviour
 
     public SettingSaveData GetSaveData()
     {
+        Debug.Log("Fucking stupit");
         return new SettingSaveData
         {
             PlayerWin = combatSystem.isWin,

@@ -23,6 +23,7 @@ public class CombatSystem : MonoBehaviour
     public PlayerSaveSystem PSS;
     public ItemSaveSystem TSS;
     public ShopSaveSystem SSS;
+    public GameSettingSaveSystem GSS;
 
     public float attackSpeed = 3.0f;
 
@@ -36,6 +37,10 @@ public class CombatSystem : MonoBehaviour
     public void Awake()
     {
         inventory = FindAnyObjectByType<InventoryManager>();
+        PSS = FindFirstObjectByType<PlayerSaveSystem>();
+        TSS = FindFirstObjectByType<ItemSaveSystem>();
+        SSS = FindFirstObjectByType<ShopSaveSystem>();
+        GSS = FindFirstObjectByType<GameSettingSaveSystem>();
     }
     public void StartBattle()
     {
@@ -79,6 +84,7 @@ public class CombatSystem : MonoBehaviour
                 {
                     PSS.PlayerSaveData();
                     TSS.ItemSaveData();
+                    GSS.GameSettingSaveData();
                 }
                 else
                 {
@@ -98,6 +104,7 @@ public class CombatSystem : MonoBehaviour
                 {
                     SSS.GetAllShopSlotList();
                     SSS.ShopoSaveData();
+                    GSS.GameSettingSaveData();
                 }
                 else
                 {
@@ -212,6 +219,7 @@ public class CombatSystem : MonoBehaviour
             {
                 PSS.PlayerSaveData();
                 TSS.ItemSaveData();
+                GSS.GameSettingSaveData();
             }
             else
             {
@@ -231,6 +239,7 @@ public class CombatSystem : MonoBehaviour
             {
                 SSS.GetAllShopSlotList();
                 SSS.ShopoSaveData();
+                GSS.GameSettingSaveData();
             }
             else
             {
