@@ -14,7 +14,5 @@ public class PlayerSaveData
     public int CurrentGreenDebuff;
     public int CurrentLightBlueDebuff;
     public int CurrentGoldDebuff;
-    public int LifeStealDebuff;
-    public int ShieldDebuff;
     public List<DebuffEffectType> CurrentEffects;
 }

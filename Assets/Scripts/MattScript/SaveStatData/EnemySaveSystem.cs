@@ -1,7 +1,11 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using System;
+using static UnityEditor.Progress;
 using System.Linq;
+using UnityEditor.Overlays;
+using Unity.VisualScripting;
 
 public class EnemySaveSystem : MonoBehaviour
 {
@@ -10,19 +14,15 @@ public class EnemySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    public static EnemySaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("EnemySaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
-
     void Start()
     {
+        GetAllPlayerUnitList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        if (GameObject.Find("Player Unit 1") == true)
-        {
-            EnemyLoad();
-        }
+        EnemyLoad();
     }
 
-    public void GetAllPlayerUnitList()
+    void GetAllPlayerUnitList()
     {
         if(FindObjectsByType<EnemiesUnit>(FindObjectsSortMode.None).ToList() != null)
         {

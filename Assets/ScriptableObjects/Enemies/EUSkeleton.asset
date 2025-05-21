@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb139f0f8f7d964585d7d43d5cc9f29, type: 3}
   m_Name: EUSkeleton
   m_EditorClassIdentifier: 
-  myType: 1
-  HP: 8
-  ATK: 4
-  DropGold: 30
+  myType: 0
+  HP: 12
+  ATK: 2
+  DropGold: 15
   MPDrop: 1
-  UnitSprite: {fileID: -1343730808999985375, guid: a67cc82aa5a9b704eb0c57ef2122ba8d, type: 3}
+  Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
   FavFood: {fileID: 0}
   isUndead: 0
-  attackCooldown: 1

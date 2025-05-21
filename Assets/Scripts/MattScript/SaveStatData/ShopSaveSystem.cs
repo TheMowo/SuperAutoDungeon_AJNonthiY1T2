@@ -11,31 +11,20 @@ public class ShopSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
     public GameObject Shop;
-    private int I;
-    public static ShopSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("ShopSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
-
 
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        if (GameObject.Find("Player Unit 1") != null)
-        {
-            Shop = GameObject.Find("--- ShopOpenUI ---");
-            ShopLoad();
-        }
+        ShopLoad();
     }
 
     private void Update()
     {
-        if (GameObject.Find("Player Unit 1") != null)
+        if (Shop.active = false)
         {
             GetAllShopSlotList();
-            if (Shop != null && I < 0.1f)
-            {
-                ShopLoad();
-                I += 1;
-            }
+            ShopLoad();
         }
     }
 
@@ -62,6 +51,7 @@ public class ShopSaveSystem : MonoBehaviour
         if (!File.Exists(ItemSavePath))
         {
             Debug.LogWarning("No save file found. Clearing all inventory slots.");
+            ClearAllInventorySlots();
             return;
         }
 

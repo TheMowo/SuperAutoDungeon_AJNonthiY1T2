@@ -1,7 +1,11 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using System;
+using static UnityEditor.Progress;
 using System.Linq;
+using UnityEditor.Overlays;
+using Unity.VisualScripting;
 
 public class ItemSaveSystem : MonoBehaviour
 {
@@ -10,23 +14,16 @@ public class ItemSaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
-    public static ItemSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("ItemSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
-
 
     void Start()
     {
-        ClearAllInventorySlots();
+        GetAllInventorySlotList();
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        if (GameObject.Find("Player Unit 1") != null)
-        {
-            GetAllInventorySlotList();
-            ItemLoad();
-        }
-        Debug.Log("---------HELP---------");
+        ItemLoad();
     }
 
-    public void GetAllInventorySlotList()
+    void GetAllInventorySlotList()
     {
         Inventoryslot = FindObjectsByType<InventorySlot>(FindObjectsSortMode.None).ToList();
     }
@@ -49,6 +46,7 @@ public class ItemSaveSystem : MonoBehaviour
         if (!File.Exists(ItemSavePath))
         {
             Debug.LogWarning("No save file found. Clearing all inventory slots.");
+            ClearAllInventorySlots();
             return;
         }
 

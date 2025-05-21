@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class CurrencySaveSystem : MonoBehaviour
@@ -10,16 +9,11 @@ public class CurrencySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    public static CurrencySaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("CurrencySaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
-        if(GameObject.Find("Player Unit 1") == true)
-        {
-            Currency = FindFirstObjectByType<InventoryManager>();
-            CurrencyLoad();
-        }
+        CurrencyLoad();
     }
 
     public void CurrencySaveData()
@@ -43,7 +37,6 @@ public class CurrencySaveSystem : MonoBehaviour
 
         CurrencySaveData loadedData = JsonUtility.FromJson<CurrencySaveData>(json);
         Currency.LoadFromSaveData(loadedData); // Apply loaded data
-        //UpdateCurrencyUI();
         Debug.Log("Currency loaded!");
     }
 
@@ -59,10 +52,5 @@ public class CurrencySaveSystem : MonoBehaviour
         {
             Debug.LogWarning("No save file found to delete at: " + fullPath);
         }
-    }
-
-    public void FindCurrency(InventoryManager inventoryManager)
-    {
-        Currency = inventoryManager;
     }
 }

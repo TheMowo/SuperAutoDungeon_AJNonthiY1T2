@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 0
   Name: 'Debuff: Frozen'
-  Description: Unit attack once every 2 turns
+  Description: 'I: Unit attack once every 2 turns \nII: Unit is unable to attack
+    + became Vulnerable'
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 0}
@@ -22,7 +23,5 @@ MonoBehaviour:
   GreyDebuffEffect: 0
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
-  LifeStealDebuffEffect: 0
-  ShieldDebuffEffect: 0
-  duration: 0
+  BlackDebuffEffect: 0
   price: 0
