@@ -32,6 +32,6 @@ public class EnemyCooldownDisplay : MonoBehaviour
     private void UpdateText()
     {
         if (cooldownText != null)
-            cooldownText.text = $"CD: {currentCooldown}";
+            cooldownText.text = $"{currentCooldown}";
     }
 }

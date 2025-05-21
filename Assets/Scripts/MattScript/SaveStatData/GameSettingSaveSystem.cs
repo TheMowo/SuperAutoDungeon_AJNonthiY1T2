@@ -5,30 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class GameSettingSaveSystem : MonoBehaviour
 {
-    public GameSettingSaveSystem gameSettingSaveData;
+    public GameSettingSaveSystem SettingSaveData;
     private string GameSettingSavePath => Path.Combine(Application.persistentDataPath, "GameSettingSaveData.json");
     public string fileName;
     private FileDataHandler dataHandler;
     public CombatSystem combatSystem;
     public int SceneIndex;
-    public static GameSettingSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("GameSettingSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
+    public static GameSettingSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("GameSettingSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
 
-    private void Start()
+    void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want
         Debug.Log(this.dataHandler);
         if (GameObject.Find("Player Unit 1") != null)
         {
-            gameSettingSaveData = FindFirstObjectByType<GameSettingSaveSystem>();
             combatSystem = FindFirstObjectByType<CombatSystem>();
+            SettingSaveData = FindFirstObjectByType<GameSettingSaveSystem>();
             GameSettingLoad();
-            Debug.Log("HELP MEMEMEMEMEMEMEMEMEME");
         }
     }
 
     public void GameSettingSaveData()
     {
-        SettingSaveData saveData = gameSettingSaveData.GetSaveData(); // Get currency data
+        SettingSaveData saveData = SettingSaveData.GetSaveData(); // Get currency data
         string json = JsonUtility.ToJson(saveData, true); // Serialize data
         File.WriteAllText(GameSettingSavePath, json); // Save to file
         Debug.Log("GameSetting saved to: " + GameSettingSavePath);
@@ -46,7 +45,7 @@ public class GameSettingSaveSystem : MonoBehaviour
         Debug.Log("Loaded JSON:\n" + json);
 
         SettingSaveData loadedData = JsonUtility.FromJson<SettingSaveData>(json);
-        gameSettingSaveData.LoadFromSaveData(loadedData); // Apply loaded data
+        SettingSaveData.LoadFromSaveData(loadedData); // Apply loaded data
         Debug.Log("GameSetting loaded!");
     }
 
@@ -66,7 +65,6 @@ public class GameSettingSaveSystem : MonoBehaviour
 
     public SettingSaveData GetSaveData()
     {
-        Debug.Log("Fucking stupit");
         return new SettingSaveData
         {
             PlayerWin = combatSystem.isWin,

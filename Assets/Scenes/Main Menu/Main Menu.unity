@@ -760,10 +760,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 765581378246126233, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
-      propertyPath: m_Volume
-      value: 0.558
-      objectReference: {fileID: 0}
+    - target: {fileID: 8235361250166154480, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
+      propertyPath: _soundFxSource
+      value: 
+      objectReference: {fileID: 1207039605}
     - target: {fileID: 8369944357082531810, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
       propertyPath: m_Name
       value: Sound Related
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef468b2761f43a43a4e6dda800e71b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettingSaveData: {fileID: 266656609}
+  SettingSaveData: {fileID: 0}
   fileName: GameSettingSaveData
   combatSystem: {fileID: 0}
   SceneIndex: 0
@@ -4217,8 +4217,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278650631
-  m_fontColor: {r: 0.028301895, g: 0.028168395, b: 0.028168395, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7860,9 +7860,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5999911, g: 0.9150943, b: 0.5999911, a: 1}
-    m_PressedColor: {r: 0.4685831, g: 0.735849, b: 0.4685831, a: 1}
-    m_SelectedColor: {r: 0.5686275, g: 0.81960785, b: 0.5686275, a: 1}
+    m_HighlightedColor: {r: 0.1254902, g: 0.36078432, b: 0.11372549, a: 1}
+    m_PressedColor: {r: 0.10457882, g: 0.2924528, b: 0.095185116, a: 1}
+    m_SelectedColor: {r: 0.1254902, g: 0.36078432, b: 0.11372549, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7907,7 +7907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28627452, g: 0.6117647, b: 0.28627452, a: 1}
+  m_Color: {r: 0.123535186, g: 0.3584906, b: 0.10991457, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8279,6 +8279,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189135587}
   m_CullTransparentMesh: 1
+--- !u!82 &1207039605 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1687854173575626802, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
+  m_PrefabInstance: {fileID: 186597138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227731733
 GameObject:
   m_ObjectHideFlags: 0

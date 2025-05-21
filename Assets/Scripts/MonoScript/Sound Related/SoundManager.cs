@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     //Converts to Singleton
-    public static SoundManager Instance; private void Awake(){if (Instance != null) {Debug.Log("SoundManager Instance Check !Null");  Destroy(this.gameObject);  } else DontDestroyOnLoad(this.gameObject); Instance = this;}
+    public static SoundManager Instance; private void Awake(){if (Instance != null){Debug.Log("SoundManager Instance Check !Null");Destroy(this.gameObject);}else{DontDestroyOnLoad(this.gameObject); Instance = this;}}
 
     //AudioSources that will be spawned and destroyed to play sounds
     [SerializeField] private AudioSource _soundFxSource;
@@ -43,33 +43,33 @@ public class SoundManager : MonoBehaviour
     public void PlaySfxClipWithPitchChange(AudioClip audioClip)
     {
 
-        //if (audioClip == null)
-        //{
-        //    Debug.Log("audioClip is Null");
-        //}
-        //else
-        //{
-        //    //spawn in GameObject
-        //    AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
-        //    Debug.Log("SoundManager: PlaySFXClipWithPitchChange() has Instantiated an AudioSource at " + transform.position);
+        if (audioClip == null)
+        {
+            Debug.Log("audioClip is Null");
+        }
+        else
+        {
+            //spawn in GameObject
+            AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
+            Debug.Log("SoundManager: PlaySFXClipWithPitchChange() has Instantiated an AudioSource at " + transform.position);
 
-        //    //ensures audio does not loop
-        //    _audioSource.loop = false;
+            //ensures audio does not loop
+            _audioSource.loop = false;
 
-        //    _audioSource.pitch = Random.Range(0.9f, 1.5f);
+            _audioSource.pitch = Random.Range(0.9f, 1.5f);
 
-        //    //assign the audioClip
-        //    _audioSource.clip = audioClip;
+            //assign the audioClip
+            _audioSource.clip = audioClip;
 
-        //    //play sound
-        //    _audioSource.Play();
+            //play sound
+            _audioSource.Play();
 
-        //    //get length of sound fx clip
-        //    float clipLength = _audioSource.clip.length;
+            //get length of sound fx clip
+            float clipLength = _audioSource.clip.length;
 
-        //    //destroy the clip after it is done playing
-        //    Destroy(_audioSource.gameObject, clipLength);
-        //}
+            //destroy the clip after it is done playing
+            Destroy(_audioSource.gameObject, clipLength);
+        }
     }
 }
 

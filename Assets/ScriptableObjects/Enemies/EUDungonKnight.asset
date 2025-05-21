@@ -20,3 +20,4 @@ MonoBehaviour:
   UnitSprite: {fileID: 5885728433202849284, guid: 0abc12b9777eaef47a5c5f30ec178b52, type: 3}
   FavFood: {fileID: 0}
   isUndead: 0
+  attackCooldown: 0

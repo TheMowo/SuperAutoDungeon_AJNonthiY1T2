@@ -10,8 +10,7 @@ public class CurrencySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    public static CurrencySaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("CurrencySaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
-
+    public static CurrencySaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("CurrencySaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
     void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName); //Application.persistentDataPath <== change this to save where ever you want

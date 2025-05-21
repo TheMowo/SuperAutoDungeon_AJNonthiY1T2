@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8600819887248775548}
   - component: {fileID: 8235361250166154480}
+  - component: {fileID: 3623509185702636027}
   m_Layer: 0
   m_Name: Sound Related
   m_TagString: Untagged
@@ -137,6 +138,18 @@ MonoBehaviour:
   _soundFxSource: {fileID: 1687854173575626802}
   _uiSource: {fileID: 150140509817735113}
   _musicSource: {fileID: 8960943428534634132}
+--- !u!114 &3623509185702636027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369944357082531810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc5cf56e9c18434a8cf3ad5395f3518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &750628205613610633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -653,6 +666,10 @@ PrefabInstance:
     - target: {fileID: 2329792706821589436, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563223330586672258, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
+      propertyPath: m_Volume
+      value: 0.558
       objectReference: {fileID: 0}
     - target: {fileID: 6563223330586672258, guid: 0cd64dbac5b390e488750d99b5f57e8d, type: 3}
       propertyPath: m_Resource
