@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 4
   Name: Cleansing Potion
-  Description: Clear all impending debuffs on a unit
+  Description: Clear all debuffs on a unit
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 5506079318362539018, guid: 7a36287eaaf764f44af3f628ad50d80b, type: 3}
@@ -22,5 +22,7 @@ MonoBehaviour:
   GreyDebuffEffect: 0
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
-  BlackDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 0
+  duration: 0
   price: 20

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 2
   Name: Instant Damage Potion
-  Description: '[Temporary Gained Stats]\nHP: -4'
+  Description: 'HP: -4'
   HpEffect: -4
   AtkEffect: 0
   Sprite: {fileID: 3380004158612640549, guid: a30823e9fba4a6f4c9ca8474dad53e89, type: 3}
@@ -22,5 +22,7 @@ MonoBehaviour:
   GreyDebuffEffect: 0
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
-  BlackDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 0
+  duration: 0
   price: 10

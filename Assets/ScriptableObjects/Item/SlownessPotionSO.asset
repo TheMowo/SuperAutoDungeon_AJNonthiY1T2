@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SlownessPotionSO
   m_EditorClassIdentifier: 
   myEffectType: 3
-  Name: Slowness Potion
-  Description: '[Temporary Gained Stats]\nATK: +4'
+  Name: Ice Potion
+  Description: 'ATK: +4 \nEffective against Fire enemies'
   HpEffect: 0
   AtkEffect: 4
   Sprite: {fileID: 3648992895637484057, guid: 1c13fd500604a864baa701fee06189d1, type: 3}
