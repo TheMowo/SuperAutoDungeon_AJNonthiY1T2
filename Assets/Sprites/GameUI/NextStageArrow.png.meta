@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 475baf98278d40044b8343341758f317
+guid: 698654d398d6ae54da316b1a84c015f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -145362552210212360
-    second: ropes_0
+      213: 1360257903115770962
+    second: NextStageArrow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ropes_0
+      name: NextStageArrow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 891
-        height: 654
+        x: 4
+        y: 11
+        width: 92
+        height: 72
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8f9bdd767819bfdf0800000000000000
-      internalID: -145362552210212360
+      spriteID: 25c122e1b5b90e210800000000000000
+      internalID: 1360257903115770962
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ropes_0: -145362552210212360
+      NextStageArrow_0: 1360257903115770962
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
