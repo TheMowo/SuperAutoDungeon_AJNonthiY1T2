@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 0
   Name: 'Debuff: Weaken'
-  Description: 'I: Unit decreases ATK by 1 per turn \nII: Unit decreases ATK by HALF
-    per turn'
+  Description: Unit decreases ATK by 1 per turn
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 0}
@@ -23,5 +22,7 @@ MonoBehaviour:
   GreyDebuffEffect: 0
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
-  BlackDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 0
+  duration: 0
   price: 0
