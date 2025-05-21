@@ -17,6 +17,7 @@ MonoBehaviour:
   ATK: 1
   DropGold: 10
   MPDrop: 1
-  Sprite: {fileID: 3732671734123717633, guid: 2216837bdf655494b91668d718ecd79e, type: 3}
+  UnitSprite: {fileID: 0}
   FavFood: {fileID: 0}
   isUndead: 0
+  attackCooldown: 0
