@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RerollUI
   m_EditorClassIdentifier: 
   myEffectType: 0
-  Name: 'Debuff: Weaken'
-  Description: Unit decreases ATK by 1 per turn
+  Name: Reroll Shop
+  Description: It will cost you 5 Doubloons
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 0}
