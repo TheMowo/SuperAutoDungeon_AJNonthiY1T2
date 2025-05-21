@@ -11,11 +11,7 @@ public class GameSettingSaveSystem : MonoBehaviour
     private FileDataHandler dataHandler;
     public CombatSystem combatSystem;
     public int SceneIndex;
-
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
-    }
+    public static GameSettingSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("GameSettingSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
     void Start()
     {

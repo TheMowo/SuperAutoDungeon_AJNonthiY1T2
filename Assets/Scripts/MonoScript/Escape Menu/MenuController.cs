@@ -29,7 +29,7 @@ public class MenuController : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
-    public static MenuController Instance; private void Awake() { if (Instance != null) { Destroy(gameObject); } DontDestroyOnLoad(gameObject); Instance = this; }
+    public static MenuController Instance; private void Awake() { if (Instance != null) { Debug.Log("MenuController Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
     //// void Start
     private void Start()
