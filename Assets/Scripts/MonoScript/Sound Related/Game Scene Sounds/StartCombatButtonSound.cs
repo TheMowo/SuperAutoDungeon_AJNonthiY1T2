@@ -5,11 +5,10 @@ public class StartCombatButtonSound : MonoBehaviour, IPointerDownHandler
 {
     //I recommend you avert your eyes from this wacky solution to the sound problem-
     AudioClip Sfx;
-    SoundManager soundManager;
+    SoundManager soundManager = SoundManager.Instance;
 
     void Start()
     {
-        soundManager = FindAnyObjectByType<SoundManager>();
         Sfx = GameObject.Find("UiSource_OnStart").GetComponent<AudioSource>().clip;
     }
 

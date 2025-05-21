@@ -33,6 +33,8 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] AudioClip swordmanAttackAudio_;
     [SerializeField] AudioClip bowmanAttackAudio_;
 
+    SoundManager soundManager = SoundManager.Instance;
+
     public void Awake()
     {
         inventory = FindAnyObjectByType<InventoryManager>();
@@ -273,7 +275,7 @@ public class CombatSystem : MonoBehaviour
                 if (enemyUnits.Count > 0)
                     target = enemyUnits[0]; //First Enemy
                     spawnAnimatedUI.PlayerAttackAnimationAt(0, 0);
-                    SoundManager.Instance.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
+                    soundManager.PlaySfxClipWithPitchChange(swordmanAttackAudio_);
             }
             else if (attacker.playerType == PlayerType.Bow && attacker.isDead == false)
             {
@@ -285,7 +287,7 @@ public class CombatSystem : MonoBehaviour
                     {
                         target = enemyUnits[t];
                         spawnAnimatedUI.PlayerAttackAnimationAt(t, 1);
-                        SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
+                        soundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                         break;
                     }
                 }
@@ -388,14 +390,14 @@ public class CombatSystem : MonoBehaviour
                 {
                     targetPlayer = playerUnits[0];
                     spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
-                    SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
+                    soundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                     break;
                 }
                 else
                 {
                     targetPlayer = playerUnits[1];
                     spawnAnimatedUI.EnemyAttackAnimationAt(1, 1);
-                    SoundManager.Instance.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
+                    soundManager.PlaySfxClipWithPitchChange(bowmanAttackAudio_);
                     break;
                 }
             }

@@ -7,11 +7,10 @@ public class ItemSound : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     //Highly unoptimized script tbh
     AudioSource PickUpSfx;
     AudioSource DropSfx;
-    SoundManager soundManager;
+    SoundManager soundManager = SoundManager.Instance;
 
     void Start()
     {
-        soundManager = FindAnyObjectByType<SoundManager>();
         PickUpSfx = GameObject.Find("SfxSource_ItemPickUp").GetComponent<AudioSource>();
         DropSfx = GameObject.Find("SfxSource_ItemDrop").GetComponent<AudioSource>();
     }
