@@ -18,7 +18,7 @@ public class EnemyCooldownDisplay : MonoBehaviour
     public bool TickDownCooldown()
     {
         currentCooldown--;
-        if (currentCooldown <= 0)
+        if (currentCooldown <= -1)
         {
             Debug.Log("Cooldown is 0, returning true");
             currentCooldown = myUnit.enemiesUnitType.attackCooldown;
