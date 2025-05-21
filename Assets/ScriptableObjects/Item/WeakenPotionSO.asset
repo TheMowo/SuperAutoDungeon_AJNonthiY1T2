@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 3
   Name: Weaken Potion
-  Description: '[Temporary Gained Stats]\nHP: +5'
+  Description: 'HP: +5'
   HpEffect: 5
   AtkEffect: 0
   Sprite: {fileID: -1916601607385524054, guid: 33b6926e6cb32814f8823d67475341fe, type: 3}

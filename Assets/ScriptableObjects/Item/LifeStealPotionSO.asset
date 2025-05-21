@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 6
   Name: Life Steal Potion
-  Description: Recovers 3 HP every attack
+  Description: Every attack, gain HP according to the ATK
   HpEffect: 0
   AtkEffect: 0
   Sprite: {fileID: 7123017666264362218, guid: b8501f8db26ff2d4d98239e1a84c0a93, type: 3}

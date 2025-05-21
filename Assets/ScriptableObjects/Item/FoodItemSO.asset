@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEffectType: 0
   Name: Meat
-  Description: '[Permanently Gained Stats]\nHP: +2   ATK: +1'
+  Description: 'HP: +2   ATK: +1 \nPermanently Gained Stats'
   HpEffect: 2
   AtkEffect: 1
   Sprite: {fileID: -2844531463381759980, guid: f72817edb0a7ed242a04376aeb796f1a, type: 3}
@@ -22,5 +22,7 @@ MonoBehaviour:
   GreyDebuffEffect: 0
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
-  BlackDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 0
+  duration: 0
   price: 5
