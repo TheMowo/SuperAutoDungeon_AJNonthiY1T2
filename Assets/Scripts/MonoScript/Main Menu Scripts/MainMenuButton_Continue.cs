@@ -35,7 +35,7 @@ public class MainMenuButton_Continue : MonoBehaviour
         }
     }
 
-    private void LoadLastPlayedScene()
+    public void LoadLastPlayedScene()
     {
         SceneManager.LoadScene(gameSettingSaveSystem.SceneIndex);
     }

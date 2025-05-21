@@ -10,10 +10,7 @@ public class EnemySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
-    }
+    public static EnemySaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("EnemySaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
     void Start()
     {

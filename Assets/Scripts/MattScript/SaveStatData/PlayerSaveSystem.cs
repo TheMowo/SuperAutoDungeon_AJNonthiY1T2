@@ -9,11 +9,8 @@ public class PlayerSaveSystem : MonoBehaviour
     private string PlayerSavePath => Path.Combine(Application.persistentDataPath, "PlayerSaveData.json");
     public string fileName;
     private FileDataHandler dataHandler;
+    public static PlayerSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("PlayerSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
-    }
 
     void Start()
     {
