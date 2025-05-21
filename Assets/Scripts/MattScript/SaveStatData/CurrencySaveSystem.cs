@@ -10,10 +10,7 @@ public class CurrencySaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
-    }
+    public static CurrencySaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("CurrencySaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
     void Start()
     {

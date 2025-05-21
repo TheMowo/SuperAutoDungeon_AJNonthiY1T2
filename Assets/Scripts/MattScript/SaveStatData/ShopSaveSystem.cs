@@ -12,11 +12,8 @@ public class ShopSaveSystem : MonoBehaviour
     public GameObject ItemPrefab;
     public GameObject Shop;
     private int I;
+    public static ShopSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("ShopSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject); // Keeps this GameObject across scenes
-    }
 
     void Start()
     {
