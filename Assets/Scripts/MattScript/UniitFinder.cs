@@ -6,6 +6,7 @@ public class UniitFinder : MonoBehaviour
     public PlayerSaveSystem playerSaveSystem;
     public ItemSaveSystem itemSaveSystem;
     public CurrencySaveSystem currencySaveSystem;
+    public GameSettingSaveSystem gameSettingSaveSystem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,11 +15,13 @@ public class UniitFinder : MonoBehaviour
         playerSaveSystem = FindFirstObjectByType<PlayerSaveSystem>();
         enemySaveSystem = FindFirstObjectByType<EnemySaveSystem>();
         currencySaveSystem = FindFirstObjectByType<CurrencySaveSystem>();
+        gameSettingSaveSystem = FindFirstObjectByType<GameSettingSaveSystem>();
         if (enemySaveSystem != null)
         {
             itemSaveSystem.GetAllInventorySlotList();
             enemySaveSystem.GetAllPlayerUnitList();
             playerSaveSystem.GetAllPlayerUnitList();
+            gameSettingSaveSystem.GetSaveData();
             playerSaveSystem.PlayerLoad();
             itemSaveSystem.ItemLoad();
             currencySaveSystem.CurrencyLoad();
