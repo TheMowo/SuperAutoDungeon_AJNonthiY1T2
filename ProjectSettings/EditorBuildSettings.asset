@@ -13,16 +13,16 @@ EditorBuildSettings:
     guid: ac3293fba306cb04fa4dee9073cdbb25
   - enabled: 1
     path: Assets/Scenes/GameScene/Stage2.unity
-    guid: 1fc5cd1a48376b04b88fa09d06330640
+    guid: 1fad1334a9ff50f49a2ed854470c3caa
   - enabled: 1
     path: Assets/Scenes/GameScene/Stage3.unity
-    guid: cf8be248032ae934aaa9be5754f71295
+    guid: 289c181bec7dc87418352e981efa105d
   - enabled: 1
     path: Assets/Scenes/GameScene/Stage4.unity
-    guid: faac8eb9bf8d77340842aa5ecf1cb8a6
+    guid: d624907f1e4794748b6cb8e9e6089811
   - enabled: 1
     path: Assets/Scenes/GameScene/Stage5.unity
-    guid: 4f9d0a3efdb10534fa5161f8f0824ef3
+    guid: e9a6709d612bb0f42aefdf444931581b
   - enabled: 1
     path: Assets/Scenes/Win Scene/WinScene.unity
     guid: b3ec20958d00e5348a74d16feded5613
