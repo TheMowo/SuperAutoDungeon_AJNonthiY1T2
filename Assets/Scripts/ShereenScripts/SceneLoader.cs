@@ -13,10 +13,12 @@ public class SceneLoader : MonoBehaviour
         Player = FindFirstObjectByType<PlayerSaveSystem>();
         CSS = FindFirstObjectByType<CurrencySaveSystem>();
         
-        ISS.ItemSaveData();
-        CSS.CurrencySaveData();
+        if(ISS != null)
+        {
+            ISS.ItemSaveData();
+            CSS.CurrencySaveData();
+            Player.PlayerSaveData();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        
-        Player.PlayerSaveData();
     }
 }
