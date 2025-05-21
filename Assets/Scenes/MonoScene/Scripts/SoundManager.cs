@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
         {
             //spawn in GameObject
             AudioSource _audioSource = Instantiate(_soundFxSource, new Vector2(0, 0), Quaternion.identity);
-            Debug.Log("SoundManager: PlaySfxClip() has Instantiated an AudioSource at " + transform.position);
+            //Debug.Log("SoundManager: PlaySfxClip() has Instantiated an AudioSource at " + transform.position);
 
             //ensures audio does not loop
             _audioSource.loop = false;
