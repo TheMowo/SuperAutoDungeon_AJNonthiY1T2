@@ -760,10 +760,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 765581378246126233, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
-      propertyPath: m_Volume
-      value: 0.558
-      objectReference: {fileID: 0}
+    - target: {fileID: 8235361250166154480, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
+      propertyPath: _soundFxSource
+      value: 
+      objectReference: {fileID: 1207039605}
     - target: {fileID: 8369944357082531810, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
       propertyPath: m_Name
       value: Sound Related
@@ -8279,6 +8279,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189135587}
   m_CullTransparentMesh: 1
+--- !u!82 &1207039605 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1687854173575626802, guid: 7c744393837321243ad0da9bd7ff4429, type: 3}
+  m_PrefabInstance: {fileID: 186597138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227731733
 GameObject:
   m_ObjectHideFlags: 0

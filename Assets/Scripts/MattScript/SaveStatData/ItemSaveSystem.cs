@@ -10,7 +10,7 @@ public class ItemSaveSystem : MonoBehaviour
     public string fileName;
     private FileDataHandler dataHandler;
     public GameObject ItemPrefab;
-    public static ItemSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("ItemSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else DontDestroyOnLoad(this.gameObject); Instance = this; }
+    public static ItemSaveSystem Instance; private void Awake() { if (Instance != null) { Debug.Log("ItemSaveSystem Instance Check !Null"); Destroy(this.gameObject); } else { DontDestroyOnLoad(this.gameObject); Instance = this; } }
 
 
     void Start()
