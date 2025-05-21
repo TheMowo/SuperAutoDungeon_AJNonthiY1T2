@@ -65,11 +65,12 @@ public class GameSettingSaveSystem : MonoBehaviour
 
     public SettingSaveData GetSaveData()
     {
-        return new SettingSaveData
-        {
-            PlayerWin = combatSystem.isWin,
-            SceneName = SceneManager.GetActiveScene().buildIndex
-        };
+        //return new SettingSaveData
+        //{
+        //    PlayerWin = combatSystem.isWin,
+        //    SceneName = SceneManager.GetActiveScene().buildIndex
+        //};
+        return null;
     }
 
     public void LoadFromSaveData(SettingSaveData Data)

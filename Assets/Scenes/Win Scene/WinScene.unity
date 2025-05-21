@@ -239,6 +239,14 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.2462584
       objectReference: {fileID: 0}
+    - target: {fileID: 3136743338654599646, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 543473989}
+    - target: {fileID: 3136743338654599646, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4399872723796888427, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -390,11 +398,23 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 194.38702
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 357740258131307358, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
+--- !u!114 &543473989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5029742798522204113, guid: 39decbd2f0987ab4f836289b0adf3e5c, type: 3}
+  m_PrefabInstance: {fileID: 543473988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfa9623291ea7c4b872e3ae65595f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1340477820
 GameObject:
   m_ObjectHideFlags: 0

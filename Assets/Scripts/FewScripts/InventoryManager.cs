@@ -8,17 +8,15 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot trashSlot;
     public ConsumableItem[] possibleItems;
     public GameObject itemPrefab;
-    CurrencySaveSystem currencySaveSystem;
 
     public int playerCurrency = 100;
     public TMP_Text currencyText;
 
     void Start()
     {
-        currencySaveSystem = FindFirstObjectByType<CurrencySaveSystem>();
-        if (currencySaveSystem != null)
+        if (CurrencySaveSystem.Instance != null)
         {
-            currencySaveSystem.FindCurrency(this);
+            CurrencySaveSystem.Instance.FindCurrency(this);
         }
         Delay.Run(0.01f, () => UpdateCurrencyUI());
     }
