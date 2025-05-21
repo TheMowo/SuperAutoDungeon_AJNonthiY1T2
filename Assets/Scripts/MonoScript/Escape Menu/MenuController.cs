@@ -11,7 +11,9 @@ public class MenuController : MonoBehaviour
     /// To easily navigate this script, press 'ctrl + F' and type "////" to search through different sections
     /// Last Updated: 13th May, 2025
     /// <important>
-    
+
+    public GameSettingSaveSystem GSS;
+
     [Header("Escape Menu")]
     [SerializeField] private GameObject EscapeMenuObject;
     [SerializeField] private GameObject[] EscapeMenuButtons; //for use with Unity Input system
@@ -34,6 +36,7 @@ public class MenuController : MonoBehaviour
     //// void Start
     private void Start()
     {
+        GSS = FindFirstObjectByType<GameSettingSaveSystem>();
         //Find Screen Resolutions
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -123,6 +126,7 @@ public class MenuController : MonoBehaviour
     public void MainMenuButton()
     {
         Debug.Log(name + ": MainMenuButton pressed");
+        GSS.GameSettingSaveData();
         CloseEscapeMenu();
         Unpause();
         SceneManager.LoadScene(0);

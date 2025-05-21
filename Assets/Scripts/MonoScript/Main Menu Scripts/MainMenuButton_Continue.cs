@@ -38,5 +38,6 @@ public class MainMenuButton_Continue : MonoBehaviour
     public void LoadLastPlayedScene()
     {
         SceneManager.LoadScene(gameSettingSaveSystem.SceneIndex);
+        gameSettingSaveSystem.GameSettingLoad();
     }
 }
