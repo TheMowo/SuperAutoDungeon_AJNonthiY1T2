@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
         {
             currencySaveSystem.FindCurrency(this);
         }
-        Delay.Run(0.0000000000000000000000000000000000000000000000000000000001f, () => UpdateCurrencyUI());
+        Delay.Run(0.01f, () => UpdateCurrencyUI());
     }
 
 
@@ -28,6 +28,8 @@ public class InventoryManager : MonoBehaviour
     {
         currencyText.text = $"Doubloon: {playerCurrency}";
     }
+
+    [System.Obsolete]
     public bool TryBuyItem(ConsumableItem item)
     {
         if (playerCurrency >= item.price)
@@ -39,6 +41,8 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
+
+    [System.Obsolete]
     public void AddItemToInventory(ConsumableItem item) // Method for "TryBuyItem", adding the item into inventory bought from shop
     {
         foreach (InventorySlot slot in slots)
@@ -55,7 +59,7 @@ public class InventoryManager : MonoBehaviour
         }
         Debug.Log("Inventory Full!");
     }
-    public void DestroyTrashItem() // For the trash button, removes the item from the trash slot.
+    private void DestroyTrashItem() // For the trash button, removes the item from the trash slot.
     {
         Debug.Log($"Trashing item");
 
@@ -65,10 +69,11 @@ public class InventoryManager : MonoBehaviour
         }
         Debug.Log($"Clear!");
     }
-    
+
+    [System.Obsolete]
     public void AddRandomItem() // For the cheat button, gives random item into inventory.
     {
-        Debug.Log("Test");
+        Debug.Log("Adding random item");
         ConsumableItem randomItem = possibleItems[Random.Range(0, possibleItems.Length)];
 
         foreach (InventorySlot slot in slots)
