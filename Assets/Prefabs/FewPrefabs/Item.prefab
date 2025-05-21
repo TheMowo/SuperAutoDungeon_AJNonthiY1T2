@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4488587334064372770}
   - component: {fileID: 9048255373683549557}
   - component: {fileID: 6003823346386325752}
+  - component: {fileID: 1592725017779577988}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -92,6 +93,11 @@ MonoBehaviour:
   image: {fileID: 4488587334064372770}
   CurrentItem: {fileID: 0}
   isShopItem: 0
+  followSpeed: 15
+  bobbingSpeed: 2
+  bobbingHeight: 100
+  tiltSpeed: 0.1
+  _tiltAmount: 5
   parentAfterDrag: {fileID: 0}
 --- !u!114 &6003823346386325752
 MonoBehaviour:
@@ -107,3 +113,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItem: {fileID: 0}
   tooltipSystem: {fileID: 0}
+--- !u!114 &1592725017779577988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100813280967360941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af14048448bc94439dd2035c63bd90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
