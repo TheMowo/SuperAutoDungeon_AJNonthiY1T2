@@ -1084,6 +1084,7 @@ GameObject:
   - component: {fileID: 266656605}
   - component: {fileID: 266656604}
   - component: {fileID: 266656603}
+  - component: {fileID: 266656609}
   m_Layer: 0
   m_Name: ===SaveLoad===
   m_TagString: Untagged
@@ -1179,6 +1180,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &266656609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266656602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef468b2761f43a43a4e6dda800e71b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingSaveData: {fileID: 0}
+  fileName: GameSettingSaveData
+  combatSystem: {fileID: 0}
+  SceneIndex: 0
 --- !u!1 &304003031
 GameObject:
   m_ObjectHideFlags: 0
