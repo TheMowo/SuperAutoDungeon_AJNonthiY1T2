@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef468b2761f43a43a4e6dda800e71b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SettingSaveData: {fileID: 0}
+  gameSettingSaveData: {fileID: 0}
   fileName: GameSettingSaveData
   combatSystem: {fileID: 0}
   SceneIndex: 0
@@ -10022,6 +10022,7 @@ MonoBehaviour:
   itemSaveSystem: {fileID: 266656605}
   playerSaveSystem: {fileID: 266656607}
   shopSaveSystem: {fileID: 266656604}
+  gameSettingSaveSystem: {fileID: 266656609}
   ConfirmationOverlay: {fileID: 138751196}
 --- !u!114 &1479534210
 MonoBehaviour:

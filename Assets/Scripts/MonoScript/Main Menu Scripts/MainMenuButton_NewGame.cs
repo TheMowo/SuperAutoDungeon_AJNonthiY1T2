@@ -14,6 +14,7 @@ public class MainMenuButton_NewGame : MonoBehaviour
     [SerializeField] ItemSaveSystem itemSaveSystem;
     [SerializeField] PlayerSaveSystem playerSaveSystem;
     [SerializeField] ShopSaveSystem shopSaveSystem;
+    [SerializeField] GameSettingSaveSystem gameSettingSaveSystem;
 
     [SerializeField] GameObject ConfirmationOverlay;
     private bool hasSave;
@@ -72,6 +73,7 @@ public class MainMenuButton_NewGame : MonoBehaviour
         itemSaveSystem.DeleteSaveFile();
         playerSaveSystem.DeleteSaveFile();
         shopSaveSystem.DeleteSaveFile();
+        gameSettingSaveSystem.DeleteSaveFile();
     }
     private void LoadFirstScene()
     {

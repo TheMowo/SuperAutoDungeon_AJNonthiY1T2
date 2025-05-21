@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameSettingSaveSystem : MonoBehaviour
 {
-    public GameSettingSaveSystem SettingSaveData;
+    public GameSettingSaveSystem gameSettingSaveData;
     private string GameSettingSavePath => Path.Combine(Application.persistentDataPath, "GameSettingSaveData.json");
     public string fileName;
     private FileDataHandler dataHandler;
@@ -20,14 +20,19 @@ public class GameSettingSaveSystem : MonoBehaviour
         if (GameObject.Find("Player Unit 1") != null)
         {
             combatSystem = FindFirstObjectByType<CombatSystem>();
-            SettingSaveData = FindFirstObjectByType<GameSettingSaveSystem>();
+            gameSettingSaveData = FindFirstObjectByType<GameSettingSaveSystem>();
             GameSettingLoad();
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        GameSettingSaveData();
+    }
+
     public void GameSettingSaveData()
     {
-        SettingSaveData saveData = SettingSaveData.GetSaveData(); // Get currency data
+        SettingSaveData saveData = gameSettingSaveData.GetSaveData(); // Get currency data
         string json = JsonUtility.ToJson(saveData, true); // Serialize data
         File.WriteAllText(GameSettingSavePath, json); // Save to file
         Debug.Log("GameSetting saved to: " + GameSettingSavePath);
@@ -45,7 +50,7 @@ public class GameSettingSaveSystem : MonoBehaviour
         Debug.Log("Loaded JSON:\n" + json);
 
         SettingSaveData loadedData = JsonUtility.FromJson<SettingSaveData>(json);
-        SettingSaveData.LoadFromSaveData(loadedData); // Apply loaded data
+        gameSettingSaveData.LoadFromSaveData(loadedData); // Apply loaded data
         Debug.Log("GameSetting loaded!");
     }
 
@@ -67,14 +72,14 @@ public class GameSettingSaveSystem : MonoBehaviour
     {
         return new SettingSaveData
         {
-            PlayerWin = combatSystem.isWin,
+            PlayerWin = this.combatSystem.isWin,
             SceneName = SceneManager.GetActiveScene().buildIndex
         };
     }
 
     public void LoadFromSaveData(SettingSaveData Data)
     {
-        combatSystem.isWin = Data.PlayerWin;
-        SceneIndex = Data.SceneName;
+        this.combatSystem.isWin = Data.PlayerWin;
+        this.SceneIndex = Data.SceneName;
     }
 }
