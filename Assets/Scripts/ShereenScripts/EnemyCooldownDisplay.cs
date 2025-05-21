@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EnemyCooldownDisplay : MonoBehaviour
 {
-    [SerializeField] private TMP_Text cooldownText;
+    [SerializeField] public TMP_Text cooldownText;
 
-    private EnemiesUnit myUnit;
+    public EnemiesUnit myUnit;
     public int currentCooldown;
 
     void Awake()
@@ -18,12 +18,14 @@ public class EnemyCooldownDisplay : MonoBehaviour
     public bool TickDownCooldown()
     {
         currentCooldown--;
-        if (currentCooldown <= 0)
+        if (currentCooldown <= -1)
         {
+            Debug.Log("Cooldown is 0, returning true");
             currentCooldown = myUnit.enemiesUnitType.attackCooldown;
             UpdateText();
             return true;
         }
+        Debug.Log("Cooldown is not 0, returning false");
         UpdateText();
         return false;
     }

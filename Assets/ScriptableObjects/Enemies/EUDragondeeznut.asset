@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 2
   HP: 50
-  ATK: 5
+  ATK: 15
   DropGold: 11111
   MPDrop: 1
   UnitSprite: {fileID: 1581334741, guid: 9e11d037f99fff14f8ec3182cb51f5b3, type: 3}
