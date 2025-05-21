@@ -11,7 +11,7 @@ public class LoseScreen : MonoBehaviour
     }
     private void Update()
     {
-        //if (_checkPlayerLose.isOver)
+        if (_checkPlayerLose.isOver)
         {
             loseScreen.SetActive(true);
         }
