@@ -418,7 +418,6 @@ public class CombatSystem : MonoBehaviour
                 }
 
                 targetPlayer.CurrentHP -= damage;
-                spawnAnimatedUI.EnemyAttackAnimationAt(0, 1);
                 targetPlayer.UpdateUI();
 
                 if (atkDisplayText != null)
