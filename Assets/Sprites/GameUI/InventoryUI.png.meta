@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4e2e4b2b6e2fc564289f43a568cd4cc2
+guid: fa2f32057422fa84380d36cd372c3ebf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5545987585116848489
-    second: Map for dungone 2_0
+      213: 7452060249203165287
+    second: InventoryUI_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Map for dungone 2_0
+      name: InventoryUI_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 960
-        height: 540
+        width: 420
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 961cd93235e47fc40800000000000000
-      internalID: 5545987585116848489
+      spriteID: 768409e50590b6760800000000000000
+      internalID: 7452060249203165287
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Map for dungone 2_0: 5545987585116848489
+      InventoryUI_0: 7452060249203165287
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

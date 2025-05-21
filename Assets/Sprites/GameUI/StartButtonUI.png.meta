@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72334350a2457014792bed76acc5bca0
+guid: f3c4258c3b30550498fde2d3406be53b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8412235861619570481
-    second: Map for dungone 1_0
+      213: 3042296324541379600
+    second: StartButtonUI_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Map for dungone 1_0
+      name: StartButtonUI_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 960
-        height: 540
+        width: 160
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc80d55cd0cb14b80800000000000000
-      internalID: -8412235861619570481
+      spriteID: 014f3cd6368683a20800000000000000
+      internalID: 3042296324541379600
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Map for dungone 1_0: -8412235861619570481
+      StartButtonUI_0: 3042296324541379600
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 475baf98278d40044b8343341758f317
+guid: 30cd7baf0a98aec4da1d608955f2647e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -145362552210212360
-    second: ropes_0
+      213: -6328218390065623207
+    second: Main Menu Dungone_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ropes_0
+      name: Main Menu Dungone_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 891
-        height: 654
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8f9bdd767819bfdf0800000000000000
-      internalID: -145362552210212360
+      spriteID: 95f4b0f07e6ad28a0800000000000000
+      internalID: -6328218390065623207
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ropes_0: -145362552210212360
+      Main Menu Dungone_0: -6328218390065623207
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

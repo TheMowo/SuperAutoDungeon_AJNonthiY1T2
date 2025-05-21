@@ -19,8 +19,10 @@ MonoBehaviour:
   AtkEffect: 0
   Sprite: {fileID: -1916601607385524054, guid: 33b6926e6cb32814f8823d67475341fe, type: 3}
   GreenDebuffEffect: 0
-  GreyDebuffEffect: 1
+  GreyDebuffEffect: 3
   LightBlueDebuffEffect: 0
   GoldDebuffEffect: 0
-  BlackDebuffEffect: 0
+  LifeStealDebuffEffect: 0
+  ShieldDebuffEffect: 0
+  duration: 0
   price: 15
