@@ -423,6 +423,8 @@ public class EnemiesUnit : MonoBehaviour
                 CurrentLightBlueDebuff = this.LightBlueDebuffDuration,
                 CurrentGoldDebuff = this.GoldDebuffDuration,
                 CurrentEffects = this.CurrentEffects,
+                LifeStealDebuff = this.LifeStealDebuffDuration,
+                ShieldDebuff = this.ShieldDebuffDuration,
             };
         }
         else
@@ -442,6 +444,8 @@ public class EnemiesUnit : MonoBehaviour
         this.LightBlueDebuffDuration = data.CurrentLightBlueDebuff;
         this.GoldDebuffDuration = data.CurrentGoldDebuff;
         this.CurrentEffects = data.CurrentEffects;
+        this.LifeStealDebuffDuration = data.LifeStealDebuff;
+        this.ShieldDebuffDuration = data.ShieldDebuff;
     }
 
 }
